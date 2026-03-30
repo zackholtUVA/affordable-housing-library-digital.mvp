@@ -8,31 +8,31 @@ import type { HalideHeroContent, HalideHeroLayer } from "@/lib/types";
 
 const defaultLayers: HalideHeroLayer[] = [
   {
-    id: "layer-1",
-    imageUrl:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1200",
+    id: "panel-base",
+    background:
+      "linear-gradient(152deg, color-mix(in oklab, var(--halide-panel-base) 82%, white) 0%, color-mix(in oklab, var(--halide-panel-base) 88%, black) 52%, color-mix(in oklab, var(--halide-panel-base) 94%, black) 100%)",
     depth: 16,
-    filter: "grayscale(1) contrast(1.22) brightness(0.52)",
-    opacity: 1,
+    filter: "saturate(0.72) contrast(1.04)",
+    opacity: 0.94,
     blendMode: "normal",
   },
   {
-    id: "layer-2",
-    imageUrl:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1200",
-    depth: 32,
-    filter: "grayscale(1) contrast(1.1) brightness(0.74)",
-    opacity: 0.62,
+    id: "panel-highlight",
+    background:
+      "radial-gradient(circle at 20% 22%, color-mix(in oklab, var(--halide-highlight) 68%, transparent) 0%, transparent 48%), linear-gradient(118deg, transparent 0%, color-mix(in oklab, var(--halide-highlight) 26%, transparent) 40%, transparent 78%)",
+    depth: 34,
+    filter: "saturate(0.92)",
+    opacity: 0.72,
     blendMode: "screen",
   },
   {
-    id: "layer-3",
-    imageUrl:
-      "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=1200",
-    depth: 48,
-    filter: "grayscale(1) contrast(1.28) brightness(0.86)",
-    opacity: 0.44,
-    blendMode: "overlay",
+    id: "panel-texture",
+    background:
+      "repeating-linear-gradient(100deg, color-mix(in oklab, var(--halide-panel-line) 28%, transparent) 0 1px, transparent 1px 12px), linear-gradient(150deg, color-mix(in oklab, var(--halide-panel-base) 68%, transparent) 0%, color-mix(in oklab, var(--halide-panel-base) 88%, transparent) 100%)",
+    depth: 52,
+    filter: "saturate(0.78)",
+    opacity: 0.52,
+    blendMode: "soft-light",
   },
 ];
 
@@ -46,10 +46,7 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
   const canvasRef = useRef<HTMLDivElement>(null);
   const layersRef = useRef<Array<HTMLDivElement | null>>([]);
 
-  const safeLayers = useMemo(
-    () => (layers.length > 0 ? layers : defaultLayers),
-    [layers],
-  );
+  const safeLayers = useMemo(() => (layers.length > 0 ? layers : defaultLayers), [layers]);
 
   useEffect(() => {
     layersRef.current = layersRef.current.slice(0, safeLayers.length);
@@ -106,10 +103,7 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
       aria-label="Launch hero"
     >
       <div className="halide-body min-h-[min(86vh,980px)]">
-        <svg
-          aria-hidden="true"
-          style={{ position: "absolute", width: 0, height: 0 }}
-        >
+        <svg aria-hidden="true" style={{ position: "absolute", width: 0, height: 0 }}>
           <filter id="halide-grain-filter">
             <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" />
             <feColorMatrix type="saturate" values="0" />
@@ -140,9 +134,7 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
             ))}
           </div>
 
-          <h1 className="hero-title">
-            {content.title}
-          </h1>
+          <h1 className="hero-title">{content.title}</h1>
           <p className="hero-subtitle">{content.subtitle}</p>
 
           <div
@@ -181,7 +173,7 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
                 }}
                 className="layer"
                 style={{
-                  backgroundImage: `url(${layer.imageUrl})`,
+                  backgroundImage: layer.background,
                   filter: layer.filter,
                   opacity: layer.opacity,
                   mixBlendMode: layer.blendMode ?? "normal",
@@ -197,10 +189,14 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
 
       <style jsx>{`
         .halide-body {
-          --halide-bg: color-mix(in oklab, var(--background) 94%, black);
-          --halide-silver: color-mix(in oklab, var(--text) 92%, white);
-          --halide-accent: color-mix(in oklab, var(--accent) 72%, #ff3c00);
-          --halide-grain-opacity: 0.14;
+          --halide-bg: color-mix(in oklab, var(--surface) 84%, var(--background));
+          --halide-silver: color-mix(in oklab, var(--text) 90%, white);
+          --halide-title: color-mix(in oklab, var(--text) 94%, #1f2b45);
+          --halide-accent: color-mix(in oklab, var(--accent) 76%, #b7dcff);
+          --halide-panel-base: color-mix(in oklab, var(--surface-2) 78%, #9fa9bb);
+          --halide-panel-line: color-mix(in oklab, var(--text) 12%, transparent);
+          --halide-highlight: color-mix(in oklab, var(--accent) 42%, white);
+          --halide-grain-opacity: 0.1;
           position: relative;
           background-color: var(--halide-bg);
           color: var(--halide-silver);
@@ -241,8 +237,6 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
           position: absolute;
           inset: 0;
           border: 1px solid color-mix(in oklab, var(--halide-silver) 16%, transparent);
-          background-size: cover;
-          background-position: center;
           transition: transform 0.5s ease;
         }
 
@@ -277,13 +271,14 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
         .hero-title {
           grid-column: 1 / -1;
           align-self: end;
-          max-width: min(11ch, 86%);
-          font-size: clamp(2.4rem, 10vw, 9rem);
-          line-height: 0.85;
-          letter-spacing: -0.04em;
+          max-width: min(14ch, 92%);
+          font-size: clamp(2.1rem, 8.5vw, 6.2rem);
+          line-height: 0.92;
+          letter-spacing: -0.038em;
           text-wrap: balance;
-          mix-blend-mode: difference;
           text-transform: uppercase;
+          color: var(--halide-title);
+          text-shadow: 0 8px 28px color-mix(in oklab, var(--background) 38%, transparent);
         }
 
         .hero-subtitle {
@@ -348,7 +343,7 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
         @media (max-width: 960px) {
           .hero-title {
             max-width: 100%;
-            font-size: clamp(2rem, 12vw, 5.4rem);
+            font-size: clamp(2rem, 12vw, 4.2rem);
           }
 
           .canvas-3d {

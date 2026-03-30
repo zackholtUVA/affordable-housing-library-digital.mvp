@@ -8,6 +8,10 @@ describe("HomePage launch composition", () => {
 
     expect(screen.getByLabelText("Launch hero")).toBeInTheDocument();
     expect(
+      screen.getByText("Compare Affordable Housing Paths with Confidence"),
+    ).toBeInTheDocument();
+    expect(screen.queryByText("[PLACEHOLDER: site headline]")).not.toBeInTheDocument();
+    expect(
       screen.getByText("[PLACEHOLDER: product explanation section title]"),
     ).toBeInTheDocument();
     expect(screen.getByText("[PLACEHOLDER: pathway section heading]")).toBeInTheDocument();
@@ -19,4 +23,3 @@ describe("HomePage launch composition", () => {
     expect(sections[0]?.getAttribute("aria-label")).toBe("Launch hero");
   });
 });
-
