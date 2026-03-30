@@ -1,0 +1,30 @@
+import type { ReactNode } from "react";
+
+import { cn } from "@/lib/utils";
+
+type InfoCalloutProps = {
+  title: ReactNode;
+  children: ReactNode;
+  tone?: "neutral" | "warning";
+};
+
+export function InfoCallout({
+  title,
+  children,
+  tone = "neutral",
+}: InfoCalloutProps) {
+  return (
+    <aside
+      className={cn(
+        "rounded-2xl border p-4",
+        tone === "warning"
+          ? "border-[color-mix(in_oklab,var(--danger)_60%,var(--border))] bg-[color-mix(in_oklab,var(--danger)_14%,transparent)]"
+          : "border-[var(--border)] bg-[var(--surface-2)]",
+      )}
+    >
+      <h3 className="mb-2 text-sm font-semibold tracking-wide">{title}</h3>
+      <p className="text-sm text-[var(--muted)]">{children}</p>
+    </aside>
+  );
+}
+
