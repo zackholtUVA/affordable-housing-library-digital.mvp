@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { NAV_ITEMS, APP_NAME } from "@/lib/constants";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/shared/button";
+import { APP_NAME, NAV_ITEMS } from "@/lib/constants";
 import { useTheme } from "@/lib/theme";
+import { useUx } from "@/lib/ux";
+import { Button } from "@/components/shared/button";
+import { cn } from "@/lib/utils";
 
 function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
@@ -27,6 +28,61 @@ function ThemeToggle() {
 export function SiteHeader() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const { openCommandPalette } = useUx();
+
+  useEffect(() => {
+    const closeMenu = () => setIsMenuOpen(false);
+    window.addEventListener("ux:escape", closeMenu);
+    return () => window.removeEventListener("ux:escape", closeMenu);
+  }, []);
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return;
+    }
+
+    const menuElement = menuRef.current;
+    if (!menuElement) {
+      return;
+    }
+
+    const focusable = Array.from(
+      menuElement.querySelectorAll<HTMLElement>(
+        "a[href], button:not([disabled]), [tabindex]:not([tabindex='-1'])",
+      ),
+    );
+
+    focusable[0]?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
+        return;
+      }
+
+      if (event.key !== "Tab" || focusable.length === 0) {
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_92%,transparent)] backdrop-blur">
@@ -43,25 +99,46 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-xl px-3 py-2 text-sm transition-colors",
+                  "relative rounded-xl px-3 py-2 text-sm transition-colors",
                   active
                     ? "bg-[var(--surface-2)] text-[var(--text)]"
                     : "text-[var(--muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]",
                 )}
               >
                 {item.label}
+                <span
+                  className={cn(
+                    "absolute inset-x-2 -bottom-[1px] h-[2px] rounded-full bg-[var(--accent)] transition-transform duration-200",
+                    active ? "scale-x-100" : "scale-x-0",
+                  )}
+                />
               </Link>
             );
           })}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-2 md:flex">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={openCommandPalette}
+            aria-label="Open quick actions"
+          >
+            Quick actions
+            <span className="ml-1 rounded border border-[var(--border)] px-1.5 text-[10px] uppercase tracking-[0.1em] text-[var(--muted)]">
+              Cmd/Ctrl K
+            </span>
+          </Button>
           <ThemeToggle />
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
+          <Button variant="ghost" size="sm" onClick={openCommandPalette} aria-label="Open quick actions">
+            Actions
+          </Button>
           <ThemeToggle />
           <Button
+            ref={menuButtonRef}
             variant="secondary"
             size="sm"
             onClick={() => setIsMenuOpen((current) => !current)}
@@ -75,9 +152,10 @@ export function SiteHeader() {
 
       <div
         id="mobile-nav"
+        ref={menuRef}
         className={cn(
-          "overflow-hidden border-t border-[var(--border)] transition-[max-height] md:hidden",
-          isMenuOpen ? "max-h-80" : "max-h-0",
+          "overflow-hidden border-t border-[var(--border)] transition-[max-height,opacity] duration-300 ease-[var(--motion-easing-standard)] md:hidden",
+          isMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0",
         )}
       >
         <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3" aria-label="Mobile">
@@ -87,10 +165,10 @@ export function SiteHeader() {
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
               className={cn(
-                "rounded-lg px-3 py-2 text-sm",
+                "rounded-lg px-3 py-2 text-sm transition-colors",
                 pathname === item.href
                   ? "bg-[var(--surface-2)] text-[var(--text)]"
-                  : "text-[var(--muted)]",
+                  : "text-[var(--muted)] hover:bg-[var(--surface-2)]",
               )}
             >
               {item.label}

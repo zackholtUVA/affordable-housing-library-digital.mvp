@@ -1,12 +1,17 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 
 import { CompareDrawer } from "@/components/compare/compare-drawer";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { JumpToTop } from "@/components/ux/jump-to-top";
+import { OnboardingHints } from "@/components/ux/onboarding-hints";
 
 export function AppFrame({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+
   return (
     <>
       <a
@@ -16,12 +21,15 @@ export function AppFrame({ children }: { children: ReactNode }) {
         Skip to content
       </a>
       <SiteHeader />
+      <OnboardingHints />
       <main id="main-content" className="flex-1">
-        {children}
+        <div key={pathname} className="route-content-enter">
+          {children}
+        </div>
       </main>
       <SiteFooter />
       <CompareDrawer />
+      <JumpToTop />
     </>
   );
 }
-

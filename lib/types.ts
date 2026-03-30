@@ -65,3 +65,26 @@ export type FilterGroup = {
   options: PlaceholderText[];
 };
 
+export type ShortcutId =
+  | "openPalette"
+  | "openShortcutHelp"
+  | "goHome"
+  | "goExplore"
+  | "goCompare"
+  | "goNextSteps"
+  | "goBasics";
+
+export type CommandAction = {
+  id: string;
+  title: string;
+  section: "Navigate" | "Actions" | "Preferences";
+  shortcut?: string;
+  run: () => void;
+};
+
+export type UxToast = {
+  id: string;
+  tone: "info" | "success" | "warning";
+  message: string;
+  durationMs?: number;
+};

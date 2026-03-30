@@ -10,11 +10,13 @@ import { InfoCallout } from "@/components/shared/info-callout";
 import { housingOptionsBySlug } from "@/data/housing-options";
 import { COMPARE_MAX } from "@/lib/constants";
 import { useCompareStore } from "@/lib/compare-store";
+import { useUx } from "@/lib/ux";
 
 const optionById = new Map(Array.from(housingOptionsBySlug.values()).map((option) => [option.id, option]));
 
 export default function ComparePage() {
   const { selectedIds, remove, clear } = useCompareStore();
+  const { addToast } = useUx();
   const selectedOptions = selectedIds
     .map((id) => optionById.get(id))
     .filter((option): option is NonNullable<typeof option> => Boolean(option));
@@ -31,7 +33,17 @@ export default function ComparePage() {
       </header>
 
       <div className="flex flex-wrap items-center gap-2">
-        <Button variant="ghost" size="sm" onClick={clear}>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => {
+            clear();
+            addToast({
+              tone: "info",
+              message: "[PLACEHOLDER: compare list cleared]",
+            });
+          }}
+        >
           [PLACEHOLDER: clear compared options]
         </Button>
         <Link href="/explore" className="text-sm font-medium text-[var(--accent)]">
@@ -48,11 +60,21 @@ export default function ComparePage() {
         <div className="grid gap-2 md:grid-cols-3">
           {selectedOptions.map((option) => (
             <div
-              key={option.id}
+              key={`${option.id}-actions`}
               className="flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--surface)] px-3 py-2"
             >
               <p className="text-sm">{option.title}</p>
-              <Button variant="ghost" size="sm" onClick={() => remove(option.id)}>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  remove(option.id);
+                  addToast({
+                    tone: "info",
+                    message: "[PLACEHOLDER: option removed from compare]",
+                  });
+                }}
+              >
                 Remove
               </Button>
             </div>
@@ -66,4 +88,3 @@ export default function ComparePage() {
     </PageShell>
   );
 }
-

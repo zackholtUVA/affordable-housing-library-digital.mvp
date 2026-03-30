@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { EmptyState as SharedEmptyState } from "@/components/shared/empty-state";
 import { PageShell } from "@/components/layout/page-shell";
@@ -25,6 +25,8 @@ function cloneEmptyFilters(): ExploreFilterState {
 }
 
 export default function ExplorePage() {
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const resultsRegionRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState("");
   const [filters, setFilters] = useState<ExploreFilterState>(() => cloneEmptyFilters());
 
@@ -52,6 +54,22 @@ export default function ExplorePage() {
 
   const hasActiveFilters = Object.values(filters).some((values) => values.length > 0);
 
+  useEffect(() => {
+    const focusSearch = () => {
+      searchInputRef.current?.focus();
+      searchInputRef.current?.select();
+    };
+    window.addEventListener("ux:focus-explore-search", focusSearch);
+    return () => window.removeEventListener("ux:focus-explore-search", focusSearch);
+  }, []);
+
+  const focusFirstResultAction = () => {
+    const button = resultsRegionRef.current?.querySelector<HTMLButtonElement>(
+      "button[data-option-action='true']",
+    );
+    button?.focus();
+  };
+
   return (
     <PageShell className="space-y-8">
       <header className="space-y-3">
@@ -65,29 +83,37 @@ export default function ExplorePage() {
 
       <div className="grid gap-6 lg:grid-cols-[290px_1fr]">
         <div className="space-y-4">
-          <SearchBar value={query} onChange={setQuery} />
+          <SearchBar
+            value={query}
+            onChange={setQuery}
+            inputRef={searchInputRef}
+            onArrowDown={focusFirstResultAction}
+          />
           <FilterPanel groups={filterGroups} filters={filters} onToggle={toggleFilter} />
         </div>
 
         <section className="space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="sticky top-20 z-20 flex flex-wrap items-center gap-2 rounded-xl border border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_92%,transparent)] p-3 backdrop-blur">
             <FilterChipBar filters={filters} onRemove={toggleFilter} onClear={resetFilters} />
-            {hasActiveFilters ? (
-              <button
-                type="button"
-                onClick={resetFilters}
-                className="text-xs font-medium text-[var(--muted)] underline-offset-2 hover:underline"
-              >
-                [PLACEHOLDER: clear all]
-              </button>
-            ) : null}
+            <button
+              type="button"
+              onClick={resetFilters}
+              className="text-xs font-medium text-[var(--muted)] underline-offset-2 hover:underline"
+            >
+              [PLACEHOLDER: clear all + reset search]
+            </button>
+            <span className="ml-auto text-[10px] uppercase tracking-[0.14em] text-[var(--muted)]">
+              [PLACEHOLDER: tip: press / to focus search]
+            </span>
           </div>
 
-          {filtered.length > 0 ? (
-            <OptionGrid options={filtered} />
-          ) : (
-            <ExploreEmptyState onReset={resetFilters} />
-          )}
+          <div ref={resultsRegionRef}>
+            {filtered.length > 0 ? (
+              <OptionGrid options={filtered} />
+            ) : (
+              <ExploreEmptyState onReset={resetFilters} />
+            )}
+          </div>
 
           {!hasActiveFilters && query.length === 0 ? (
             <SharedEmptyState
