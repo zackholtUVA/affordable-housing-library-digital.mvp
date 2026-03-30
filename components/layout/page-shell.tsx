@@ -10,8 +10,7 @@ type PageShellProps = {
 export function PageShell({ children, className }: PageShellProps) {
   return (
     <div className={cn("mx-auto w-full max-w-6xl px-4 pb-16 pt-10 md:px-6", className)}>
-      {children}
+      <div className="page-reveal-flow">{children}</div>
     </div>
   );
 }
-

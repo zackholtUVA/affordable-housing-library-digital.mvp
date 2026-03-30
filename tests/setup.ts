@@ -22,6 +22,13 @@ Object.defineProperty(window, "localStorage", {
   writable: true,
 });
 
+const routerPushMock = vi.fn();
+(globalThis as { __routerPushMock?: typeof routerPushMock }).__routerPushMock = routerPushMock;
+
+beforeEach(() => {
+  routerPushMock.mockReset();
+});
+
 vi.mock("next/link", () => ({
   default: ({
     href,
@@ -35,4 +42,7 @@ vi.mock("next/link", () => ({
 
 vi.mock("next/navigation", () => ({
   usePathname: () => "/",
+  useRouter: () => ({
+    push: routerPushMock,
+  }),
 }));

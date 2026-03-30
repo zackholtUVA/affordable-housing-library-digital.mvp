@@ -10,8 +10,9 @@ export function ExploreEmptyState({ onReset }: ExploreEmptyStateProps) {
       title="[PLACEHOLDER: no options match current filters]"
       description="[PLACEHOLDER: adjust search and filter criteria to view more options]"
       actionLabel="[PLACEHOLDER: reset all filters]"
+      secondaryActionLabel="[PLACEHOLDER: learn basics]"
+      secondaryActionHref="/basics"
       onAction={onReset}
     />
   );
 }
-

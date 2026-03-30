@@ -14,12 +14,13 @@ describe("TerminologyDrawer", () => {
     const toggle = screen.getByRole("button", {
       name: new RegExp(term.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
     });
-    expect(screen.queryByText(term.plainLanguageDefinition)).not.toBeInTheDocument();
-
-    await user.click(toggle);
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
     expect(screen.getByText(term.plainLanguageDefinition)).toBeInTheDocument();
 
     await user.click(toggle);
-    expect(screen.queryByText(term.plainLanguageDefinition)).not.toBeInTheDocument();
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+
+    await user.click(toggle);
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
   });
 });

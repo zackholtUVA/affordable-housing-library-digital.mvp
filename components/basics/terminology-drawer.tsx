@@ -21,13 +21,18 @@ export function TerminologyDrawer({ term }: TerminologyDrawerProps) {
         <span className="text-sm font-semibold">{term.term}</span>
         <span className="text-xs text-[var(--muted)]">{open ? "Hide" : "Show"}</span>
       </button>
-      {open ? (
-        <div className="space-y-2 border-t border-[var(--border)] px-4 py-3 text-sm text-[var(--muted)]">
-          <p>{term.plainLanguageDefinition}</p>
-          <p className="rounded-lg bg-[var(--surface-2)] px-3 py-2 text-xs">{term.whyItMatters}</p>
+      <div
+        className={`grid transition-[grid-template-rows] duration-300 ease-[var(--motion-easing-standard)] ${
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="space-y-2 border-t border-[var(--border)] px-4 py-3 text-sm text-[var(--muted)]">
+            <p>{term.plainLanguageDefinition}</p>
+            <p className="rounded-lg bg-[var(--surface-2)] px-3 py-2 text-xs">{term.whyItMatters}</p>
+          </div>
         </div>
-      ) : null}
+      </div>
     </article>
   );
 }
-

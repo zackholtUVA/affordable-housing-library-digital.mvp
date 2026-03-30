@@ -11,7 +11,7 @@ export function CompareTable({ options }: CompareTableProps) {
       <table className="min-w-full border-collapse text-left">
         <thead>
           <tr className="border-b border-[var(--border)] bg-[var(--surface-2)]">
-            <th className="w-64 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+            <th className="sticky left-0 z-20 w-64 bg-[var(--surface-2)] px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
               [PLACEHOLDER: comparison attribute]
             </th>
             {options.map((option) => (
@@ -27,8 +27,11 @@ export function CompareTable({ options }: CompareTableProps) {
         <tbody>
           {(Object.keys(COMPARISON_LABELS) as Array<keyof typeof COMPARISON_LABELS>).map(
             (key) => (
-              <tr key={key} className="border-b border-[var(--border)] last:border-0">
-                <th className="px-4 py-3 text-xs font-medium uppercase tracking-[0.12em] text-[var(--muted)]">
+              <tr
+                key={key}
+                className="group border-b border-[var(--border)] transition-colors hover:bg-[var(--surface-2)] last:border-0"
+              >
+                <th className="sticky left-0 z-10 bg-[var(--surface)] px-4 py-3 text-xs font-medium uppercase tracking-[0.12em] text-[var(--muted)] group-hover:bg-[var(--surface-2)]">
                   {COMPARISON_LABELS[key]}
                 </th>
                 {options.map((option) => (
@@ -44,4 +47,3 @@ export function CompareTable({ options }: CompareTableProps) {
     </div>
   );
 }
-

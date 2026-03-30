@@ -29,12 +29,17 @@ describe("OptionCard compare behavior", () => {
     await user.click(buttons[0]);
     await user.click(buttons[1]);
     await user.click(buttons[2]);
+    await user.click(buttons[3]);
 
     expect(
       screen.getByRole("button", {
         name: /remove \[PLACEHOLDER: option title 1\] from compare/i,
       }),
     ).toBeInTheDocument();
-    expect(buttons[3]).toBeDisabled();
+    expect(
+      screen.getByText(
+        "[PLACEHOLDER: compare limit reached; remove one selected option to add this]",
+      ),
+    ).toBeInTheDocument();
   });
 });
