@@ -21,6 +21,7 @@ describe("ThemeProvider", () => {
       expect(result.current.theme).toBe("dark");
       expect(document.documentElement.dataset.theme).toBe("dark");
     });
+    expect(document.documentElement.classList.contains("dark")).toBe(false);
 
     act(() => {
       result.current.toggleTheme();
@@ -28,7 +29,7 @@ describe("ThemeProvider", () => {
 
     expect(result.current.theme).toBe("light");
     expect(document.documentElement.dataset.theme).toBe("light");
+    expect(document.documentElement.classList.contains("dark")).toBe(false);
     expect(window.localStorage.getItem(THEME_STORAGE_KEY)).toBe("light");
   });
 });
-

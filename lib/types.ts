@@ -91,7 +91,7 @@ export type UxToast = {
 
 export type HalideHeroLayer = {
   id: string;
-  imageUrl: string;
+  background: string;
   depth: number;
   blendMode?: "normal" | "screen" | "overlay" | "multiply" | "soft-light";
   opacity: number;
