@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter } from "next/font/google";
+import { Inter, Geist } from "next/font/google";
 
 import { AppFrame } from "@/components/layout/app-frame";
 import { Providers } from "@/components/layout/providers";
 import { APP_NAME, GLOBAL_DISCLAIMER, THEME_STORAGE_KEY } from "@/lib/constants";
 
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`} suppressHydrationWarning>
+    <html lang="en" className={cn("h-full", inter.variable, "font-sans", geist.variable)} suppressHydrationWarning>
       <body className="min-h-full">
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
