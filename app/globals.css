@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #0a0e17;
+  --surface: #101726;
+  --surface-2: #182033;
+  --surface-3: #24304a;
+  --border: #2b3550;
+  --text: #e8edf7;
+  --muted: #b2bfd8;
+  --accent: #6ec8ff;
+  --accent-strong: #43b5fb;
+  --accent-foreground: #03101a;
+  --focus: #94d8ff;
+  --danger: #f97373;
+  --danger-foreground: #210a0a;
+  --shadow-card: 0 18px 40px -24px rgb(2 6 15 / 78%);
+  --font-sans: var(--font-inter);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background: #f4f6fb;
+  --surface: #ffffff;
+  --surface-2: #f0f3fa;
+  --surface-3: #e5eaf5;
+  --border: #d6deee;
+  --text: #182132;
+  --muted: #51617f;
+  --accent: #0a6fd1;
+  --accent-strong: #0858a7;
+  --accent-foreground: #f4fbff;
+  --focus: #0a6fd1;
+  --danger: #d24141;
+  --danger-foreground: #fff4f4;
+  --shadow-card: 0 12px 32px -20px rgb(23 36 64 / 22%);
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans), sans-serif;
+  background-image:
+    radial-gradient(circle at 0% 0%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 38%),
+    radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 40%);
+  background-attachment: fixed;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    animation: fadeIn 500ms ease-out both;
+  }
+
+  .stagger-in {
+    animation: fadeIn 500ms ease-out both;
+  }
+
+  .stagger-in:nth-child(2) {
+    animation-delay: 80ms;
+  }
+
+  .stagger-in:nth-child(3) {
+    animation-delay: 160ms;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
