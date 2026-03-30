@@ -1,10 +1,13 @@
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+import { PLACEHOLDER_PREFIX } from "@/lib/constants";
 import type {
   FilterKey,
   GlossaryTerm,
   HousingOption,
   PlaceholderText,
 } from "@/lib/types";
-import { PLACEHOLDER_PREFIX } from "@/lib/constants";
 
 export type ExploreFilterState = Record<FilterKey, string[]>;
 
@@ -14,8 +17,8 @@ export const EMPTY_FILTER_STATE: ExploreFilterState = {
   complexity: [],
 };
 
-export function cn(...classes: Array<string | undefined | false | null>): string {
-  return classes.filter(Boolean).join(" ");
+export function cn(...inputs: ClassValue[]): string {
+  return twMerge(clsx(inputs));
 }
 
 export function placeholder(label: string): PlaceholderText {
