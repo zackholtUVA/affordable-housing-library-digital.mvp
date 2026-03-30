@@ -1,7 +1,7 @@
 import { FeaturedOptions } from "@/components/home/featured-options";
-import { HeroSection } from "@/components/home/hero-section";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { IntroSection } from "@/components/home/intro-section";
+import { LaunchHeroSection } from "@/components/home/launch-hero";
 import { PathwayGrid } from "@/components/home/pathway-grid";
 import { PageShell } from "@/components/layout/page-shell";
 import { InfoCallout } from "@/components/shared/info-callout";
@@ -11,9 +11,7 @@ import { pathways } from "@/data/pathways";
 export default function HomePage() {
   return (
     <PageShell className="space-y-12">
-      <div className="fade-in">
-        <HeroSection />
-      </div>
+      <LaunchHeroSection />
       <div className="fade-in">
         <IntroSection />
       </div>
@@ -32,4 +30,3 @@ export default function HomePage() {
     </PageShell>
   );
 }
-

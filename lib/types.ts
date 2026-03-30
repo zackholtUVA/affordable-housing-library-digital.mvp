@@ -88,3 +88,23 @@ export type UxToast = {
   message: string;
   durationMs?: number;
 };
+
+export type HalideHeroLayer = {
+  id: string;
+  imageUrl: string;
+  depth: number;
+  blendMode?: "normal" | "screen" | "overlay" | "multiply" | "soft-light";
+  opacity: number;
+  filter: string;
+};
+
+export type HalideHeroContent = {
+  kicker: string;
+  title: string;
+  subtitle: string;
+  archiveLabel: string;
+  telemetryLines: string[];
+  ctaLabel: string;
+  ctaHref: string;
+  bottomLeftLines: string[];
+};
