@@ -16,7 +16,7 @@ export function AppFrame({ children }: { children: ReactNode }) {
     <>
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only shape-square surface-3d focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-[var(--accent)] focus:px-3 focus:py-2 focus:text-[var(--accent-foreground)]"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:border focus:border-[var(--border)] focus:bg-[var(--accent)] focus:px-3 focus:py-2 focus:text-[var(--accent-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--focus)]"
       >
         Skip to content
       </a>

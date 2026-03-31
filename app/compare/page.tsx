@@ -22,8 +22,8 @@ export default function ComparePage() {
     .filter((option): option is NonNullable<typeof option> => Boolean(option));
 
   return (
-    <PageShell className="space-y-[var(--space-section)]">
-      <header className="space-y-4">
+    <PageShell className="space-y-[calc(var(--space-section)*0.88)]">
+      <header className="space-y-3">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
           [PLACEHOLDER: compare page heading]
         </h1>
@@ -32,7 +32,7 @@ export default function ComparePage() {
         </p>
       </header>
 
-      <div className="flex min-w-0 flex-wrap items-center gap-3.5">
+      <div className="flex min-w-0 flex-wrap items-center gap-3">
         <Button
           variant="ghost"
           size="sm"

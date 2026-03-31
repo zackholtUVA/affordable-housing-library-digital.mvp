@@ -13,8 +13,8 @@ import {
 
 export default function NextStepsPage() {
   return (
-    <PageShell className="space-y-[var(--space-section)]">
-      <header className="space-y-4">
+    <PageShell className="space-y-[calc(var(--space-section)*0.9)]">
+      <header className="space-y-3">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
           [PLACEHOLDER: next-step guidance heading]
         </h1>
@@ -23,7 +23,7 @@ export default function NextStepsPage() {
         </p>
       </header>
 
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-2.5">
         <Button variant="secondary" size="sm" onClick={() => window.print()}>
           [PLACEHOLDER: print checklist]
         </Button>

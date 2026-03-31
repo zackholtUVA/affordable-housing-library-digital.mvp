@@ -93,7 +93,7 @@ export default function ExplorePage() {
         </div>
 
         <section className="min-w-0 space-y-[var(--space-stack)]">
-          <div className="sticky-offset-ui shape-angular-md surface-3d sticky z-20 flex min-w-0 flex-wrap items-center gap-3 border border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_90%,transparent)] p-[max(1rem,var(--space-stack))] backdrop-blur-xl">
+          <div className="sticky-offset-ui shape-angular-md surface-3d sticky z-20 mb-2 flex min-w-0 flex-wrap items-center gap-3 border border-[var(--border)] bg-[color-mix(in_oklab,var(--surface)_95%,transparent)] p-[max(1rem,var(--space-stack))] backdrop-blur-xl">
             <FilterChipBar filters={filters} onRemove={toggleFilter} onClear={resetFilters} />
             <button
               type="button"
