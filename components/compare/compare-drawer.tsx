@@ -31,7 +31,7 @@ export function CompareDrawer() {
 
   return (
     <aside className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_90%,transparent)] p-4 backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-[78rem] flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto flex w-full max-w-[86rem] flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-wrap items-center gap-3">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
             Compare ({selectedIds.length}/{COMPARE_MAX})
@@ -82,7 +82,7 @@ export function CompareDrawer() {
       </div>
 
       <div
-        className={`mx-auto mt-3 w-full max-w-[78rem] overflow-hidden transition-[max-height,opacity] duration-300 ease-[var(--motion-easing-standard)] ${
+        className={`mx-auto mt-3 w-full max-w-[86rem] overflow-hidden transition-[max-height,opacity] duration-300 ease-[var(--motion-easing-standard)] ${
           expanded ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
         }`}
       >

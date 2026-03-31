@@ -86,12 +86,12 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-[color-mix(in_oklab,var(--border)_84%,transparent)] bg-[color-mix(in_oklab,var(--background)_88%,transparent)] backdrop-blur-xl">
-      <div className="mx-auto flex h-[4.5rem] w-full max-w-[78rem] items-center justify-between px-[var(--space-page-x)] md:h-20">
+      <div className="mx-auto flex h-[4.75rem] w-full max-w-[86rem] items-center justify-between px-[var(--space-page-x)] md:h-[5.5rem]">
         <Link href="/" className="text-sm font-semibold tracking-[0.015em] md:text-base">
           {APP_NAME}
         </Link>
 
-        <nav className="hidden items-center gap-2 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-3 md:flex" aria-label="Primary">
           {NAV_ITEMS.map((item) => {
             const active = pathname === item.href;
             return (
@@ -117,7 +117,7 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-4 md:flex">
           <Button
             variant="ghost"
             size="sm"
@@ -132,7 +132,7 @@ export function SiteHeader() {
           <ThemeToggle />
         </div>
 
-        <div className="flex items-center gap-2.5 md:hidden">
+        <div className="flex items-center gap-3 md:hidden">
           <Button variant="ghost" size="sm" onClick={openCommandPalette} aria-label="Open quick actions">
             Actions
           </Button>
@@ -158,7 +158,7 @@ export function SiteHeader() {
           isMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0",
         )}
       >
-        <nav className="mx-auto flex max-w-[78rem] flex-col gap-2 px-[var(--space-page-x)] py-4" aria-label="Mobile">
+        <nav className="mx-auto flex max-w-[86rem] flex-col gap-3 px-[var(--space-page-x)] py-5" aria-label="Mobile">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}

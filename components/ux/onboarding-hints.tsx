@@ -16,7 +16,7 @@ export function OnboardingHints() {
 
   return (
     <section className="border-b border-[var(--border)] bg-[color-mix(in_oklab,var(--surface)_70%,transparent)]">
-      <div className="mx-auto flex w-full max-w-[78rem] flex-wrap items-center gap-3 px-[var(--space-page-x)] py-3 text-xs text-[var(--muted)]">
+      <div className="mx-auto flex w-full max-w-[86rem] flex-wrap items-center gap-3.5 px-[var(--space-page-x)] py-4 text-xs text-[var(--muted)]">
         <span className="rounded-full border border-[var(--border)] px-3 py-1.5">
           Cmd/Ctrl + K for quick actions
         </span>

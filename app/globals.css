@@ -13,11 +13,19 @@
   --motion-easing-entrance: cubic-bezier(0.16, 1, 0.3, 1);
   --motion-distance: 10px;
   --motion-stagger: 70ms;
-  --space-page-x: clamp(1.1rem, 2.6vw, 2rem);
-  --space-page-y: clamp(2.75rem, 5vw, 4.75rem);
-  --space-section: clamp(2.4rem, 4.6vw, 4.2rem);
-  --space-stack: clamp(1rem, 2vw, 1.65rem);
-  --space-card-pad: clamp(1.15rem, 2.2vw, 1.85rem);
+  --space-page-x: clamp(1.35rem, 3.2vw, 2.75rem);
+  --space-page-y: clamp(3.5rem, 6vw, 6rem);
+  --space-section: clamp(3.2rem, 6vw, 5.5rem);
+  --space-stack: clamp(1.35rem, 2.4vw, 2.2rem);
+  --space-card-pad: clamp(1.35rem, 2.6vw, 2.2rem);
+  --btn-depth-rest: 2px;
+  --btn-depth-press: 1px;
+  --btn-shadow-rest: 0 12px 22px -14px rgb(0 0 0 / 55%);
+  --btn-shadow-hover: 0 18px 30px -16px rgb(0 0 0 / 62%);
+  --btn-shadow-press: 0 9px 16px -13px rgb(0 0 0 / 58%);
+  --btn-face: var(--surface-2);
+  --btn-edge: var(--border);
+  --btn-highlight: color-mix(in oklab, var(--surface-3) 26%, white);
   --radius: 0.625rem;
 }
 
@@ -25,19 +33,19 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
   --background: #000000;
-  --surface: #0a0b0d;
-  --surface-2: #111317;
-  --surface-3: #171a20;
-  --border: #252a33;
-  --text: #f5f7fb;
-  --muted: #9aa3b2;
+  --surface: #0b0d10;
+  --surface-2: #13161b;
+  --surface-3: #1a1e25;
+  --border: #21262f;
+  --text: #f4f7fb;
+  --muted: #a0a8b7;
   --accent: #59b9ff;
   --accent-strong: #86d1ff;
   --accent-foreground: #031220;
   --focus: #98dcff;
   --danger: #f97373;
   --danger-foreground: #210a0a;
-  --shadow-card: 0 18px 44px -24px rgb(0 0 0 / 72%);
+  --shadow-card: 0 22px 48px -28px rgb(0 0 0 / 74%);
   --foreground: #f5f7fb;
   --card: #0a0b0d;
   --card-foreground: #f5f7fb;
@@ -62,8 +70,11 @@
   --sidebar-primary-foreground: #031220;
   --sidebar-accent: #111317;
   --sidebar-accent-foreground: #f5f7fb;
-  --sidebar-border: #252a33;
+  --sidebar-border: #21262f;
   --sidebar-ring: #98dcff;
+  --btn-shadow-rest: 0 14px 24px -16px rgb(0 0 0 / 66%);
+  --btn-shadow-hover: 0 20px 34px -18px rgb(0 0 0 / 72%);
+  --btn-shadow-press: 0 10px 18px -14px rgb(0 0 0 / 63%);
 }
 
 :root[data-theme="light"] {
@@ -108,6 +119,9 @@
   --sidebar-accent-foreground: #1c2a43;
   --sidebar-border: #d6deee;
   --sidebar-ring: #0a6fd1;
+  --btn-shadow-rest: 0 12px 20px -14px rgb(22 50 95 / 26%);
+  --btn-shadow-hover: 0 18px 26px -14px rgb(22 50 95 / 30%);
+  --btn-shadow-press: 0 9px 14px -12px rgb(22 50 95 / 24%);
 }
 
 @theme inline {
@@ -166,8 +180,8 @@ body {
   margin: 0;
   font-family: var(--font-sans), sans-serif;
   background-image:
-    radial-gradient(circle at 0% 0%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 42%),
-    radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--accent) 8%, transparent), transparent 46%);
+    radial-gradient(circle at 0% 0%, color-mix(in oklab, var(--accent) 7%, transparent), transparent 48%),
+    radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--accent) 6%, transparent), transparent 52%);
   background-attachment: fixed;
   line-height: 1.62;
   text-rendering: optimizeLegibility;
@@ -236,13 +250,80 @@ body {
 }
 
 .magnetic-btn {
-  transform: translate3d(var(--btn-mx, 0), var(--btn-my, 0), 0);
+  transform: translate3d(
+    var(--btn-mx, 0),
+    calc(var(--btn-my, 0) + var(--btn-translate-y, 0px)),
+    0
+  );
   transition:
     transform var(--motion-duration-fast) var(--motion-easing-standard),
     box-shadow var(--motion-duration-fast) var(--motion-easing-standard),
     background-color var(--motion-duration-fast) var(--motion-easing-standard),
+    border-color var(--motion-duration-fast) var(--motion-easing-standard),
     color var(--motion-duration-fast) var(--motion-easing-standard);
   will-change: transform;
+}
+
+.btn-flat {
+  --btn-translate-y: 0px;
+}
+
+.btn-3d {
+  --btn-translate-y: calc(-1 * var(--btn-depth-rest));
+  position: relative;
+  border: 1px solid color-mix(in oklab, var(--btn-edge) 62%, var(--border));
+  background:
+    linear-gradient(
+      180deg,
+      var(--btn-highlight) 0%,
+      var(--btn-face) 45%,
+      color-mix(in oklab, var(--btn-face) 72%, var(--btn-edge)) 100%
+    );
+  box-shadow:
+    var(--btn-shadow-rest),
+    inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 52%, white),
+    inset 0 calc(-1 * var(--btn-depth-rest)) 0
+      color-mix(in oklab, var(--btn-edge) 82%, black);
+}
+
+.btn-3d::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    140deg,
+    color-mix(in oklab, var(--btn-highlight) 42%, white) 0%,
+    transparent 42%,
+    color-mix(in oklab, var(--btn-face) 22%, black) 100%
+  );
+  opacity: 0.42;
+}
+
+.btn-3d:hover {
+  --btn-translate-y: calc(-1 * (var(--btn-depth-rest) + 1px));
+  box-shadow:
+    var(--btn-shadow-hover),
+    inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 58%, white),
+    inset 0 calc(-1 * var(--btn-depth-rest)) 0
+      color-mix(in oklab, var(--btn-edge) 82%, black);
+}
+
+.btn-3d:active {
+  --btn-translate-y: var(--btn-depth-press);
+  box-shadow:
+    var(--btn-shadow-press),
+    inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 45%, white),
+    inset 0 calc(-1 * var(--btn-depth-press)) 0
+      color-mix(in oklab, var(--btn-edge) 82%, black);
+}
+
+.btn-3d:disabled {
+  --btn-translate-y: 0px;
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 35%, white),
+    inset 0 -1px 0 color-mix(in oklab, var(--btn-edge) 64%, black);
 }
 
 .interactive-card {
@@ -280,6 +361,8 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .magnetic-btn,
+  .btn-3d,
+  .btn-3d::before,
   .interactive-card,
   .interactive-card::after,
   .route-content-enter,
