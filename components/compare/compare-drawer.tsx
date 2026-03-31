@@ -30,9 +30,9 @@ export function CompareDrawer() {
   }
 
   return (
-    <aside className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_90%,transparent)] p-4 backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-[86rem] flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div className="flex flex-wrap items-center gap-3">
+    <aside className="surface-3d fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_90%,transparent)] p-[max(0.9rem,var(--space-stack))] backdrop-blur-xl">
+      <div className="mx-auto flex w-full max-w-[92rem] flex-col gap-[max(0.8rem,var(--space-stack))] md:flex-row md:items-center md:justify-between">
+        <div className="flex min-w-0 flex-wrap items-center gap-3">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
             Compare ({selectedIds.length}/{COMPARE_MAX})
           </p>
@@ -61,7 +61,7 @@ export function CompareDrawer() {
           ))}
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex min-w-0 items-center gap-3">
           <Button
             variant="ghost"
             size="sm"
@@ -82,23 +82,26 @@ export function CompareDrawer() {
       </div>
 
       <div
-        className={`mx-auto mt-3 w-full max-w-[86rem] overflow-hidden transition-[max-height,opacity] duration-300 ease-[var(--motion-easing-standard)] ${
-          expanded ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
+        className={`mx-auto mt-4 w-full max-w-[92rem] overflow-hidden transition-[max-height,opacity] duration-300 ease-[var(--motion-easing-standard)] ${
+          expanded ? "max-h-[70vh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="grid gap-3 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 md:grid-cols-3">
+        <div className="shape-angular-lg surface-3d grid gap-4 border border-[var(--border)] bg-[var(--surface)] p-4 md:grid-cols-3">
           {selectedIds.map((id) => {
             const option = optionById.get(id);
             if (!option) {
               return null;
             }
             return (
-              <article key={`${id}-summary`} className="rounded-lg bg-[var(--surface-2)] p-3">
+              <article
+                key={`${id}-summary`}
+                className="shape-angular-sm surface-3d min-w-0 break-words bg-[var(--surface-2)] p-3.5"
+              >
                 <p className="text-xs uppercase tracking-[0.12em] text-[var(--muted)]">
                   [PLACEHOLDER: selected option]
                 </p>
-                <h3 className="mt-1 text-sm font-semibold">{option.title}</h3>
-                <p className="mt-2 text-xs text-[var(--muted)]">{option.shortSummary}</p>
+                <h3 className="mt-1 min-w-0 break-words text-sm font-semibold">{option.title}</h3>
+                <p className="mt-2 min-w-0 break-words text-xs text-[var(--muted)]">{option.shortSummary}</p>
               </article>
             );
           })}

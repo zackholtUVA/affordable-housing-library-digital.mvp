@@ -10,11 +10,11 @@ type NextStepSectionProps = {
 
 export function NextStepSection({ option }: NextStepSectionProps) {
   return (
-    <Card as="section" className="space-y-5">
+    <Card as="section" className="space-y-6">
       <h2 className="text-xl font-semibold">[PLACEHOLDER: next-step guidance]</h2>
-      <ul className="space-y-3 text-sm text-[var(--muted)]">
+      <ul className="space-y-4 text-sm text-[var(--muted)]">
         {option.nextSteps.map((step) => (
-          <li key={step} className="rounded-xl bg-[var(--surface-2)] px-4 py-3">
+          <li key={step} className="shape-angular-sm surface-3d min-w-0 break-words bg-[var(--surface-2)] px-4 py-3">
             {step}
           </li>
         ))}

@@ -11,7 +11,7 @@ export function Badge({ children, className }: BadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--surface-2)] px-2.5 py-1 text-xs font-medium text-[var(--muted)]",
+        "shape-angular-sm surface-3d inline-flex min-w-0 items-center border border-[var(--border)] bg-[var(--surface-2)] px-2.5 py-1 text-xs font-medium text-[var(--muted)]",
         className,
       )}
     >
@@ -19,4 +19,3 @@ export function Badge({ children, className }: BadgeProps) {
     </span>
   );
 }
-

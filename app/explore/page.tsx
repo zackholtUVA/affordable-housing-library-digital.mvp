@@ -81,8 +81,8 @@ export default function ExplorePage() {
         </p>
       </header>
 
-      <div className="grid gap-8 lg:grid-cols-[320px_1fr]">
-        <div className="space-y-6">
+      <div className="grid gap-[var(--space-stack)] lg:grid-cols-[340px_minmax(0,1fr)]">
+        <div className="min-w-0 space-y-[var(--space-stack)]">
           <SearchBar
             value={query}
             onChange={setQuery}
@@ -92,22 +92,22 @@ export default function ExplorePage() {
           <FilterPanel groups={filterGroups} filters={filters} onToggle={toggleFilter} />
         </div>
 
-        <section className="space-y-6">
-          <div className="sticky top-28 z-20 flex flex-wrap items-center gap-3 rounded-2xl border border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_90%,transparent)] p-4 backdrop-blur-xl">
+        <section className="min-w-0 space-y-[var(--space-stack)]">
+          <div className="sticky-offset-ui shape-angular-md surface-3d sticky z-20 flex min-w-0 flex-wrap items-center gap-3 border border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_90%,transparent)] p-[max(1rem,var(--space-stack))] backdrop-blur-xl">
             <FilterChipBar filters={filters} onRemove={toggleFilter} onClear={resetFilters} />
             <button
               type="button"
               onClick={resetFilters}
-              className="text-xs font-medium text-[var(--muted)] underline-offset-2 hover:underline"
+              className="shape-angular-sm surface-3d surface-3d-interactive border border-[var(--border)] px-3 py-1.5 text-xs font-medium text-[var(--muted)] hover:bg-[var(--surface-2)]"
             >
               [PLACEHOLDER: clear all + reset search]
             </button>
-            <span className="ml-auto text-[10px] uppercase tracking-[0.14em] text-[var(--muted)]">
+            <span className="ml-auto min-w-0 break-words text-[10px] uppercase tracking-[0.14em] text-[var(--muted)] max-md:w-full md:text-right">
               [PLACEHOLDER: tip: press / to focus search]
             </span>
           </div>
 
-          <div ref={resultsRegionRef}>
+          <div ref={resultsRegionRef} className="min-w-0">
             {filtered.length > 0 ? (
               <OptionGrid options={filtered} />
             ) : (

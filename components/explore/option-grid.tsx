@@ -7,7 +7,7 @@ type OptionGridProps = {
 
 export function OptionGrid({ options }: OptionGridProps) {
   return (
-    <div className="grid gap-6 md:grid-cols-2">
+    <div className="grid gap-[var(--space-stack)] md:grid-cols-2">
       {options.map((option) => (
         <OptionCard key={option.id} option={option} />
       ))}

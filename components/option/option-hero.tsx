@@ -8,8 +8,8 @@ type OptionHeroProps = {
 
 export function OptionHero({ option }: OptionHeroProps) {
   return (
-    <Card as="section" className="space-y-6">
-      <div className="flex flex-wrap items-center gap-3">
+    <Card as="section" className="space-y-[var(--space-stack)]">
+      <div className="flex flex-wrap items-center gap-3.5">
         <Badge>{option.category}</Badge>
         <Badge>{option.policyConfidenceLabel}</Badge>
       </div>

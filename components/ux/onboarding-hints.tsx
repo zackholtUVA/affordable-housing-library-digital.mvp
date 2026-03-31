@@ -15,20 +15,20 @@ export function OnboardingHints() {
   }
 
   return (
-    <section className="border-b border-[var(--border)] bg-[color-mix(in_oklab,var(--surface)_70%,transparent)]">
-      <div className="mx-auto flex w-full max-w-[86rem] flex-wrap items-center gap-3.5 px-[var(--space-page-x)] py-4 text-xs text-[var(--muted)]">
-        <span className="rounded-full border border-[var(--border)] px-3 py-1.5">
+    <section className="surface-3d border-b border-[var(--border)] bg-[color-mix(in_oklab,var(--surface)_70%,transparent)]">
+      <div className="mx-auto flex w-full max-w-[92rem] flex-wrap items-center gap-3.5 px-[var(--space-page-x)] py-4 text-xs text-[var(--muted)]">
+        <span className="shape-angular-sm surface-3d border border-[var(--border)] px-3 py-1.5">
           Cmd/Ctrl + K for quick actions
         </span>
-        <span className="rounded-full border border-[var(--border)] px-3 py-1.5">
+        <span className="shape-angular-sm surface-3d border border-[var(--border)] px-3 py-1.5">
           g + e/c/n/b for route jumps
         </span>
-        <span className="rounded-full border border-[var(--border)] px-3 py-1.5">
+        <span className="shape-angular-sm surface-3d border border-[var(--border)] px-3 py-1.5">
           / focuses Explore search
         </span>
         <button
           type="button"
-          className="ml-auto rounded-full border border-[var(--border)] px-3 py-1.5 hover:bg-[var(--surface-2)]"
+          className="shape-angular-sm surface-3d surface-3d-interactive ml-auto border border-[var(--border)] px-3 py-1.5 hover:bg-[var(--surface-2)]"
           onClick={() => {
             window.sessionStorage.setItem(SESSION_KEY, "true");
             forceUpdate();

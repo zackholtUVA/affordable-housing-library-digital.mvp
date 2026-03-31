@@ -37,19 +37,19 @@ export default function BasicsPage() {
         </p>
       </header>
 
-      <label className="block">
+      <label className="block min-w-0">
         <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
           [PLACEHOLDER: search glossary]
         </span>
         <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          className="h-12 w-full rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
+          className="shape-angular-md surface-3d h-12 w-full min-w-0 border border-[var(--border)] bg-[var(--surface)] px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
           placeholder="[PLACEHOLDER: glossary search placeholder]"
         />
       </label>
 
-      <section className="grid gap-6 md:grid-cols-3">
+      <section className="grid gap-[var(--space-stack)] md:grid-cols-3">
         {filteredTerms.slice(0, 3).map((term) => (
           <BasicsCard key={term.id} term={term} />
         ))}

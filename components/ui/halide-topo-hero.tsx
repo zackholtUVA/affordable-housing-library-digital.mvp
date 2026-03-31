@@ -8,7 +8,7 @@ export const Component = () => {
   const [count, setCount] = useState(0);
 
   return (
-    <div className={cn("flex flex-col items-center gap-4 rounded-lg p-4")}>
+    <div className={cn("shape-angular-md surface-3d flex flex-col items-center gap-4 border border-[var(--border)] p-4")}>
       <h1 className="mb-2 text-2xl font-bold">Component Example</h1>
       <h2 className="text-xl font-semibold">{count}</h2>
       <div className="flex gap-2">
@@ -18,4 +18,3 @@ export const Component = () => {
     </div>
   );
 };
-

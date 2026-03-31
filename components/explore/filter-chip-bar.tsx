@@ -1,6 +1,7 @@
 "use client";
 
 import { Tag } from "@/components/shared/tag";
+import { Button } from "@/components/shared/button";
 import type { ExploreFilterState } from "@/lib/utils";
 
 type FilterChipBarProps = {
@@ -19,7 +20,7 @@ export function FilterChipBar({ filters, onRemove, onClear }: FilterChipBarProps
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-3">
+    <div className="flex min-w-0 flex-wrap items-center gap-3">
       {entries.map((entry) => (
         <Tag
           key={`${entry.key}-${entry.value}`}
@@ -29,13 +30,9 @@ export function FilterChipBar({ filters, onRemove, onClear }: FilterChipBarProps
           {entry.value}
         </Tag>
       ))}
-      <button
-        type="button"
-        onClick={onClear}
-        className="text-xs font-medium text-[var(--muted)] underline-offset-2 hover:underline"
-      >
+      <Button type="button" variant="ghost" size="sm" onClick={onClear}>
         [PLACEHOLDER: reset filters]
-      </button>
+      </Button>
     </div>
   );
 }

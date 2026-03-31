@@ -33,14 +33,14 @@ export function OptionActions({ optionId }: OptionActionsProps) {
   };
 
   return (
-    <div className="space-y-3">
+    <div className="min-w-0 space-y-4">
       <Button variant={selected ? "secondary" : "primary"} onClick={handleToggle}>
         {selected
           ? "[PLACEHOLDER: remove from compare]"
           : `[PLACEHOLDER: add to compare (${COMPARE_MAX} max)]`}
       </Button>
       {limitReached ? (
-        <p className="text-xs text-[var(--danger)]">
+        <p className="min-w-0 break-words text-xs text-[var(--danger)]">
           [PLACEHOLDER: compare limit reached; remove one option to continue]
         </p>
       ) : null}

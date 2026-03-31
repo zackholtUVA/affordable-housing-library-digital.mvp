@@ -97,7 +97,7 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
   return (
     <section
       className={cn(
-        "relative isolate overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-card)]",
+        "shape-angular-lg surface-3d relative isolate min-w-0 overflow-hidden border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-card)]",
         className,
       )}
       aria-label="Launch hero"

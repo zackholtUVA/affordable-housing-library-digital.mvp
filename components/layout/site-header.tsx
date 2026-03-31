@@ -85,8 +85,8 @@ export function SiteHeader() {
   }, [isMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[color-mix(in_oklab,var(--border)_84%,transparent)] bg-[color-mix(in_oklab,var(--background)_88%,transparent)] backdrop-blur-xl">
-      <div className="mx-auto flex h-[4.75rem] w-full max-w-[86rem] items-center justify-between px-[var(--space-page-x)] md:h-[5.5rem]">
+    <header className="surface-3d sticky top-0 z-40 border-b border-[color-mix(in_oklab,var(--border)_84%,transparent)] bg-[color-mix(in_oklab,var(--background)_88%,transparent)] backdrop-blur-xl">
+      <div className="mx-auto flex h-[var(--header-height-mobile)] w-full max-w-[92rem] items-center justify-between px-[var(--space-page-x)] md:h-[var(--header-height-desktop)]">
         <Link href="/" className="text-sm font-semibold tracking-[0.015em] md:text-base">
           {APP_NAME}
         </Link>
@@ -99,7 +99,7 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative rounded-2xl px-4 py-2.5 text-sm transition-colors",
+                  "shape-angular-sm surface-3d relative px-4 py-2.5 text-sm transition-colors",
                   active
                     ? "bg-[var(--surface-2)] text-[var(--text)]"
                     : "text-[var(--muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]",
@@ -108,7 +108,7 @@ export function SiteHeader() {
                 {item.label}
                 <span
                   className={cn(
-                    "absolute inset-x-2 -bottom-[1px] h-[2px] rounded-full bg-[var(--accent)] transition-transform duration-200",
+                    "absolute inset-x-2 -bottom-[1px] h-[2px] bg-[var(--accent)] transition-transform duration-200",
                     active ? "scale-x-100" : "scale-x-0",
                   )}
                 />
@@ -125,7 +125,7 @@ export function SiteHeader() {
             aria-label="Open quick actions"
           >
             Quick actions
-            <span className="ml-1 rounded border border-[var(--border)] px-1.5 text-[10px] uppercase tracking-[0.1em] text-[var(--muted)]">
+            <span className="shape-square surface-3d ml-1 border border-[var(--border)] px-1.5 text-[10px] uppercase tracking-[0.1em] text-[var(--muted)]">
               Cmd/Ctrl K
             </span>
           </Button>
@@ -154,18 +154,18 @@ export function SiteHeader() {
         id="mobile-nav"
         ref={menuRef}
         className={cn(
-          "overflow-hidden border-t border-[var(--border)] transition-[max-height,opacity] duration-300 ease-[var(--motion-easing-standard)] md:hidden",
+          "surface-3d overflow-hidden border-t border-[var(--border)] transition-[max-height,opacity] duration-300 ease-[var(--motion-easing-standard)] md:hidden",
           isMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0",
         )}
       >
-        <nav className="mx-auto flex max-w-[86rem] flex-col gap-3 px-[var(--space-page-x)] py-5" aria-label="Mobile">
+        <nav className="mx-auto flex max-w-[92rem] flex-col gap-3 px-[var(--space-page-x)] py-5" aria-label="Mobile">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
               className={cn(
-                "rounded-xl px-4 py-2.5 text-sm transition-colors",
+                "shape-angular-sm surface-3d px-4 py-2.5 text-sm transition-colors",
                 pathname === item.href
                   ? "bg-[var(--surface-2)] text-[var(--text)]"
                   : "text-[var(--muted)] hover:bg-[var(--surface-2)]",

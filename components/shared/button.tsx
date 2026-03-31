@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
 type ButtonSize = "sm" | "md";
 type ButtonElevation = "3d" | "flat";
+type ButtonShape = "angular" | "square";
 
 type ButtonStyleVars = CSSProperties & {
   "--btn-face"?: string;
@@ -25,6 +26,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
   size?: ButtonSize;
   elevation?: ButtonElevation;
+  shape?: ButtonShape;
   icon?: ReactNode;
 };
 
@@ -76,6 +78,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     variant = "primary",
     size = "md",
     elevation = "3d",
+    shape = "angular",
     icon,
     children,
     style,
@@ -115,7 +118,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     <button
       ref={ref}
       className={cn(
-        "magnetic-btn inline-flex items-center justify-center gap-2 overflow-hidden rounded-2xl font-semibold tracking-[0.01em] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] disabled:cursor-not-allowed disabled:opacity-50",
+        "magnetic-btn inline-flex items-center justify-center gap-2 overflow-hidden font-semibold tracking-[0.01em] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] disabled:cursor-not-allowed disabled:opacity-50",
+        shape === "angular" ? "shape-angular-md" : "shape-square",
         elevation === "3d"
           ? "btn-3d text-[var(--btn-text)]"
           : cn("btn-flat", flatVariantClasses[variant]),
@@ -124,6 +128,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       )}
       style={mergedStyle}
       data-elevation={elevation}
+      data-shape={shape}
       data-variant={variant}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}

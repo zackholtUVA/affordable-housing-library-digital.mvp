@@ -10,10 +10,10 @@ export function HowItWorks() {
         title="[PLACEHOLDER: how-it-works heading]"
         description="[PLACEHOLDER: how-it-works supporting copy]"
       />
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-[var(--space-stack)] md:grid-cols-3">
         {HOW_IT_WORKS_STEPS.map((step, index) => (
           <Card key={step} className="relative overflow-hidden">
-            <span className="mb-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-[var(--surface-3)] text-xs font-semibold">
+            <span className="shape-square surface-3d mb-2 inline-flex h-7 w-7 items-center justify-center bg-[var(--surface-3)] text-xs font-semibold">
               {index + 1}
             </span>
             <p className="text-sm leading-relaxed text-[var(--muted)]">{step}</p>

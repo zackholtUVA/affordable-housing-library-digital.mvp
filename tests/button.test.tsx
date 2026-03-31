@@ -15,6 +15,7 @@ describe("Button", () => {
     expect(button).toBeDisabled();
     expect(button).toHaveTextContent("[PLACEHOLDER: action label]");
     expect(button).toHaveAttribute("data-elevation", "3d");
+    expect(button).toHaveAttribute("data-shape", "angular");
     expect(button).toHaveClass("btn-3d");
   });
 
@@ -29,5 +30,18 @@ describe("Button", () => {
     expect(button).toHaveAttribute("data-elevation", "flat");
     expect(button).toHaveClass("btn-flat");
     expect(button).not.toHaveClass("btn-3d");
+  });
+
+  it("supports square shape override", () => {
+    render(
+      <Button shape="square" data-testid="square-button">
+        [PLACEHOLDER: square action]
+      </Button>,
+    );
+
+    const button = screen.getByTestId("square-button");
+    expect(button).toHaveAttribute("data-shape", "square");
+    expect(button).toHaveClass("shape-square");
+    expect(button).not.toHaveClass("shape-angular-md");
   });
 });

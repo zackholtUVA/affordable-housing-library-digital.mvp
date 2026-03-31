@@ -16,7 +16,7 @@ export function InfoCallout({
   return (
     <aside
       className={cn(
-        "rounded-2xl border p-[max(1rem,var(--space-stack))]",
+        "shape-angular-md surface-3d min-w-0 break-words border p-[max(1rem,var(--space-stack))]",
         tone === "warning"
           ? "border-[color-mix(in_oklab,var(--danger)_60%,var(--border))] bg-[color-mix(in_oklab,var(--danger)_14%,transparent)]"
           : "border-[var(--border)] bg-[var(--surface-2)]",

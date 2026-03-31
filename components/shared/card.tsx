@@ -19,8 +19,8 @@ export function Card({
   return (
     <Component
       className={cn(
-        "rounded-[2rem] border border-[var(--border)] bg-[var(--surface)] p-[var(--space-card-pad)] shadow-[var(--shadow-card)]",
-        interactive ? "interactive-card" : "",
+        "shape-angular-lg surface-3d min-w-0 break-words border bg-[var(--surface)] p-[var(--space-card-pad)]",
+        interactive ? "surface-3d-interactive interactive-card" : "",
         className,
       )}
     >

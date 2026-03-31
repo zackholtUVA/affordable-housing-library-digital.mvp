@@ -32,34 +32,34 @@ export default function NextStepsPage() {
         </Button>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-3">
-        <Card as="section" className="space-y-5">
+      <div className="grid gap-[var(--space-stack)] lg:grid-cols-3">
+        <Card as="section" className="space-y-6">
           <h2 className="text-lg font-semibold">[PLACEHOLDER: suggested questions]</h2>
-          <ul className="space-y-3 text-sm text-[var(--muted)]">
+          <ul className="space-y-4 text-sm text-[var(--muted)]">
             {questionPrompts.map((item) => (
-              <li key={item} className="rounded-xl bg-[var(--surface-2)] px-4 py-3">
+              <li key={item} className="shape-angular-sm surface-3d min-w-0 break-words bg-[var(--surface-2)] px-4 py-3">
                 {item}
               </li>
             ))}
           </ul>
         </Card>
 
-        <Card as="section" className="space-y-5">
+        <Card as="section" className="space-y-6">
           <h2 className="text-lg font-semibold">[PLACEHOLDER: documents to gather]</h2>
-          <ul className="space-y-3 text-sm text-[var(--muted)]">
+          <ul className="space-y-4 text-sm text-[var(--muted)]">
             {documentPrompts.map((item) => (
-              <li key={item} className="rounded-xl bg-[var(--surface-2)] px-4 py-3">
+              <li key={item} className="shape-angular-sm surface-3d min-w-0 break-words bg-[var(--surface-2)] px-4 py-3">
                 {item}
               </li>
             ))}
           </ul>
         </Card>
 
-        <Card as="section" className="space-y-5">
+        <Card as="section" className="space-y-6">
           <h2 className="text-lg font-semibold">[PLACEHOLDER: action checklist]</h2>
-          <ul className="space-y-3 text-sm text-[var(--muted)]">
+          <ul className="space-y-4 text-sm text-[var(--muted)]">
             {checklistPrompts.map((item) => (
-              <li key={item} className="rounded-xl bg-[var(--surface-2)] px-4 py-3">
+              <li key={item} className="shape-angular-sm surface-3d min-w-0 break-words bg-[var(--surface-2)] px-4 py-3">
                 {item}
               </li>
             ))}
@@ -67,9 +67,9 @@ export default function NextStepsPage() {
         </Card>
       </div>
 
-      <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <section className="grid gap-[var(--space-stack)] md:grid-cols-2 lg:grid-cols-3">
         {nextStepResources.map((resource) => (
-          <Card key={resource.id} as="article" className="space-y-4">
+          <Card key={resource.id} as="article" className="space-y-5">
             <p className="text-xs uppercase tracking-[0.14em] text-[var(--muted)]">
               {resource.actionType}
             </p>

@@ -9,7 +9,7 @@ export function IntroSection() {
         title="[PLACEHOLDER: product explanation section title]"
         description="[PLACEHOLDER: plain-language product explanation]"
       />
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-[var(--space-stack)] md:grid-cols-2">
         <PlaceholderBlock value="[PLACEHOLDER: what users can do in this MVP]" />
         <PlaceholderBlock value="[PLACEHOLDER: what this MVP intentionally does not do]" />
       </div>

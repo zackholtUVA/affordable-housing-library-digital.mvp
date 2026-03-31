@@ -13,20 +13,31 @@
   --motion-easing-entrance: cubic-bezier(0.16, 1, 0.3, 1);
   --motion-distance: 10px;
   --motion-stagger: 70ms;
-  --space-page-x: clamp(1.35rem, 3.2vw, 2.75rem);
-  --space-page-y: clamp(3.5rem, 6vw, 6rem);
-  --space-section: clamp(3.2rem, 6vw, 5.5rem);
-  --space-stack: clamp(1.35rem, 2.4vw, 2.2rem);
-  --space-card-pad: clamp(1.35rem, 2.6vw, 2.2rem);
+  --space-page-x: clamp(1.5rem, 3.6vw, 3rem);
+  --space-page-y: clamp(4rem, 6.8vw, 7rem);
+  --space-section: clamp(3.8rem, 6.4vw, 6.2rem);
+  --space-stack: clamp(1.6rem, 2.8vw, 2.6rem);
+  --space-card-pad: clamp(1.5rem, 2.9vw, 2.5rem);
+  --shape-chamfer-sm: 6px;
+  --shape-chamfer-md: 10px;
+  --shape-chamfer-lg: 14px;
+  --shape-radius-base: 4px;
+  --header-height-mobile: 4.75rem;
+  --header-height-desktop: 5.5rem;
+  --surface-depth-rest: 0 16px 30px -20px rgb(0 0 0 / 54%);
+  --surface-depth-hover: 0 22px 38px -22px rgb(0 0 0 / 62%);
+  --surface-depth-press: 0 12px 24px -18px rgb(0 0 0 / 58%);
+  --surface-highlight: color-mix(in oklab, var(--surface-3) 26%, white);
+  --surface-edge: color-mix(in oklab, var(--border) 70%, black);
   --btn-depth-rest: 2px;
   --btn-depth-press: 1px;
-  --btn-shadow-rest: 0 12px 22px -14px rgb(0 0 0 / 55%);
-  --btn-shadow-hover: 0 18px 30px -16px rgb(0 0 0 / 62%);
-  --btn-shadow-press: 0 9px 16px -13px rgb(0 0 0 / 58%);
+  --btn-shadow-rest: var(--surface-depth-rest);
+  --btn-shadow-hover: var(--surface-depth-hover);
+  --btn-shadow-press: var(--surface-depth-press);
   --btn-face: var(--surface-2);
   --btn-edge: var(--border);
   --btn-highlight: color-mix(in oklab, var(--surface-3) 26%, white);
-  --radius: 0.625rem;
+  --radius: 0.25rem;
 }
 
 :root,
@@ -72,9 +83,11 @@
   --sidebar-accent-foreground: #f5f7fb;
   --sidebar-border: #21262f;
   --sidebar-ring: #98dcff;
-  --btn-shadow-rest: 0 14px 24px -16px rgb(0 0 0 / 66%);
-  --btn-shadow-hover: 0 20px 34px -18px rgb(0 0 0 / 72%);
-  --btn-shadow-press: 0 10px 18px -14px rgb(0 0 0 / 63%);
+  --surface-depth-rest: 0 18px 32px -20px rgb(0 0 0 / 66%);
+  --surface-depth-hover: 0 24px 42px -24px rgb(0 0 0 / 74%);
+  --surface-depth-press: 0 12px 24px -18px rgb(0 0 0 / 62%);
+  --surface-highlight: color-mix(in oklab, var(--surface-3) 30%, white);
+  --surface-edge: color-mix(in oklab, var(--border) 76%, black);
 }
 
 :root[data-theme="light"] {
@@ -119,9 +132,11 @@
   --sidebar-accent-foreground: #1c2a43;
   --sidebar-border: #d6deee;
   --sidebar-ring: #0a6fd1;
-  --btn-shadow-rest: 0 12px 20px -14px rgb(22 50 95 / 26%);
-  --btn-shadow-hover: 0 18px 26px -14px rgb(22 50 95 / 30%);
-  --btn-shadow-press: 0 9px 14px -12px rgb(22 50 95 / 24%);
+  --surface-depth-rest: 0 14px 24px -16px rgb(22 50 95 / 24%);
+  --surface-depth-hover: 0 20px 30px -16px rgb(22 50 95 / 30%);
+  --surface-depth-press: 0 10px 16px -12px rgb(22 50 95 / 22%);
+  --surface-highlight: color-mix(in oklab, var(--surface-3) 26%, white);
+  --surface-edge: color-mix(in oklab, var(--border) 72%, #bbc9df);
 }
 
 @theme inline {
@@ -186,6 +201,97 @@ body {
   line-height: 1.62;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.sticky-offset-ui {
+  top: calc(var(--header-height-mobile) + 0.75rem);
+}
+
+@media (min-width: 768px) {
+  .sticky-offset-ui {
+    top: calc(var(--header-height-desktop) + 0.75rem);
+  }
+}
+
+.shape-angular-sm,
+.shape-angular-md,
+.shape-angular-lg {
+  position: relative;
+  border-radius: var(--shape-radius-base);
+  clip-path: polygon(
+    var(--shape-cut) 0,
+    calc(100% - var(--shape-cut)) 0,
+    100% var(--shape-cut),
+    100% calc(100% - var(--shape-cut)),
+    calc(100% - var(--shape-cut)) 100%,
+    var(--shape-cut) 100%,
+    0 calc(100% - var(--shape-cut)),
+    0 var(--shape-cut)
+  );
+}
+
+.shape-angular-sm {
+  --shape-cut: var(--shape-chamfer-sm);
+}
+
+.shape-angular-md {
+  --shape-cut: var(--shape-chamfer-md);
+}
+
+.shape-angular-lg {
+  --shape-cut: var(--shape-chamfer-lg);
+}
+
+.shape-square {
+  border-radius: var(--shape-radius-base);
+  clip-path: none;
+}
+
+.surface-3d {
+  position: relative;
+  border-color: color-mix(in oklab, var(--surface-edge) 70%, var(--border));
+  box-shadow:
+    var(--surface-depth-rest),
+    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 52%, white),
+    inset 0 -1px 0 color-mix(in oklab, var(--surface-edge) 50%, black);
+}
+
+.surface-3d::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--surface-highlight) 40%, white) 0%,
+    transparent 42%,
+    color-mix(in oklab, var(--surface) 14%, black) 100%
+  );
+  opacity: 0.38;
+}
+
+.surface-3d-interactive {
+  transition:
+    transform var(--motion-duration-medium) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-medium) var(--motion-easing-standard);
+}
+
+.surface-3d-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    var(--surface-depth-hover),
+    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 56%, white),
+    inset 0 -1px 0 color-mix(in oklab, var(--surface-edge) 56%, black);
+}
+
+.surface-3d-interactive:active {
+  transform: translateY(1px);
+  box-shadow:
+    var(--surface-depth-press),
+    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 42%, white),
+    inset 0 -1px 0 color-mix(in oklab, var(--surface-edge) 56%, black);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -363,6 +469,9 @@ body {
   .magnetic-btn,
   .btn-3d,
   .btn-3d::before,
+  .surface-3d,
+  .surface-3d::before,
+  .surface-3d-interactive,
   .interactive-card,
   .interactive-card::after,
   .route-content-enter,

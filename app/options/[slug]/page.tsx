@@ -46,14 +46,14 @@ export default async function OptionDetailPage({
       />
 
       <OptionHero option={option} />
-      <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="flex min-w-0 flex-wrap items-center justify-between gap-4">
         <OptionActions optionId={option.id} />
         <Link href="/compare" className="text-sm font-medium text-[var(--accent)]">
           [PLACEHOLDER: view compare page]
         </Link>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-2">
+      <div className="grid gap-[var(--space-stack)] lg:grid-cols-2">
         <OptionSummary option={option} />
         <FitSection option={option} />
         <TradeoffSection option={option} />

@@ -327,10 +327,10 @@ export function UxProvider({ children }: { children: ReactNode }) {
           onClick={closeOverlays}
         >
           <div
-            className="w-full max-w-2xl rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-2xl"
+            className="shape-angular-lg surface-3d w-full max-w-2xl border border-[var(--border)] bg-[var(--surface)] shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="border-b border-[var(--border)] p-3">
+            <div className="border-b border-[var(--border)] p-4">
               <input
                 autoFocus
                 value={query}
@@ -358,16 +358,16 @@ export function UxProvider({ children }: { children: ReactNode }) {
                   }
                 }}
                 placeholder="[PLACEHOLDER: search actions, pages, and shortcuts]"
-                className="h-11 w-full rounded-xl border border-[var(--border)] bg-[var(--surface-2)] px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
+                className="shape-angular-md surface-3d h-11 w-full border border-[var(--border)] bg-[var(--surface-2)] px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
               />
             </div>
-            <div className="max-h-96 overflow-y-auto p-2">
+            <div className="max-h-96 overflow-y-auto p-3">
               {filteredCommands.map((command, index) => (
                 <button
                   key={command.id}
                   type="button"
                   onClick={() => runCommand(command)}
-                  className={`mb-1 flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm transition-colors ${
+                  className={`shape-angular-sm surface-3d mb-2 flex w-full items-center justify-between px-3 py-2 text-left text-sm transition-colors ${
                     index === safeActiveIndex
                       ? "bg-[var(--surface-3)] text-[var(--text)]"
                       : "text-[var(--muted)] hover:bg-[var(--surface-2)]"
@@ -405,11 +405,11 @@ export function UxProvider({ children }: { children: ReactNode }) {
           onClick={closeOverlays}
         >
           <div
-            className="w-full max-w-xl rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 shadow-2xl"
+            className="shape-angular-lg surface-3d w-full max-w-xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
             <h2 className="text-xl font-semibold">Keyboard shortcuts</h2>
-            <ul className="mt-4 space-y-2 text-sm text-[var(--muted)]">
+            <ul className="mt-5 space-y-3 text-sm text-[var(--muted)]">
               <li>
                 <strong className="text-[var(--text)]">Cmd/Ctrl + K</strong> open command palette
               </li>
@@ -434,7 +434,7 @@ export function UxProvider({ children }: { children: ReactNode }) {
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className={`pointer-events-auto rounded-xl border px-4 py-3 text-sm shadow-lg transition-all ${
+            className={`shape-angular-md surface-3d pointer-events-auto min-w-0 break-words border px-4 py-3 text-sm shadow-lg transition-all ${
               toast.tone === "warning"
                 ? "border-[color-mix(in_oklab,var(--danger)_50%,var(--border))] bg-[color-mix(in_oklab,var(--danger)_20%,var(--surface))]"
                 : toast.tone === "success"
@@ -448,13 +448,13 @@ export function UxProvider({ children }: { children: ReactNode }) {
       </div>
 
       {goPrefixArmed ? (
-        <div className="pointer-events-none fixed bottom-6 left-4 z-[85] rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs uppercase tracking-[0.16em] text-[var(--muted)]">
+        <div className="shape-angular-sm surface-3d pointer-events-none fixed bottom-6 left-4 z-[85] border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs uppercase tracking-[0.16em] text-[var(--muted)]">
           g ...
         </div>
       ) : null}
 
       {selectedIds.length >= COMPARE_MAX ? (
-        <div className="pointer-events-none fixed bottom-24 left-1/2 z-[84] -translate-x-1/2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs text-[var(--muted)]">
+        <div className="shape-angular-sm surface-3d pointer-events-none fixed bottom-24 left-1/2 z-[84] -translate-x-1/2 border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs text-[var(--muted)]">
           [PLACEHOLDER: compare limit reached]
         </div>
       ) : null}

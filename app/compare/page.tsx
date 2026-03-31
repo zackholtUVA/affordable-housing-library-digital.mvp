@@ -32,7 +32,7 @@ export default function ComparePage() {
         </p>
       </header>
 
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex min-w-0 flex-wrap items-center gap-3.5">
         <Button
           variant="ghost"
           size="sm"
@@ -57,13 +57,13 @@ export default function ComparePage() {
       {selectedOptions.length === 0 ? <CompareEmptyState /> : <CompareTable options={selectedOptions} />}
 
       {selectedOptions.length > 0 ? (
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-[var(--space-stack)] md:grid-cols-3">
           {selectedOptions.map((option) => (
             <div
               key={`${option.id}-actions`}
-              className="flex items-center justify-between rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 py-3"
+              className="shape-angular-md surface-3d flex min-w-0 items-center justify-between gap-3 border border-[var(--border)] bg-[var(--surface)] px-4 py-3"
             >
-              <p className="text-sm">{option.title}</p>
+              <p className="min-w-0 break-words text-sm">{option.title}</p>
               <Button
                 variant="ghost"
                 size="sm"
