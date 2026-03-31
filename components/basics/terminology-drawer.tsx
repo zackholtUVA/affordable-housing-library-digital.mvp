@@ -11,12 +11,12 @@ type TerminologyDrawerProps = {
 export function TerminologyDrawer({ term }: TerminologyDrawerProps) {
   const [open, setOpen] = useState(false);
   return (
-    <article className="rounded-xl border border-[var(--border)] bg-[var(--surface)]">
+    <article className="rounded-2xl border border-[var(--border)] bg-[var(--surface)]">
       <button
         type="button"
         onClick={() => setOpen((current) => !current)}
         aria-expanded={open}
-        className="flex w-full items-center justify-between px-4 py-3 text-left"
+        className="flex w-full items-center justify-between px-5 py-4 text-left"
       >
         <span className="text-sm font-semibold">{term.term}</span>
         <span className="text-xs text-[var(--muted)]">{open ? "Hide" : "Show"}</span>
@@ -27,9 +27,9 @@ export function TerminologyDrawer({ term }: TerminologyDrawerProps) {
         }`}
       >
         <div className="overflow-hidden">
-          <div className="space-y-2 border-t border-[var(--border)] px-4 py-3 text-sm text-[var(--muted)]">
-            <p>{term.plainLanguageDefinition}</p>
-            <p className="rounded-lg bg-[var(--surface-2)] px-3 py-2 text-xs">{term.whyItMatters}</p>
+          <div className="space-y-3 border-t border-[var(--border)] px-5 py-4 text-sm text-[var(--muted)]">
+            <p className="leading-relaxed">{term.plainLanguageDefinition}</p>
+            <p className="rounded-xl bg-[var(--surface-2)] px-4 py-3 text-xs">{term.whyItMatters}</p>
           </div>
         </div>
       </div>

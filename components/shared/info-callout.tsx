@@ -16,15 +16,14 @@ export function InfoCallout({
   return (
     <aside
       className={cn(
-        "rounded-2xl border p-4",
+        "rounded-2xl border p-[max(1rem,var(--space-stack))]",
         tone === "warning"
           ? "border-[color-mix(in_oklab,var(--danger)_60%,var(--border))] bg-[color-mix(in_oklab,var(--danger)_14%,transparent)]"
           : "border-[var(--border)] bg-[var(--surface-2)]",
       )}
     >
-      <h3 className="mb-2 text-sm font-semibold tracking-wide">{title}</h3>
-      <p className="text-sm text-[var(--muted)]">{children}</p>
+      <h3 className="mb-2.5 text-sm font-semibold tracking-wide">{title}</h3>
+      <p className="text-sm leading-relaxed text-[var(--muted)]">{children}</p>
     </aside>
   );
 }
-

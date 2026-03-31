@@ -30,9 +30,9 @@ export function CompareDrawer() {
   }
 
   return (
-    <aside className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_92%,transparent)] p-3 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <div className="flex flex-wrap items-center gap-2">
+    <aside className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_90%,transparent)] p-4 backdrop-blur-xl">
+      <div className="mx-auto flex w-full max-w-[78rem] flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-wrap items-center gap-3">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
             Compare ({selectedIds.length}/{COMPARE_MAX})
           </p>
@@ -61,7 +61,7 @@ export function CompareDrawer() {
           ))}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <Button
             variant="ghost"
             size="sm"
@@ -82,11 +82,11 @@ export function CompareDrawer() {
       </div>
 
       <div
-        className={`mx-auto mt-2 w-full max-w-6xl overflow-hidden transition-[max-height,opacity] duration-300 ease-[var(--motion-easing-standard)] ${
+        className={`mx-auto mt-3 w-full max-w-[78rem] overflow-hidden transition-[max-height,opacity] duration-300 ease-[var(--motion-easing-standard)] ${
           expanded ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="grid gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-3 md:grid-cols-3">
+        <div className="grid gap-3 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 md:grid-cols-3">
           {selectedIds.map((id) => {
             const option = optionById.get(id);
             if (!option) {

@@ -12,18 +12,18 @@ type FilterPanelProps = {
 
 export function FilterPanel({ groups, filters, onToggle }: FilterPanelProps) {
   return (
-    <Card as="section" className="space-y-5">
+    <Card as="section" className="space-y-6">
       <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
         [PLACEHOLDER: filter panel title]
       </h2>
       {groups.map((group) => (
-        <fieldset key={group.key} className="space-y-2">
+        <fieldset key={group.key} className="space-y-3">
           <legend className="text-sm font-medium text-[var(--text)]">{group.label}</legend>
-          <div className="space-y-2">
+          <div className="space-y-3">
             {group.options.map((option) => {
               const checked = filters[group.key].includes(option);
               return (
-                <label key={option} className="flex items-center gap-2 text-sm text-[var(--muted)]">
+                <label key={option} className="flex items-center gap-3 text-sm text-[var(--muted)]">
                   <input
                     type="checkbox"
                     checked={checked}
@@ -40,4 +40,3 @@ export function FilterPanel({ groups, filters, onToggle }: FilterPanelProps) {
     </Card>
   );
 }
-

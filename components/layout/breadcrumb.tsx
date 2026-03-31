@@ -11,10 +11,10 @@ type BreadcrumbProps = {
 
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-6 text-sm">
-      <ol className="flex flex-wrap items-center gap-2 text-[var(--muted)]">
+    <nav aria-label="Breadcrumb" className="mb-8 text-sm">
+      <ol className="flex flex-wrap items-center gap-3 text-[var(--muted)]">
         {items.map((item, index) => (
-          <li key={`${item.label}-${index}`} className="inline-flex items-center gap-2">
+          <li key={`${item.label}-${index}`} className="inline-flex items-center gap-3">
             {index > 0 ? <span aria-hidden="true">/</span> : null}
             {item.href ? (
               <Link href={item.href} className="hover:text-[var(--text)]">
@@ -29,4 +29,3 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
     </nav>
   );
 }
-

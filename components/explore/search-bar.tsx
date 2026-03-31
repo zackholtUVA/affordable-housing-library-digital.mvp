@@ -26,7 +26,7 @@ export function SearchBar({ value, onChange, inputRef, onArrowDown }: SearchBarP
           }
         }}
         placeholder="[PLACEHOLDER: search input placeholder]"
-        className="h-11 w-full rounded-xl border border-[var(--border)] bg-[var(--surface)] px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
+        className="h-12 w-full rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
       />
     </label>
   );

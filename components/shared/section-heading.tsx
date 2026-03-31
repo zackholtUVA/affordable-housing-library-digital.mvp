@@ -12,19 +12,20 @@ export function SectionHeading({
   description,
 }: SectionHeadingProps) {
   return (
-    <header className="space-y-3">
+    <header className="space-y-[max(0.9rem,var(--space-stack))]">
       {eyebrow ? (
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="text-balance text-2xl font-semibold leading-tight tracking-tight md:text-3xl">
+      <h2 className="text-balance text-3xl font-semibold leading-[1.12] tracking-tight md:text-4xl">
         {title}
       </h2>
       {description ? (
-        <p className="max-w-3xl text-base text-[var(--muted)] md:text-lg">{description}</p>
+        <p className="max-w-4xl text-base leading-relaxed text-[var(--muted)] md:text-lg">
+          {description}
+        </p>
       ) : null}
     </header>
   );
 }
-

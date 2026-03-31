@@ -27,8 +27,8 @@ export default function BasicsPage() {
   const grouped = useMemo(() => groupGlossaryTerms(filteredTerms), [filteredTerms]);
 
   return (
-    <PageShell className="space-y-8">
-      <header className="space-y-3">
+    <PageShell className="space-y-[var(--space-section)]">
+      <header className="space-y-4">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
           [PLACEHOLDER: basics and glossary heading]
         </h1>
@@ -44,12 +44,12 @@ export default function BasicsPage() {
         <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          className="h-11 w-full rounded-xl border border-[var(--border)] bg-[var(--surface)] px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
+          className="h-12 w-full rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
           placeholder="[PLACEHOLDER: glossary search placeholder]"
         />
       </label>
 
-      <section className="grid gap-4 md:grid-cols-3">
+      <section className="grid gap-6 md:grid-cols-3">
         {filteredTerms.slice(0, 3).map((term) => (
           <BasicsCard key={term.id} term={term} />
         ))}
@@ -68,4 +68,3 @@ export default function BasicsPage() {
     </PageShell>
   );
 }
-

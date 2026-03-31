@@ -8,13 +8,12 @@ type PolicyContextSectionProps = {
 
 export function PolicyContextSection({ option }: PolicyContextSectionProps) {
   return (
-    <Card as="section" className="space-y-4">
+    <Card as="section" className="space-y-5">
       <h2 className="text-xl font-semibold">[PLACEHOLDER: localized policy context]</h2>
-      <p className="text-sm text-[var(--muted)]">{option.policySummary}</p>
+      <p className="text-sm leading-relaxed text-[var(--muted)]">{option.policySummary}</p>
       <InfoCallout title="[PLACEHOLDER: policy confidence label]">
         {option.policyConfidenceLabel}
       </InfoCallout>
     </Card>
   );
 }
-
