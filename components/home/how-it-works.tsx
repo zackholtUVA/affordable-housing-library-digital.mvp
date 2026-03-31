@@ -4,13 +4,13 @@ import { SectionHeading } from "@/components/shared/section-heading";
 
 export function HowItWorks() {
   return (
-    <section className="space-y-[calc(var(--space-stack)*0.92)]">
+    <section className="space-y-[var(--space-stack)]">
       <SectionHeading
         eyebrow="How it works"
         title="[PLACEHOLDER: how-it-works heading]"
         description="[PLACEHOLDER: how-it-works supporting copy]"
       />
-      <div className="grid gap-[calc(var(--space-stack)*0.95)] md:grid-cols-3">
+      <div className="grid gap-[var(--space-stack)] md:grid-cols-3">
         {HOW_IT_WORKS_STEPS.map((step, index) => (
           <Card key={step} className="relative overflow-hidden">
             <span className="shape-square surface-3d mb-2 inline-flex h-7 w-7 items-center justify-center bg-[var(--surface-3)] text-xs font-semibold">

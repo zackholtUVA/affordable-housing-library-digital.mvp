@@ -13,8 +13,8 @@ import {
 
 export default function NextStepsPage() {
   return (
-    <PageShell className="space-y-[calc(var(--space-section)*0.9)]">
-      <header className="space-y-3">
+    <PageShell className="space-y-[var(--space-section)]">
+      <header className="space-y-[var(--space-stack)]">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
           [PLACEHOLDER: next-step guidance heading]
         </h1>
@@ -23,7 +23,7 @@ export default function NextStepsPage() {
         </p>
       </header>
 
-      <div className="flex flex-wrap gap-2.5">
+      <div className="flex flex-wrap gap-3">
         <Button variant="secondary" size="sm" onClick={() => window.print()}>
           [PLACEHOLDER: print checklist]
         </Button>
@@ -32,7 +32,7 @@ export default function NextStepsPage() {
         </Button>
       </div>
 
-      <div className="grid gap-[var(--space-stack)] lg:grid-cols-3">
+      <div className="mt-[var(--space-stack)] grid gap-[var(--space-stack)] lg:grid-cols-3">
         <Card as="section" className="space-y-6">
           <h2 className="text-lg font-semibold">[PLACEHOLDER: suggested questions]</h2>
           <ul className="space-y-4 text-sm text-[var(--muted)]">

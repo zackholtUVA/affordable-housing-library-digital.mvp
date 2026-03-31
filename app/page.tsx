@@ -10,7 +10,7 @@ import { pathways } from "@/data/pathways";
 
 export default function HomePage() {
   return (
-    <PageShell className="space-y-[calc(var(--space-section)*0.9)]">
+    <PageShell className="space-y-[var(--space-section)]">
       <LaunchHeroSection />
       <div className="fade-in">
         <IntroSection />
@@ -21,8 +21,10 @@ export default function HomePage() {
       <div className="fade-in">
         <FeaturedOptions options={housingOptions} />
       </div>
-      <div className="fade-in space-y-[calc(var(--space-stack)*0.95)]">
+      <div className="fade-in">
         <HowItWorks />
+      </div>
+      <div className="fade-in">
         <InfoCallout title="[PLACEHOLDER: trust and limitations]" tone="warning">
           [PLACEHOLDER: this tool is informational and nonbinding; users should consult qualified local professionals]
         </InfoCallout>
