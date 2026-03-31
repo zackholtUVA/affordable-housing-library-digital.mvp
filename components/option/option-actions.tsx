@@ -33,7 +33,7 @@ export function OptionActions({ optionId }: OptionActionsProps) {
   };
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-3">
       <Button variant={selected ? "secondary" : "primary"} onClick={handleToggle}>
         {selected
           ? "[PLACEHOLDER: remove from compare]"

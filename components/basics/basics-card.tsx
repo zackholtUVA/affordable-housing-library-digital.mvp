@@ -7,13 +7,12 @@ type BasicsCardProps = {
 
 export function BasicsCard({ term }: BasicsCardProps) {
   return (
-    <Card as="article" className="space-y-2">
+    <Card as="article" className="space-y-3">
       <h3 className="text-base font-semibold">{term.term}</h3>
-      <p className="text-sm text-[var(--muted)]">{term.plainLanguageDefinition}</p>
-      <p className="rounded-lg bg-[var(--surface-2)] px-3 py-2 text-xs text-[var(--muted)]">
+      <p className="text-sm leading-relaxed text-[var(--muted)]">{term.plainLanguageDefinition}</p>
+      <p className="rounded-xl bg-[var(--surface-2)] px-4 py-3 text-xs text-[var(--muted)]">
         {term.whyItMatters}
       </p>
     </Card>
   );
 }
-

@@ -19,7 +19,7 @@ export function Card({
   return (
     <Component
       className={cn(
-        "rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 shadow-[var(--shadow-card)]",
+        "rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-[var(--space-card-pad)] shadow-[var(--shadow-card)]",
         interactive ? "interactive-card" : "",
         className,
       )}

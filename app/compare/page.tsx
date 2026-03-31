@@ -22,8 +22,8 @@ export default function ComparePage() {
     .filter((option): option is NonNullable<typeof option> => Boolean(option));
 
   return (
-    <PageShell className="space-y-6">
-      <header className="space-y-3">
+    <PageShell className="space-y-[var(--space-section)]">
+      <header className="space-y-4">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
           [PLACEHOLDER: compare page heading]
         </h1>
@@ -32,7 +32,7 @@ export default function ComparePage() {
         </p>
       </header>
 
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center gap-3">
         <Button
           variant="ghost"
           size="sm"
@@ -57,11 +57,11 @@ export default function ComparePage() {
       {selectedOptions.length === 0 ? <CompareEmptyState /> : <CompareTable options={selectedOptions} />}
 
       {selectedOptions.length > 0 ? (
-        <div className="grid gap-2 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3">
           {selectedOptions.map((option) => (
             <div
               key={`${option.id}-actions`}
-              className="flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--surface)] px-3 py-2"
+              className="flex items-center justify-between rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 py-3"
             >
               <p className="text-sm">{option.title}</p>
               <Button

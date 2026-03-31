@@ -9,9 +9,9 @@ export function FitSection({ option }: FitSectionProps) {
   return (
     <Card as="section">
       <h2 className="text-xl font-semibold">[PLACEHOLDER: good fit if]</h2>
-      <ul className="mt-4 space-y-2 text-sm text-[var(--muted)]">
+      <ul className="mt-6 space-y-3 text-sm text-[var(--muted)]">
         {option.bestFor.map((item) => (
-          <li key={item} className="rounded-lg bg-[var(--surface-2)] px-3 py-2">
+          <li key={item} className="rounded-xl bg-[var(--surface-2)] px-4 py-3">
             {item}
           </li>
         ))}
@@ -19,4 +19,3 @@ export function FitSection({ option }: FitSectionProps) {
     </Card>
   );
 }
-

@@ -13,8 +13,8 @@ import {
 
 export default function NextStepsPage() {
   return (
-    <PageShell className="space-y-8">
-      <header className="space-y-3">
+    <PageShell className="space-y-[var(--space-section)]">
+      <header className="space-y-4">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
           [PLACEHOLDER: next-step guidance heading]
         </h1>
@@ -23,7 +23,7 @@ export default function NextStepsPage() {
         </p>
       </header>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-3">
         <Button variant="secondary" size="sm" onClick={() => window.print()}>
           [PLACEHOLDER: print checklist]
         </Button>
@@ -32,34 +32,34 @@ export default function NextStepsPage() {
         </Button>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        <Card as="section" className="space-y-3">
+      <div className="grid gap-8 lg:grid-cols-3">
+        <Card as="section" className="space-y-5">
           <h2 className="text-lg font-semibold">[PLACEHOLDER: suggested questions]</h2>
-          <ul className="space-y-2 text-sm text-[var(--muted)]">
+          <ul className="space-y-3 text-sm text-[var(--muted)]">
             {questionPrompts.map((item) => (
-              <li key={item} className="rounded-lg bg-[var(--surface-2)] px-3 py-2">
+              <li key={item} className="rounded-xl bg-[var(--surface-2)] px-4 py-3">
                 {item}
               </li>
             ))}
           </ul>
         </Card>
 
-        <Card as="section" className="space-y-3">
+        <Card as="section" className="space-y-5">
           <h2 className="text-lg font-semibold">[PLACEHOLDER: documents to gather]</h2>
-          <ul className="space-y-2 text-sm text-[var(--muted)]">
+          <ul className="space-y-3 text-sm text-[var(--muted)]">
             {documentPrompts.map((item) => (
-              <li key={item} className="rounded-lg bg-[var(--surface-2)] px-3 py-2">
+              <li key={item} className="rounded-xl bg-[var(--surface-2)] px-4 py-3">
                 {item}
               </li>
             ))}
           </ul>
         </Card>
 
-        <Card as="section" className="space-y-3">
+        <Card as="section" className="space-y-5">
           <h2 className="text-lg font-semibold">[PLACEHOLDER: action checklist]</h2>
-          <ul className="space-y-2 text-sm text-[var(--muted)]">
+          <ul className="space-y-3 text-sm text-[var(--muted)]">
             {checklistPrompts.map((item) => (
-              <li key={item} className="rounded-lg bg-[var(--surface-2)] px-3 py-2">
+              <li key={item} className="rounded-xl bg-[var(--surface-2)] px-4 py-3">
                 {item}
               </li>
             ))}
@@ -67,9 +67,9 @@ export default function NextStepsPage() {
         </Card>
       </div>
 
-      <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {nextStepResources.map((resource) => (
-          <Card key={resource.id} as="article" className="space-y-3">
+          <Card key={resource.id} as="article" className="space-y-4">
             <p className="text-xs uppercase tracking-[0.14em] text-[var(--muted)]">
               {resource.actionType}
             </p>
@@ -88,4 +88,3 @@ export default function NextStepsPage() {
     </PageShell>
   );
 }
-

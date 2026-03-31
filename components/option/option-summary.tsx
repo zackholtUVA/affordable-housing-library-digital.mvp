@@ -10,7 +10,7 @@ export function OptionSummary({ option }: OptionSummaryProps) {
   return (
     <Card as="section">
       <h2 className="text-xl font-semibold">[PLACEHOLDER: what this is]</h2>
-      <div className="mt-4 grid gap-3 md:grid-cols-2">
+      <div className="mt-6 grid gap-4 md:grid-cols-2">
         <PlaceholderBlock label="[PLACEHOLDER: summary paragraph]" value={option.shortSummary} />
         <PlaceholderBlock
           label="[PLACEHOLDER: major considerations]"
@@ -20,4 +20,3 @@ export function OptionSummary({ option }: OptionSummaryProps) {
     </Card>
   );
 }
-

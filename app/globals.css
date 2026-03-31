@@ -13,82 +13,87 @@
   --motion-easing-entrance: cubic-bezier(0.16, 1, 0.3, 1);
   --motion-distance: 10px;
   --motion-stagger: 70ms;
+  --space-page-x: clamp(1.1rem, 2.6vw, 2rem);
+  --space-page-y: clamp(2.75rem, 5vw, 4.75rem);
+  --space-section: clamp(2.4rem, 4.6vw, 4.2rem);
+  --space-stack: clamp(1rem, 2vw, 1.65rem);
+  --space-card-pad: clamp(1.15rem, 2.2vw, 1.85rem);
   --radius: 0.625rem;
 }
 
 :root,
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --background: #0b1120;
-  --surface: #101726;
-  --surface-2: #182033;
-  --surface-3: #24304a;
-  --border: #2d3b58;
-  --text: #e8edf7;
-  --muted: #9aa8c1;
-  --accent: #43b5fb;
-  --accent-strong: #67c4ff;
-  --accent-foreground: #041423;
-  --focus: #9cdcff;
+  --background: #000000;
+  --surface: #0a0b0d;
+  --surface-2: #111317;
+  --surface-3: #171a20;
+  --border: #252a33;
+  --text: #f5f7fb;
+  --muted: #9aa3b2;
+  --accent: #59b9ff;
+  --accent-strong: #86d1ff;
+  --accent-foreground: #031220;
+  --focus: #98dcff;
   --danger: #f97373;
   --danger-foreground: #210a0a;
-  --shadow-card: 0 18px 40px -24px rgb(2 6 15 / 78%);
-  --foreground: #e8edf7;
-  --card: #101726;
-  --card-foreground: #e8edf7;
-  --popover: #101726;
-  --popover-foreground: #e8edf7;
-  --primary: #43b5fb;
-  --primary-foreground: #041423;
-  --secondary: #1b2740;
-  --secondary-foreground: #e8edf7;
-  --muted-foreground: #9aa8c1;
+  --shadow-card: 0 18px 44px -24px rgb(0 0 0 / 72%);
+  --foreground: #f5f7fb;
+  --card: #0a0b0d;
+  --card-foreground: #f5f7fb;
+  --popover: #0a0b0d;
+  --popover-foreground: #f5f7fb;
+  --primary: #59b9ff;
+  --primary-foreground: #031220;
+  --secondary: #111317;
+  --secondary-foreground: #f5f7fb;
+  --muted-foreground: #9aa3b2;
   --destructive: #f97373;
-  --input: #324262;
-  --ring: #9cdcff;
-  --chart-1: #9cdcff;
-  --chart-2: #67c4ff;
-  --chart-3: #43b5fb;
-  --chart-4: #2e8fd5;
-  --chart-5: #206fa8;
-  --sidebar: #101726;
-  --sidebar-foreground: #e8edf7;
-  --sidebar-primary: #43b5fb;
-  --sidebar-primary-foreground: #041423;
-  --sidebar-accent: #1b2740;
-  --sidebar-accent-foreground: #e8edf7;
-  --sidebar-border: #2d3b58;
-  --sidebar-ring: #9cdcff;
+  --input: #1d222b;
+  --ring: #98dcff;
+  --chart-1: #98dcff;
+  --chart-2: #86d1ff;
+  --chart-3: #59b9ff;
+  --chart-4: #3299df;
+  --chart-5: #216f9f;
+  --sidebar: #0a0b0d;
+  --sidebar-foreground: #f5f7fb;
+  --sidebar-primary: #59b9ff;
+  --sidebar-primary-foreground: #031220;
+  --sidebar-accent: #111317;
+  --sidebar-accent-foreground: #f5f7fb;
+  --sidebar-border: #252a33;
+  --sidebar-ring: #98dcff;
 }
 
 :root[data-theme="light"] {
   color-scheme: light;
-  --background: #f4f6fb;
+  --background: #f6f8fc;
   --surface: #ffffff;
-  --surface-2: #f0f3fa;
-  --surface-3: #e5eaf5;
-  --border: #d6deee;
-  --text: #182132;
-  --muted: #51617f;
+  --surface-2: #f1f4fb;
+  --surface-3: #e7edf7;
+  --border: #d8dfec;
+  --text: #161f30;
+  --muted: #526180;
   --accent: #0a6fd1;
   --accent-strong: #0858a7;
   --accent-foreground: #f4fbff;
   --focus: #0a6fd1;
   --danger: #d24141;
   --danger-foreground: #fff4f4;
-  --shadow-card: 0 12px 32px -20px rgb(23 36 64 / 22%);
-  --foreground: #182132;
+  --shadow-card: 0 14px 34px -20px rgb(23 36 64 / 18%);
+  --foreground: #161f30;
   --card: #ffffff;
-  --card-foreground: #182132;
+  --card-foreground: #161f30;
   --popover: #ffffff;
-  --popover-foreground: #182132;
+  --popover-foreground: #161f30;
   --primary: #0a6fd1;
   --primary-foreground: #f4fbff;
-  --secondary: #e5ebf7;
-  --secondary-foreground: #1c2a43;
-  --muted-foreground: #6a7996;
+  --secondary: #e7edf7;
+  --secondary-foreground: #1b2941;
+  --muted-foreground: #667694;
   --destructive: #d24141;
-  --input: #d9e1ef;
+  --input: #dbe3f1;
   --ring: #0a6fd1;
   --chart-1: #2a86d8;
   --chart-2: #4d9ce0;
@@ -161,10 +166,10 @@ body {
   margin: 0;
   font-family: var(--font-sans), sans-serif;
   background-image:
-    radial-gradient(circle at 0% 0%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 38%),
-    radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 40%);
+    radial-gradient(circle at 0% 0%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 42%),
+    radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--accent) 8%, transparent), transparent 46%);
   background-attachment: fixed;
-  line-height: 1.5;
+  line-height: 1.62;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -266,7 +271,7 @@ body {
 
 .interactive-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 24px 44px -26px rgb(2 6 15 / 72%);
+  box-shadow: 0 26px 48px -28px rgb(0 0 0 / 68%);
 }
 
 .interactive-card:hover::after {

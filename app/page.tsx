@@ -10,7 +10,7 @@ import { pathways } from "@/data/pathways";
 
 export default function HomePage() {
   return (
-    <PageShell className="space-y-12">
+    <PageShell className="space-y-[var(--space-section)]">
       <LaunchHeroSection />
       <div className="fade-in">
         <IntroSection />

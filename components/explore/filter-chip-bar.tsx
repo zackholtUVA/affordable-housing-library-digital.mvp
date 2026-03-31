@@ -19,7 +19,7 @@ export function FilterChipBar({ filters, onRemove, onClear }: FilterChipBarProps
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="flex flex-wrap items-center gap-3">
       {entries.map((entry) => (
         <Tag
           key={`${entry.key}-${entry.value}`}
@@ -39,4 +39,3 @@ export function FilterChipBar({ filters, onRemove, onClear }: FilterChipBarProps
     </div>
   );
 }
-

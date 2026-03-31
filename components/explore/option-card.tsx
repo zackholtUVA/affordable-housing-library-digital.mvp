@@ -41,14 +41,14 @@ export function OptionCard({ option }: OptionCardProps) {
   return (
     <Card as="article" className="flex h-full flex-col justify-between">
       <div>
-        <div className="mb-3 flex items-start justify-between gap-2">
-          <h3 className="text-base font-semibold">{option.title}</h3>
+        <div className="mb-4 flex items-start justify-between gap-3">
+          <h3 className="text-lg font-semibold">{option.title}</h3>
           <Badge>{option.policyConfidenceLabel}</Badge>
         </div>
-        <p className="text-sm text-[var(--muted)]">{option.shortSummary}</p>
+        <p className="text-sm leading-relaxed text-[var(--muted)]">{option.shortSummary}</p>
       </div>
 
-      <div className="mt-5 flex items-center justify-between gap-2">
+      <div className="mt-7 flex items-center justify-between gap-3">
         <Link href={`/options/${option.slug}`} className="text-sm font-medium text-[var(--accent)]">
           [PLACEHOLDER: view details]
         </Link>
@@ -68,7 +68,7 @@ export function OptionCard({ option }: OptionCardProps) {
       {limitReached ? (
         <p
           id={`${option.id}-compare-limit`}
-          className="mt-3 text-xs text-[var(--danger)]"
+          className="mt-4 text-xs text-[var(--danger)]"
           aria-live="polite"
         >
           [PLACEHOLDER: compare limit reached; remove one selected option to add this]

@@ -71,8 +71,8 @@ export default function ExplorePage() {
   };
 
   return (
-    <PageShell className="space-y-8">
-      <header className="space-y-3">
+    <PageShell className="space-y-[var(--space-section)]">
+      <header className="space-y-4">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
           [PLACEHOLDER: explore page heading]
         </h1>
@@ -81,8 +81,8 @@ export default function ExplorePage() {
         </p>
       </header>
 
-      <div className="grid gap-6 lg:grid-cols-[290px_1fr]">
-        <div className="space-y-4">
+      <div className="grid gap-8 lg:grid-cols-[320px_1fr]">
+        <div className="space-y-6">
           <SearchBar
             value={query}
             onChange={setQuery}
@@ -92,8 +92,8 @@ export default function ExplorePage() {
           <FilterPanel groups={filterGroups} filters={filters} onToggle={toggleFilter} />
         </div>
 
-        <section className="space-y-4">
-          <div className="sticky top-20 z-20 flex flex-wrap items-center gap-2 rounded-xl border border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_92%,transparent)] p-3 backdrop-blur">
+        <section className="space-y-6">
+          <div className="sticky top-28 z-20 flex flex-wrap items-center gap-3 rounded-2xl border border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_90%,transparent)] p-4 backdrop-blur-xl">
             <FilterChipBar filters={filters} onRemove={toggleFilter} onClear={resetFilters} />
             <button
               type="button"
