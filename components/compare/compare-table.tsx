@@ -12,7 +12,7 @@ export function CompareTable({ options }: CompareTableProps) {
         <thead>
           <tr className="border-b border-[var(--border)] bg-[var(--surface-2)]">
             <th className="shape-square sticky left-0 z-20 w-72 bg-[var(--surface-2)] px-6 py-5 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-              [PLACEHOLDER: comparison attribute]
+              Comparison attribute
             </th>
             {options.map((option) => (
               <th

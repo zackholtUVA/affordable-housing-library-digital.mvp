@@ -1,6 +1,6 @@
 export type Theme = "dark" | "light";
 
-export type PlaceholderText = `[PLACEHOLDER: ${string}]`;
+export type PlaceholderText = string;
 
 export type PolicyConfidenceLabel =
   | "often plausible"
@@ -107,4 +107,32 @@ export type HalideHeroContent = {
   ctaLabel: string;
   ctaHref: string;
   bottomLeftLines: string[];
+};
+
+export type PlausibilityDefinition = {
+  label: PolicyConfidenceLabel;
+  definition: string;
+  usageNote: string;
+};
+
+export type CompareDemoPreset = {
+  id: string;
+  title: string;
+  description: string;
+  optionIds: string[];
+};
+
+export type SessionContextSnapshot = {
+  selectedIds: string[];
+  exploredIds: string[];
+  recentIds: string[];
+};
+
+export type UtilityPageContent = {
+  title: string;
+  intro: string;
+  sections: Array<{
+    heading: string;
+    body: string;
+  }>;
 };

@@ -7,8 +7,8 @@ export function HowItWorks() {
     <section className="space-y-[var(--space-stack)]">
       <SectionHeading
         eyebrow="How it works"
-        title="[PLACEHOLDER: how-it-works heading]"
-        description="[PLACEHOLDER: how-it-works supporting copy]"
+        title="A three-step workflow for clearer housing decisions"
+        description="Move from broad exploration to grounded next steps without losing track of tradeoffs."
       />
       <div className="grid gap-[var(--space-stack)] md:grid-cols-3">
         {HOW_IT_WORKS_STEPS.map((step, index) => (

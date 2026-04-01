@@ -10,13 +10,18 @@ describe("HomePage launch composition", () => {
     expect(
       screen.getByText("Compare Affordable Housing Paths with Confidence"),
     ).toBeInTheDocument();
-    expect(screen.queryByText("[PLACEHOLDER: site headline]")).not.toBeInTheDocument();
     expect(
-      screen.getByText("[PLACEHOLDER: product explanation section title]"),
+      screen.getByText("A practical starting point before you commit to one housing path"),
     ).toBeInTheDocument();
-    expect(screen.getByText("[PLACEHOLDER: pathway section heading]")).toBeInTheDocument();
-    expect(screen.getByText("[PLACEHOLDER: featured option labels section title]")).toBeInTheDocument();
-    expect(screen.getByText("[PLACEHOLDER: how-it-works heading]")).toBeInTheDocument();
+    expect(
+      screen.getByText("Choose the scenario that best matches your current goal"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("Popular starting pathways to compare first"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("A three-step workflow for clearer housing decisions"),
+    ).toBeInTheDocument();
 
     const sections = container.querySelectorAll(".page-reveal-flow > *");
     expect(sections.length).toBeGreaterThan(1);

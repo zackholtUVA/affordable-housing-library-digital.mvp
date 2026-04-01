@@ -26,10 +26,10 @@ describe("UX command palette", () => {
     render(<TestApp />);
 
     fireEvent.keyDown(window, { key: "k", ctrlKey: true });
-    expect(screen.getByRole("dialog", { name: /quick actions/i })).toBeInTheDocument();
+    expect(screen.getByRole("dialog", { name: /command menu/i })).toBeInTheDocument();
 
     const input = screen.getByPlaceholderText(
-      "[PLACEHOLDER: search actions, pages, and shortcuts]",
+      "Search actions, pages, and shortcuts",
     );
     await user.type(input, "compare");
     await user.click(screen.getByRole("button", { name: /go to compare/i }));
@@ -43,4 +43,3 @@ describe("UX command palette", () => {
     expect(screen.getByRole("dialog", { name: /keyboard shortcuts/i })).toBeInTheDocument();
   });
 });
-

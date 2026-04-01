@@ -14,7 +14,7 @@ export function FilterPanel({ groups, filters, onToggle }: FilterPanelProps) {
   return (
     <Card as="section" className="space-y-[var(--space-stack)]">
       <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-        [PLACEHOLDER: filter panel title]
+        Filter options
       </h2>
       {groups.map((group) => (
         <fieldset key={group.key} className="space-y-4">

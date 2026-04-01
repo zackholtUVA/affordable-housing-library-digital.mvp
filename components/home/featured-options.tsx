@@ -14,8 +14,8 @@ export function FeaturedOptions({ options }: FeaturedOptionsProps) {
     <section className="space-y-[var(--space-stack)]">
       <SectionHeading
         eyebrow="Featured options"
-        title="[PLACEHOLDER: featured option labels section title]"
-        description="[PLACEHOLDER: featured option support copy]"
+        title="Popular starting pathways to compare first"
+        description="These examples balance feasibility, flexibility, and planning effort so you can quickly understand your range of choices."
       />
       <div className="grid gap-[var(--space-stack)] md:grid-cols-2 lg:grid-cols-3">
         {options.slice(0, 3).map((option) => (
@@ -27,9 +27,17 @@ export function FeaturedOptions({ options }: FeaturedOptionsProps) {
             <p className="mt-5 min-w-0 break-words text-sm leading-relaxed text-[var(--muted)]">
               {option.shortSummary}
             </p>
-            <Link href={`/options/${option.slug}`} className="mt-8 inline-block text-sm font-medium text-[var(--accent)]">
-              [PLACEHOLDER: view option details]
-            </Link>
+            <p className="mt-4 text-xs font-medium uppercase tracking-[0.1em] text-[var(--muted)]">
+              Best for: {option.bestFor[0]}
+            </p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <Link href={`/options/${option.slug}`} className="text-sm font-medium text-[var(--accent)]">
+                Learn more
+              </Link>
+              <Link href="/compare" className="text-sm font-medium text-[var(--accent)]">
+                Compare options
+              </Link>
+            </div>
           </Card>
         ))}
       </div>

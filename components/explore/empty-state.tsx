@@ -7,10 +7,10 @@ type ExploreEmptyStateProps = {
 export function ExploreEmptyState({ onReset }: ExploreEmptyStateProps) {
   return (
     <EmptyState
-      title="[PLACEHOLDER: no options match current filters]"
-      description="[PLACEHOLDER: adjust search and filter criteria to view more options]"
-      actionLabel="[PLACEHOLDER: reset all filters]"
-      secondaryActionLabel="[PLACEHOLDER: learn basics]"
+      title="No options match your current filters"
+      description="Try widening one filter or clearing search text to see more pathways."
+      actionLabel="Reset all filters"
+      secondaryActionLabel="Learn the basics"
       secondaryActionHref="/basics"
       onAction={onReset}
     />

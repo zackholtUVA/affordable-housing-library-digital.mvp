@@ -34,7 +34,7 @@ export function CompareDrawer() {
       <div className="mx-auto flex w-full max-w-[92rem] flex-col gap-[max(0.8rem,var(--space-stack))] md:flex-row md:items-center md:justify-between">
         <div className="flex min-w-0 flex-wrap items-center gap-3">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-            Compare ({selectedIds.length}/{COMPARE_MAX})
+            Compare tray ({selectedIds.length} of {COMPARE_MAX} selected)
           </p>
           <Button
             variant="ghost"
@@ -52,7 +52,7 @@ export function CompareDrawer() {
                 remove(id);
                 addToast({
                   tone: "info",
-                  message: "[PLACEHOLDER: option removed from compare]",
+                  message: "Removed from comparison.",
                 });
               }}
             >
@@ -69,7 +69,7 @@ export function CompareDrawer() {
               clear();
               addToast({
                 tone: "info",
-                message: "[PLACEHOLDER: compare list cleared]",
+                message: "Comparison list cleared.",
               });
             }}
           >
@@ -98,7 +98,7 @@ export function CompareDrawer() {
                 className="shape-angular-sm surface-3d min-w-0 break-words bg-[var(--surface-2)] p-3.5"
               >
                 <p className="text-xs uppercase tracking-[0.12em] text-[var(--muted)]">
-                  [PLACEHOLDER: selected option]
+                  Selected option
                 </p>
                 <h3 className="mt-1 min-w-0 break-words text-sm font-semibold">{option.title}</h3>
                 <p className="mt-2 min-w-0 break-words text-xs text-[var(--muted)]">{option.shortSummary}</p>

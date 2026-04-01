@@ -7,7 +7,9 @@ import { Button } from "@/components/shared/button";
 import { Card } from "@/components/shared/card";
 import { COMPARE_MAX } from "@/lib/constants";
 import { useCompareStore } from "@/lib/compare-store";
+import { useSessionContext } from "@/lib/session-context";
 import { useUx } from "@/lib/ux";
+import { cn } from "@/lib/utils";
 import type { HousingOption } from "@/lib/types";
 
 type OptionCardProps = {
@@ -16,6 +18,7 @@ type OptionCardProps = {
 
 export function OptionCard({ option }: OptionCardProps) {
   const { toggle, isSelected, isFull } = useCompareStore();
+  const { markOptionViewed } = useSessionContext();
   const { addToast } = useUx();
   const selected = isSelected(option.id);
   const limitReached = !selected && isFull;
@@ -24,22 +27,31 @@ export function OptionCard({ option }: OptionCardProps) {
     if (limitReached) {
       addToast({
         tone: "warning",
-        message: "[PLACEHOLDER: compare limit reached; remove one option first]",
+        message: "Comparison is full. Remove one option to add another.",
       });
       return;
     }
 
     toggle(option.id);
+    markOptionViewed(option.id);
     addToast({
       tone: selected ? "info" : "success",
       message: selected
-        ? "[PLACEHOLDER: option removed from compare]"
-        : "[PLACEHOLDER: option added to compare]",
+        ? "Removed from comparison."
+        : "Added to comparison.",
     });
   };
 
   return (
-    <Card as="article" className="flex h-full min-w-0 flex-col justify-between">
+    <Card
+      as="article"
+      className={cn(
+        "flex h-full min-w-0 flex-col justify-between",
+        selected
+          ? "border-[color-mix(in_oklab,var(--accent)_55%,var(--border))]"
+          : "",
+      )}
+    >
       <div className="min-w-0">
         <div className="mb-4 flex items-start justify-between gap-3">
           <h3 className="min-w-0 break-words text-lg font-semibold">{option.title}</h3>
@@ -51,8 +63,12 @@ export function OptionCard({ option }: OptionCardProps) {
       </div>
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
-        <Link href={`/options/${option.slug}`} className="text-sm font-medium text-[var(--accent)]">
-          [PLACEHOLDER: view details]
+        <Link
+          href={`/options/${option.slug}`}
+          onClick={() => markOptionViewed(option.id)}
+          className="text-sm font-medium text-[var(--accent)]"
+        >
+          View details
         </Link>
         <Button
           data-option-action="true"
@@ -62,9 +78,7 @@ export function OptionCard({ option }: OptionCardProps) {
           aria-label={`${selected ? "Remove" : "Add"} ${option.title} from compare`}
           aria-describedby={limitReached ? `${option.id}-compare-limit` : undefined}
         >
-          {selected
-            ? "[PLACEHOLDER: remove from compare]"
-            : `[PLACEHOLDER: add to compare (${COMPARE_MAX} max)]`}
+          {selected ? "Remove from compare" : "Add to compare"}
         </Button>
       </div>
       {limitReached ? (
@@ -73,7 +87,7 @@ export function OptionCard({ option }: OptionCardProps) {
           className="mt-4 min-w-0 break-words text-xs text-[var(--danger)]"
           aria-live="polite"
         >
-          [PLACEHOLDER: compare limit reached; remove one selected option to add this]
+          You already selected {COMPARE_MAX} options. Remove one to add this option.
         </p>
       ) : null}
     </Card>

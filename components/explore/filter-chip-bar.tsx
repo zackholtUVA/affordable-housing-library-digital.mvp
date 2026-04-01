@@ -31,7 +31,7 @@ export function FilterChipBar({ filters, onRemove, onClear }: FilterChipBarProps
         </Tag>
       ))}
       <Button type="button" variant="ghost" size="sm" onClick={onClear}>
-        [PLACEHOLDER: reset filters]
+        Reset filters
       </Button>
     </div>
   );

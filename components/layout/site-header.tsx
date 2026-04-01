@@ -18,9 +18,10 @@ function ThemeToggle() {
       variant="secondary"
       size="sm"
       onClick={toggleTheme}
+      className="h-9 px-3 text-xs"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
     >
-      {theme === "dark" ? "Light mode" : "Dark mode"}
+      Theme
     </Button>
   );
 }
@@ -30,7 +31,7 @@ export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const { openCommandPalette } = useUx();
+  const { openShortcutHelp } = useUx();
 
   useEffect(() => {
     const closeMenu = () => setIsMenuOpen(false);
@@ -85,7 +86,7 @@ export function SiteHeader() {
   }, [isMenuOpen]);
 
   return (
-    <header className="surface-3d sticky top-0 z-40 border-b border-[color-mix(in_oklab,var(--border)_84%,transparent)] bg-[color-mix(in_oklab,var(--background)_88%,transparent)] backdrop-blur-xl">
+    <header className="surface-3d sticky top-0 z-40 border-b border-[color-mix(in_oklab,var(--border)_84%,transparent)] bg-[color-mix(in_oklab,var(--background)_92%,transparent)] backdrop-blur-xl">
       <div className="mx-auto flex h-[var(--header-height-mobile)] w-full max-w-[92rem] items-center justify-between px-[var(--space-page-x)] md:h-[var(--header-height-desktop)]">
         <Link href="/" className="text-sm font-semibold tracking-[0.015em] md:text-base">
           {APP_NAME}
@@ -117,26 +118,30 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center gap-3 md:flex">
           <Button
             variant="ghost"
             size="sm"
-            onClick={openCommandPalette}
-            aria-label="Open quick actions"
+            onClick={openShortcutHelp}
+            className="h-9 px-3 text-xs"
+            aria-label="Open keyboard shortcuts help"
           >
-            Quick actions
-            <span className="shape-square surface-3d ml-1 border border-[var(--border)] px-1.5 text-[10px] uppercase tracking-[0.1em] text-[var(--muted)]">
-              Cmd/Ctrl K
-            </span>
+            Help
           </Button>
           <ThemeToggle />
         </div>
 
         <div className="flex items-center gap-3 md:hidden">
-          <Button variant="ghost" size="sm" onClick={openCommandPalette} aria-label="Open quick actions">
-            Actions
-          </Button>
           <ThemeToggle />
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={openShortcutHelp}
+            className="h-9 px-3 text-xs"
+            aria-label="Open keyboard shortcuts help"
+          >
+            Help
+          </Button>
           <Button
             ref={menuButtonRef}
             variant="secondary"

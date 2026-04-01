@@ -65,8 +65,9 @@ export function groupGlossaryTerms(
   terms: GlossaryTerm[],
 ): Record<string, GlossaryTerm[]> {
   return terms.reduce<Record<string, GlossaryTerm[]>>((acc, term) => {
-    const normalized = term.term.replace("[PLACEHOLDER: ", "");
-    const key = normalized.charAt(0).toUpperCase() || "#";
+    const normalized = term.term.trim();
+    const firstLetter = normalized.match(/[A-Za-z]/)?.[0]?.toUpperCase();
+    const key = firstLetter ?? "#";
     if (!acc[key]) {
       acc[key] = [];
     }
@@ -74,4 +75,3 @@ export function groupGlossaryTerms(
     return acc;
   }, {});
 }
-

@@ -8,9 +8,9 @@ export default function NotFound() {
   return (
     <PageShell>
       <Card className="mx-auto max-w-2xl text-center">
-        <h1 className="text-2xl font-semibold">[PLACEHOLDER: page not found]</h1>
+        <h1 className="text-2xl font-semibold">Page not found</h1>
         <p className="mt-3 text-sm text-[var(--muted)]">
-          [PLACEHOLDER: the requested housing option or page could not be found]
+          The page you requested could not be found. You can continue browsing options from the explore page.
         </p>
         <div className="mt-6">
           <Link href="/explore">
@@ -21,4 +21,3 @@ export default function NotFound() {
     </PageShell>
   );
 }
-

@@ -11,6 +11,7 @@ import { OptionHero } from "@/components/option/option-hero";
 import { OptionSummary } from "@/components/option/option-summary";
 import { PolicyContextSection } from "@/components/option/policy-context-section";
 import { RelatedOptions } from "@/components/option/related-options";
+import { ReviewSection } from "@/components/option/review-section";
 import { TradeoffSection } from "@/components/option/tradeoff-section";
 import { DETAIL_DISCLAIMER } from "@/lib/constants";
 import { getHousingOptionBySlug, housingOptionsBySlug } from "@/data/housing-options";
@@ -49,7 +50,7 @@ export default async function OptionDetailPage({
       <div className="flex min-w-0 flex-wrap items-center justify-between gap-4">
         <OptionActions optionId={option.id} />
         <Link href="/compare" className="text-sm font-medium text-[var(--accent)]">
-          [PLACEHOLDER: view compare page]
+          View compare
         </Link>
       </div>
 
@@ -57,13 +58,14 @@ export default async function OptionDetailPage({
         <OptionSummary option={option} />
         <FitSection option={option} />
         <TradeoffSection option={option} />
+        <ReviewSection option={option} />
         <PolicyContextSection option={option} />
       </div>
 
       <NextStepSection option={option} />
       <RelatedOptions options={relatedOptions} />
 
-      <InfoCallout title="[PLACEHOLDER: informational disclaimer]" tone="warning">
+      <InfoCallout title="Informational guidance only" tone="warning">
         {DETAIL_DISCLAIMER}
       </InfoCallout>
     </PageShell>

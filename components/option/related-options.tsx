@@ -10,7 +10,7 @@ type RelatedOptionsProps = {
 export function RelatedOptions({ options }: RelatedOptionsProps) {
   return (
     <Card as="section">
-      <h2 className="text-xl font-semibold">[PLACEHOLDER: related options]</h2>
+      <h2 className="text-xl font-semibold">Related options</h2>
       <div className="mt-6 grid gap-5 md:grid-cols-2">
         {options.map((option) => (
           <Link

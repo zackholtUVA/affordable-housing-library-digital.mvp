@@ -25,8 +25,8 @@ export default function HomePage() {
         <HowItWorks />
       </div>
       <div className="fade-in">
-        <InfoCallout title="[PLACEHOLDER: trust and limitations]" tone="warning">
-          [PLACEHOLDER: this tool is informational and nonbinding; users should consult qualified local professionals]
+        <InfoCallout title="Trust and limitations" tone="warning">
+          This library helps you compare pathways and prepare questions. Final decisions should always be confirmed with local planning staff and qualified professionals.
         </InfoCallout>
       </div>
     </PageShell>

@@ -13,8 +13,8 @@ export function PathwayGrid({ pathways }: PathwayGridProps) {
     <section className="space-y-[var(--space-stack)]">
       <SectionHeading
         eyebrow="Start with your situation"
-        title="[PLACEHOLDER: pathway section heading]"
-        description="[PLACEHOLDER: pathway section support copy]"
+        title="Choose the scenario that best matches your current goal"
+        description="Each pathway opens a focused set of options so you can compare tradeoffs without starting from scratch."
       />
       <div className="grid gap-[var(--space-stack)] md:grid-cols-2 lg:grid-cols-3">
         {pathways.map((pathway) => (
@@ -30,7 +30,7 @@ export function PathwayGrid({ pathways }: PathwayGridProps) {
                 href={`/options/${pathway.linkedOptionIds[0]}`}
                 className="text-sm font-medium text-[var(--accent)]"
               >
-                [PLACEHOLDER: start here]
+                View options
               </Link>
             </div>
           </Card>

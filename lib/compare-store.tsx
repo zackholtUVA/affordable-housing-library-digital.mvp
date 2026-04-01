@@ -18,6 +18,7 @@ type CompareAction =
   | { type: "add"; id: string }
   | { type: "remove"; id: string }
   | { type: "toggle"; id: string }
+  | { type: "replace"; ids: string[] }
   | { type: "clear" };
 
 type CompareContextValue = {
@@ -25,6 +26,7 @@ type CompareContextValue = {
   add: (id: string) => void;
   remove: (id: string) => void;
   toggle: (id: string) => void;
+  replace: (ids: string[]) => void;
   clear: () => void;
   isSelected: (id: string) => boolean;
   isFull: boolean;
@@ -52,6 +54,10 @@ function compareReducer(state: CompareState, action: CompareAction): CompareStat
         : compareReducer(state, { type: "add", id: action.id });
     case "clear":
       return initialState;
+    case "replace": {
+      const deduped = action.ids.filter((id, index, all) => all.indexOf(id) === index);
+      return { selectedIds: deduped.slice(0, COMPARE_MAX) };
+    }
     default:
       return state;
   }
@@ -68,6 +74,7 @@ export function CompareProvider({ children }: { children: ReactNode }) {
       add: (id) => dispatch({ type: "add", id }),
       remove: (id) => dispatch({ type: "remove", id }),
       toggle: (id) => dispatch({ type: "toggle", id }),
+      replace: (ids) => dispatch({ type: "replace", ids }),
       clear: () => dispatch({ type: "clear" }),
       isSelected: (id) => state.selectedIds.includes(id),
       isFull: state.selectedIds.length >= COMPARE_MAX,
@@ -85,4 +92,3 @@ export function useCompareStore(): CompareContextValue {
   }
   return value;
 }
-

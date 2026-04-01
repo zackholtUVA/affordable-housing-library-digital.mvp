@@ -124,9 +124,8 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
           <div
             style={{
               textAlign: "right",
-              fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
               color: "var(--halide-accent)",
-              fontSize: "0.7rem",
+              fontSize: "0.74rem",
             }}
           >
             {content.telemetryLines.map((line) => (
@@ -137,29 +136,20 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
           <h1 className="hero-title">{content.title}</h1>
           <p className="hero-subtitle">{content.subtitle}</p>
 
-          <div
-            style={{
-              gridColumn: "1 / -1",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-end",
-              gap: "1rem",
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
-                fontSize: "0.75rem",
-              }}
-            >
+          <div className="hero-support">
+            <div className="hero-bullets">
               {content.bottomLeftLines.map((line) => (
                 <p key={line}>{line}</p>
               ))}
             </div>
-
-            <Link href={content.ctaHref} className="cta-button">
-              {content.ctaLabel}
-            </Link>
+            <div className="hero-action-row">
+              <Link href={content.ctaHref} className="cta-button">
+                {content.ctaLabel}
+              </Link>
+              <Link href="/basics" className="cta-button cta-button-secondary">
+                Learn how this works
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -187,7 +177,7 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
         <div className="scroll-hint" aria-hidden="true" />
       </div>
 
-      <style jsx>{`
+      <style>{`
         .halide-body {
           --halide-bg: color-mix(in oklab, var(--surface) 84%, var(--background));
           --halide-silver: color-mix(in oklab, var(--text) 90%, white);
@@ -271,22 +261,21 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
         .hero-title {
           grid-column: 1 / -1;
           align-self: end;
-          max-width: min(14ch, 92%);
-          font-size: clamp(2.1rem, 8.5vw, 6.2rem);
-          line-height: 0.92;
+          max-width: min(16ch, 94%);
+          font-size: clamp(1.8rem, 6.4vw, 4.4rem);
+          line-height: 0.98;
           letter-spacing: -0.038em;
           text-wrap: balance;
-          text-transform: uppercase;
           color: var(--halide-title);
           text-shadow: 0 8px 28px color-mix(in oklab, var(--background) 38%, transparent);
         }
 
         .hero-subtitle {
           grid-column: 1 / -1;
-          max-width: 62ch;
-          margin-top: 0.6rem;
+          max-width: 58ch;
+          margin-top: 0.7rem;
           text-wrap: balance;
-          font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+          font-size: clamp(0.95rem, 1.6vw, 1.1rem);
           color: color-mix(in oklab, var(--halide-silver) 70%, transparent);
         }
 
@@ -302,9 +291,10 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
           pointer-events: auto;
           background: var(--halide-silver);
           color: var(--halide-bg);
-          padding: 1rem 2rem;
+          padding: 0.92rem 1.5rem;
           text-decoration: none;
-          font-weight: 700;
+          font-weight: 600;
+          font-size: 0.92rem;
           clip-path: polygon(0 0, 100% 0, 100% 70%, 85% 100%, 0 100%);
           transition: 0.3s;
         }
@@ -312,6 +302,42 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
         .cta-button:hover {
           background: var(--halide-accent);
           transform: translateY(-4px);
+        }
+
+        .cta-button-secondary {
+          background: color-mix(in oklab, var(--halide-bg) 68%, var(--halide-silver));
+          color: var(--halide-silver);
+        }
+
+        .cta-button-secondary:hover {
+          background: color-mix(in oklab, var(--halide-bg) 52%, var(--halide-accent));
+        }
+
+        .hero-support {
+          grid-column: 1 / -1;
+          margin-top: 1rem;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 1rem 1.6rem;
+        }
+
+        .hero-bullets {
+          font-size: 0.8rem;
+          color: color-mix(in oklab, var(--halide-silver) 72%, transparent);
+          line-height: 1.45;
+        }
+
+        .hero-bullets p + p {
+          margin-top: 0.3rem;
+        }
+
+        .hero-action-row {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          gap: 0.75rem;
         }
 
         .scroll-hint {
@@ -343,7 +369,7 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
         @media (max-width: 960px) {
           .hero-title {
             max-width: 100%;
-            font-size: clamp(2rem, 12vw, 4.2rem);
+            font-size: clamp(1.8rem, 9.8vw, 3.1rem);
           }
 
           .canvas-3d {
@@ -353,6 +379,14 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
           .interface-grid {
             grid-template-columns: 1fr;
             grid-template-rows: auto auto 1fr auto;
+          }
+
+          .hero-support {
+            margin-top: 0.8rem;
+          }
+
+          .hero-action-row {
+            width: 100%;
           }
         }
 

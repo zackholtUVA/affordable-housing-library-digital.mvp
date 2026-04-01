@@ -3,16 +3,19 @@ import userEvent from "@testing-library/user-event";
 
 import { OptionCard } from "@/components/explore/option-card";
 import { CompareProvider } from "@/lib/compare-store";
+import { SessionContextProvider } from "@/lib/session-context";
 import { housingOptions } from "@/data/housing-options";
 
 function renderGrid() {
   return render(
     <CompareProvider>
-      <div>
-        {housingOptions.slice(0, 4).map((option) => (
-          <OptionCard key={option.id} option={option} />
-        ))}
-      </div>
+      <SessionContextProvider>
+        <div>
+          {housingOptions.slice(0, 4).map((option) => (
+            <OptionCard key={option.id} option={option} />
+          ))}
+        </div>
+      </SessionContextProvider>
     </CompareProvider>,
   );
 }
@@ -23,7 +26,7 @@ describe("OptionCard compare behavior", () => {
     renderGrid();
 
     const buttons = screen.getAllByRole("button", {
-      name: /add \[PLACEHOLDER: option title \d\] from compare/i,
+      name: /add .* from compare/i,
     });
 
     await user.click(buttons[0]);
@@ -33,12 +36,12 @@ describe("OptionCard compare behavior", () => {
 
     expect(
       screen.getByRole("button", {
-        name: /remove \[PLACEHOLDER: option title 1\] from compare/i,
+        name: new RegExp(`remove ${housingOptions[0].title} from compare`, "i"),
       }),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        "[PLACEHOLDER: compare limit reached; remove one selected option to add this]",
+        "You already selected 3 options. Remove one to add this option.",
       ),
     ).toBeInTheDocument();
   });

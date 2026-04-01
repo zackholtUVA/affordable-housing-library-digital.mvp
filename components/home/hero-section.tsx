@@ -27,12 +27,11 @@ export function HeroSection() {
         </div>
       </Card>
       <Card className="h-full bg-[color-mix(in_oklab,var(--accent)_12%,var(--surface))]">
-        <h2 className="text-lg font-semibold">[PLACEHOLDER: trust and limitations note]</h2>
+        <h2 className="text-lg font-semibold">Important context</h2>
         <p className="mt-2 text-sm text-[var(--muted)]">
-          [PLACEHOLDER: explain informational purpose and nonbinding guidance]
+          This tool is for early planning. Always confirm parcel-specific feasibility with local planning staff and licensed professionals.
         </p>
       </Card>
     </section>
   );
 }
-

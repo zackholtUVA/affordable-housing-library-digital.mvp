@@ -12,7 +12,6 @@ import {
   type ReactNode,
 } from "react";
 
-import { COMPARE_MAX } from "@/lib/constants";
 import { MOTION_PRESET, type MotionPreset } from "@/lib/motion";
 import { useCompareStore } from "@/lib/compare-store";
 import { useTheme } from "@/lib/theme";
@@ -61,7 +60,7 @@ export function UxProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const { toggleTheme, theme } = useTheme();
-  const { selectedIds, clear } = useCompareStore();
+  const { clear } = useCompareStore();
 
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [shortcutHelpOpen, setShortcutHelpOpen] = useState(false);
@@ -144,7 +143,7 @@ export function UxProvider({ children }: { children: ReactNode }) {
           clear();
           addToast({
             tone: "info",
-            message: "[PLACEHOLDER: compare list cleared]",
+            message: "Comparison list cleared.",
           });
         },
       },
@@ -250,7 +249,7 @@ export function UxProvider({ children }: { children: ReactNode }) {
           router.push(routeShortcut.href);
           addToast({
             tone: "info",
-            message: `[PLACEHOLDER: shortcut used] ${routeShortcut.title}`,
+            message: `${routeShortcut.title}.`,
             durationMs: 1800,
           });
         }
@@ -323,7 +322,7 @@ export function UxProvider({ children }: { children: ReactNode }) {
           className="fixed inset-0 z-[90] flex items-start justify-center bg-black/55 p-4 pt-24 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
-          aria-label="Quick actions"
+          aria-label="Command menu"
           onClick={closeOverlays}
         >
           <div
@@ -357,7 +356,7 @@ export function UxProvider({ children }: { children: ReactNode }) {
                     }
                   }
                 }}
-                placeholder="[PLACEHOLDER: search actions, pages, and shortcuts]"
+                placeholder="Search actions, pages, and shortcuts"
                 className="shape-angular-md surface-3d h-11 w-full border border-[var(--border)] bg-[var(--surface-2)] px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
               />
             </div>
@@ -388,7 +387,7 @@ export function UxProvider({ children }: { children: ReactNode }) {
               ))}
               {filteredCommands.length === 0 ? (
                 <p className="px-3 py-4 text-sm text-[var(--muted)]">
-                  [PLACEHOLDER: no matching command]
+                  No matching command found.
                 </p>
               ) : null}
             </div>
@@ -446,18 +445,6 @@ export function UxProvider({ children }: { children: ReactNode }) {
           </div>
         ))}
       </div>
-
-      {goPrefixArmed ? (
-        <div className="shape-angular-sm surface-3d pointer-events-none fixed bottom-6 left-4 z-[85] border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs uppercase tracking-[0.16em] text-[var(--muted)]">
-          g ...
-        </div>
-      ) : null}
-
-      {selectedIds.length >= COMPARE_MAX ? (
-        <div className="shape-angular-sm surface-3d pointer-events-none fixed bottom-24 left-1/2 z-[84] -translate-x-1/2 border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs text-[var(--muted)]">
-          [PLACEHOLDER: compare limit reached]
-        </div>
-      ) : null}
     </UxContext.Provider>
   );
 }

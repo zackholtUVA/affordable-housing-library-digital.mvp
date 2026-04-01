@@ -9,6 +9,7 @@ import { FilterChipBar } from "@/components/explore/filter-chip-bar";
 import { FilterPanel } from "@/components/explore/filter-panel";
 import { OptionGrid } from "@/components/explore/option-grid";
 import { SearchBar } from "@/components/explore/search-bar";
+import { PlausibilityLegend } from "@/components/shared/plausibility-legend";
 import { filterGroups } from "@/data/filters";
 import { housingOptions } from "@/data/housing-options";
 import {
@@ -74,10 +75,10 @@ export default function ExplorePage() {
     <PageShell className="space-y-[var(--space-section)]">
       <header className="space-y-4">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-          [PLACEHOLDER: explore page heading]
+          Explore housing pathways
         </h1>
         <p className="max-w-3xl text-[var(--muted)]">
-          [PLACEHOLDER: browse and narrow options using plain-language search and filters]
+          Browse options in plain language, then add a few to compare side by side before deciding what to pursue next.
         </p>
       </header>
 
@@ -89,6 +90,9 @@ export default function ExplorePage() {
             inputRef={searchInputRef}
             onArrowDown={focusFirstResultAction}
           />
+          <p className="text-xs leading-relaxed text-[var(--muted)]">
+            Tip: start broad, compare two or three options, then narrow by feasibility and timing.
+          </p>
           <FilterPanel groups={filterGroups} filters={filters} onToggle={toggleFilter} />
         </div>
 
@@ -100,12 +104,14 @@ export default function ExplorePage() {
               onClick={resetFilters}
               className="shape-angular-sm surface-3d surface-3d-interactive border border-[var(--border)] px-3 py-1.5 text-xs font-medium text-[var(--muted)] hover:bg-[var(--surface-2)]"
             >
-              [PLACEHOLDER: clear all + reset search]
+              Clear all + reset search
             </button>
             <span className="ml-auto min-w-0 break-words text-[10px] uppercase tracking-[0.14em] text-[var(--muted)] max-md:w-full md:text-right">
-              [PLACEHOLDER: tip: press / to focus search]
+              Use badges to judge feasibility level
             </span>
           </div>
+
+          <PlausibilityLegend compact />
 
           <div ref={resultsRegionRef} className="min-w-0">
             {filtered.length > 0 ? (
@@ -117,8 +123,8 @@ export default function ExplorePage() {
 
           {!hasActiveFilters && query.length === 0 ? (
             <SharedEmptyState
-              title="[PLACEHOLDER: compare guidance title]"
-              description="[PLACEHOLDER: select up to three options to activate the sticky compare tray]"
+              title="Build your comparison set as you browse"
+              description="Select up to three options to activate the compare tray and open a side-by-side view."
             />
           ) : null}
         </section>
