@@ -3,7 +3,7 @@ import { render, screen, within } from "@testing-library/react";
 import { SiteHeader } from "@/components/layout/site-header";
 
 describe("SiteHeader", () => {
-  it("renders only primary navigation destinations in chrome", () => {
+  it("renders primary navigation and help controls in chrome", () => {
     render(<SiteHeader />);
 
     const primaryNav = screen.getByRole("navigation", { name: "Primary" });
@@ -25,9 +25,7 @@ describe("SiteHeader", () => {
       "/next-steps",
     );
 
+    expect(screen.getAllByRole("button", { name: /open keyboard shortcuts help/i })).toHaveLength(2);
     expect(screen.queryByRole("button", { name: /switch to/i })).not.toBeInTheDocument();
-    expect(
-      screen.queryByRole("button", { name: /open keyboard shortcuts help/i }),
-    ).not.toBeInTheDocument();
   });
 });

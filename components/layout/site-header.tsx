@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { APP_NAME, NAV_ITEMS } from "@/lib/constants";
 import { Button } from "@/components/shared/button";
+import { useUx } from "@/lib/ux";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
@@ -13,6 +14,7 @@ export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const { openShortcutHelp } = useUx();
 
   useEffect(() => {
     const closeMenu = () => setIsMenuOpen(false);
@@ -99,7 +101,31 @@ export function SiteHeader() {
           })}
         </nav>
 
+        <div className="hidden items-center gap-3 md:flex">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={openShortcutHelp}
+            className="h-9 px-3 text-xs"
+            aria-label="Open keyboard shortcuts help"
+          >
+            Help
+          </Button>
+        </div>
+
         <div className="flex items-center gap-3 md:hidden">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => {
+              setIsMenuOpen(false);
+              openShortcutHelp();
+            }}
+            className="h-9 px-3 text-xs"
+            aria-label="Open keyboard shortcuts help"
+          >
+            Help
+          </Button>
           <Button
             ref={menuButtonRef}
             variant="secondary"
