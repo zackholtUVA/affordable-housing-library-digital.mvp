@@ -2,9 +2,13 @@ import { HOW_IT_WORKS_STEPS } from "@/lib/constants";
 import { Card } from "@/components/shared/card";
 import { SectionHeading } from "@/components/shared/section-heading";
 
-export function HowItWorks() {
+type HowItWorksProps = {
+  id?: string;
+};
+
+export function HowItWorks({ id }: HowItWorksProps) {
   return (
-    <section className="space-y-[var(--space-stack)]">
+    <section id={id} className="space-y-[var(--space-stack)]">
       <SectionHeading
         eyebrow="How it works"
         title="A three-step workflow for clearer housing decisions"

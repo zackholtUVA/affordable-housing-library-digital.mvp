@@ -37,7 +37,7 @@ const UxContext = createContext<UxContextValue>(defaultUxContext);
 
 const GO_SHORTCUT_MAP: Record<string, { href: string; id: ShortcutId; title: string }> = {
   h: { href: "/", id: "goHome", title: "Go to Home" },
-  e: { href: "/explore", id: "goExplore", title: "Go to Explore" },
+  e: { href: "/start", id: "goExplore", title: "Go to Explore options" },
   c: { href: "/compare", id: "goCompare", title: "Go to Compare" },
   n: { href: "/next-steps", id: "goNextSteps", title: "Go to Next Steps" },
   b: { href: "/basics", id: "goBasics", title: "Go to Basics" },
@@ -100,10 +100,10 @@ export function UxProvider({ children }: { children: ReactNode }) {
       { id: "go-home", title: "Go to Home", section: "Navigate", shortcut: "g h", run: () => router.push("/") },
       {
         id: "go-explore",
-        title: "Go to Explore",
+        title: "Go to Explore options",
         section: "Navigate",
         shortcut: "g e",
-        run: () => router.push("/explore"),
+        run: () => router.push("/start"),
       },
       {
         id: "go-compare",

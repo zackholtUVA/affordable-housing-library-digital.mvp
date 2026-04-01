@@ -5,33 +5,14 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { APP_NAME, NAV_ITEMS } from "@/lib/constants";
-import { useTheme } from "@/lib/theme";
-import { useUx } from "@/lib/ux";
 import { Button } from "@/components/shared/button";
 import { cn } from "@/lib/utils";
-
-function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
-
-  return (
-    <Button
-      variant="secondary"
-      size="sm"
-      onClick={toggleTheme}
-      className="h-9 px-3 text-xs"
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
-    >
-      Theme
-    </Button>
-  );
-}
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const { openShortcutHelp } = useUx();
 
   useEffect(() => {
     const closeMenu = () => setIsMenuOpen(false);
@@ -118,30 +99,7 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={openShortcutHelp}
-            className="h-9 px-3 text-xs"
-            aria-label="Open keyboard shortcuts help"
-          >
-            Help
-          </Button>
-          <ThemeToggle />
-        </div>
-
         <div className="flex items-center gap-3 md:hidden">
-          <ThemeToggle />
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={openShortcutHelp}
-            className="h-9 px-3 text-xs"
-            aria-label="Open keyboard shortcuts help"
-          >
-            Help
-          </Button>
           <Button
             ref={menuButtonRef}
             variant="secondary"
@@ -155,32 +113,31 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <div
-        id="mobile-nav"
-        ref={menuRef}
-        className={cn(
-          "surface-3d overflow-hidden border-t border-[var(--border)] transition-[max-height,opacity] duration-300 ease-[var(--motion-easing-standard)] md:hidden",
-          isMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0",
-        )}
-      >
-        <nav className="mx-auto flex max-w-[92rem] flex-col gap-3 px-[var(--space-page-x)] py-5" aria-label="Mobile">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setIsMenuOpen(false)}
-              className={cn(
-                "shape-angular-sm surface-3d px-4 py-2.5 text-sm transition-colors",
-                pathname === item.href
-                  ? "bg-[var(--surface-2)] text-[var(--text)]"
-                  : "text-[var(--muted)] hover:bg-[var(--surface-2)]",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
+      {isMenuOpen ? (
+        <div
+          id="mobile-nav"
+          ref={menuRef}
+          className="surface-3d overflow-hidden border-t border-[var(--border)] transition-[max-height,opacity] duration-300 ease-[var(--motion-easing-standard)] md:hidden"
+        >
+          <nav className="mx-auto flex max-w-[92rem] flex-col gap-3 px-[var(--space-page-x)] py-5" aria-label="Mobile">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsMenuOpen(false)}
+                className={cn(
+                  "shape-angular-sm surface-3d px-4 py-2.5 text-sm transition-colors",
+                  pathname === item.href
+                    ? "bg-[var(--surface-2)] text-[var(--text)]"
+                    : "text-[var(--muted)] hover:bg-[var(--surface-2)]",
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      ) : null}
     </header>
   );
 }

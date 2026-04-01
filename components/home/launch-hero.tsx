@@ -3,18 +3,13 @@ import { CTA_LABELS } from "@/lib/constants";
 import type { HalideHeroContent } from "@/lib/types";
 
 const launchHeroContent: HalideHeroContent = {
-  kicker: "Affordable Housing Library",
-  archiveLabel: "Planning guidance for early housing decisions",
   title: "Compare Affordable Housing Paths with Confidence",
   subtitle:
-    "Explore realistic options, weigh tradeoffs, and move toward practical next steps with clearer direction.",
-  telemetryLines: ["Community-facing decision support", "Built for plain-language comparison"],
+    "Explore realistic options, understand tradeoffs, and prepare better conversations with local experts.",
   ctaLabel: CTA_LABELS.explore,
-  ctaHref: "/explore",
-  bottomLeftLines: [
-    "Start with your situation and goals",
-    "Use side-by-side comparison before contacting local experts",
-  ],
+  ctaHref: "/start",
+  secondaryCtaLabel: "Learn how this works",
+  secondaryCtaHref: "/start#how-it-works",
 };
 
 export function LaunchHeroSection() {

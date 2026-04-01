@@ -60,29 +60,29 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
       layersRef.current.forEach((layer, index) => {
         if (!layer) return;
         const depth = safeLayers[index]?.depth ?? (index + 1) * 18;
-        const moveX = x * (index + 1) * 0.2;
-        const moveY = y * (index + 1) * 0.2;
+        const moveX = x * (index + 1) * 0.16;
+        const moveY = y * (index + 1) * 0.16;
         layer.style.transform = `translateZ(${depth}px) translate(${moveX}px, ${moveY}px)`;
       });
     };
 
     const handleMouseMove = (event: MouseEvent) => {
-      const x = (window.innerWidth / 2 - event.clientX) / 25;
-      const y = (window.innerHeight / 2 - event.clientY) / 25;
+      const x = (window.innerWidth / 2 - event.clientX) / 34;
+      const y = (window.innerHeight / 2 - event.clientY) / 34;
 
-      canvas.style.transform = `rotateX(${55 + y / 2}deg) rotateZ(${-25 + x / 2}deg) scale(1)`;
+      canvas.style.transform = `rotateX(${50 + y / 3}deg) rotateZ(${-18 + x / 3}deg) scale(1)`;
       applyLayerTransforms(x, y);
     };
 
     canvas.style.opacity = "0";
-    canvas.style.transform = "rotateX(90deg) rotateZ(0deg) scale(0.82)";
+    canvas.style.transform = "rotateX(88deg) rotateZ(0deg) scale(0.84)";
 
     const timeout = window.setTimeout(() => {
-      canvas.style.transition = "all 2.4s cubic-bezier(0.16, 1, 0.3, 1)";
+      canvas.style.transition = "all 2.1s cubic-bezier(0.16, 1, 0.3, 1)";
       canvas.style.opacity = "1";
-      canvas.style.transform = "rotateX(55deg) rotateZ(-25deg) scale(1)";
+      canvas.style.transform = "rotateX(50deg) rotateZ(-18deg) scale(1)";
       applyLayerTransforms(0, 0);
-    }, 220);
+    }, 180);
 
     if (!reducedMotion) {
       window.addEventListener("mousemove", handleMouseMove, { passive: true });
@@ -102,7 +102,7 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
       )}
       aria-label="Launch hero"
     >
-      <div className="halide-body min-h-[min(86vh,980px)]">
+      <div className="halide-body">
         <svg aria-hidden="true" style={{ position: "absolute", width: 0, height: 0 }}>
           <filter id="halide-grain-filter">
             <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" />
@@ -110,79 +110,56 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
           </filter>
         </svg>
 
-        <div
-          className="halide-grain"
-          aria-hidden="true"
-          style={{ filter: "url(#halide-grain-filter)" }}
-        />
+        <div className="halide-grain" aria-hidden="true" style={{ filter: "url(#halide-grain-filter)" }} />
 
-        <div className="interface-grid">
-          <div style={{ fontWeight: 700 }}>
-            <div>{content.kicker}</div>
-            <div className="archive-label">{content.archiveLabel}</div>
-          </div>
-          <div
-            style={{
-              textAlign: "right",
-              color: "var(--halide-accent)",
-              fontSize: "0.74rem",
-            }}
-          >
-            {content.telemetryLines.map((line) => (
-              <div key={line}>{line}</div>
-            ))}
-          </div>
-
-          <h1 className="hero-title">{content.title}</h1>
-          <p className="hero-subtitle">{content.subtitle}</p>
-
-          <div className="hero-support">
-            <div className="hero-bullets">
-              {content.bottomLeftLines.map((line) => (
-                <p key={line}>{line}</p>
-              ))}
+        <div className="entry-shell">
+          <div className="hero-visual" aria-hidden="true">
+            <div className="viewport">
+              <div className="canvas-3d" ref={canvasRef}>
+                {safeLayers.map((layer, index) => (
+                  <div
+                    key={layer.id}
+                    ref={(el) => {
+                      layersRef.current[index] = el;
+                    }}
+                    className="layer"
+                    style={{
+                      backgroundImage: layer.background,
+                      filter: layer.filter,
+                      opacity: layer.opacity,
+                      mixBlendMode: layer.blendMode ?? "normal",
+                    }}
+                  />
+                ))}
+                <div className="contours" />
+              </div>
             </div>
-            <div className="hero-action-row">
-              <Link href={content.ctaHref} className="cta-button">
+          </div>
+
+          <div className="hero-content">
+            {content.kicker ? <p className="hero-kicker">{content.kicker}</p> : null}
+            <h1 className="hero-title">{content.title}</h1>
+            <p className="hero-subtitle">{content.subtitle}</p>
+            <div className="hero-actions">
+              <Link href={content.ctaHref} className="hero-primary-cta">
                 {content.ctaLabel}
               </Link>
-              <Link href="/basics" className="cta-button cta-button-secondary">
-                Learn how this works
-              </Link>
             </div>
+            {content.secondaryCtaLabel && content.secondaryCtaHref ? (
+              <Link href={content.secondaryCtaHref} className="hero-secondary-link">
+                {content.secondaryCtaLabel}
+              </Link>
+            ) : null}
           </div>
         </div>
-
-        <div className="viewport" aria-hidden="true">
-          <div className="canvas-3d" ref={canvasRef}>
-            {safeLayers.map((layer, index) => (
-              <div
-                key={layer.id}
-                ref={(el) => {
-                  layersRef.current[index] = el;
-                }}
-                className="layer"
-                style={{
-                  backgroundImage: layer.background,
-                  filter: layer.filter,
-                  opacity: layer.opacity,
-                  mixBlendMode: layer.blendMode ?? "normal",
-                }}
-              />
-            ))}
-            <div className="contours" />
-          </div>
-        </div>
-
-        <div className="scroll-hint" aria-hidden="true" />
       </div>
 
       <style>{`
         .halide-body {
           --halide-bg: color-mix(in oklab, var(--surface) 84%, var(--background));
           --halide-silver: color-mix(in oklab, var(--text) 90%, white);
-          --halide-title: color-mix(in oklab, var(--text) 94%, #1f2b45);
-          --halide-accent: color-mix(in oklab, var(--accent) 76%, #b7dcff);
+          --halide-title: color-mix(in oklab, var(--text) 95%, #1f2b45);
+          --halide-accent: color-mix(in oklab, var(--accent) 78%, #b7dcff);
           --halide-panel-base: color-mix(in oklab, var(--surface-2) 78%, #9fa9bb);
           --halide-panel-line: color-mix(in oklab, var(--text) 12%, transparent);
           --halide-highlight: color-mix(in oklab, var(--accent) 42%, white);
@@ -192,6 +169,7 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
           color: var(--halide-silver);
           overflow: hidden;
           width: 100%;
+          min-height: 80vh;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -203,6 +181,27 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
           pointer-events: none;
           z-index: 20;
           opacity: var(--halide-grain-opacity);
+        }
+
+        .entry-shell {
+          width: min(100%, 1100px);
+          margin: 0 auto;
+          min-height: 80vh;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: clamp(1.25rem, 4.8vw, 4.5rem);
+        }
+
+        .hero-visual {
+          position: absolute;
+          inset: clamp(0.5rem, 2vw, 1rem);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0.92;
+          pointer-events: none;
         }
 
         .viewport {
@@ -217,7 +216,7 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
 
         .canvas-3d {
           position: relative;
-          width: min(94vw, 920px);
+          width: min(92vw, 980px);
           aspect-ratio: 8 / 5;
           transform-style: preserve-3d;
           transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -247,154 +246,118 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
           pointer-events: none;
         }
 
-        .interface-grid {
-          position: absolute;
-          inset: 0;
-          padding: clamp(1rem, 4vw, 4rem);
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-template-rows: auto 1fr auto;
+        .hero-content {
+          position: relative;
           z-index: 10;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 24px;
+          text-align: center;
           pointer-events: none;
+          animation: heroFade 460ms ease-out both;
+        }
+
+        .hero-kicker {
+          margin: 0;
+          text-transform: uppercase;
+          letter-spacing: 0.14em;
+          font-size: 0.76rem;
+          color: color-mix(in oklab, var(--halide-silver) 70%, transparent);
         }
 
         .hero-title {
-          grid-column: 1 / -1;
-          align-self: end;
-          max-width: min(16ch, 94%);
-          font-size: clamp(1.8rem, 6.4vw, 4.4rem);
-          line-height: 0.98;
-          letter-spacing: -0.038em;
+          margin: 0;
+          max-width: 640px;
+          font-size: clamp(28px, 4vw, 42px);
+          font-weight: 500;
+          line-height: 1.1;
+          letter-spacing: -0.024em;
           text-wrap: balance;
           color: var(--halide-title);
-          text-shadow: 0 8px 28px color-mix(in oklab, var(--background) 38%, transparent);
+          text-shadow: 0 10px 28px color-mix(in oklab, var(--background) 40%, transparent);
         }
 
         .hero-subtitle {
-          grid-column: 1 / -1;
-          max-width: 58ch;
-          margin-top: 0.7rem;
+          margin: 0;
+          max-width: 560px;
+          opacity: 0.75;
+          font-size: 16px;
+          line-height: 1.6;
           text-wrap: balance;
-          font-size: clamp(0.95rem, 1.6vw, 1.1rem);
-          color: color-mix(in oklab, var(--halide-silver) 70%, transparent);
-        }
-
-        .archive-label {
-          margin-top: 0.3rem;
-          font-size: 0.68rem;
-          letter-spacing: 0.09em;
-          text-transform: uppercase;
-          color: color-mix(in oklab, var(--halide-silver) 70%, transparent);
-        }
-
-        .cta-button {
-          pointer-events: auto;
-          background: var(--halide-silver);
-          color: var(--halide-bg);
-          padding: 0.92rem 1.5rem;
-          text-decoration: none;
-          font-weight: 600;
-          font-size: 0.92rem;
-          clip-path: polygon(0 0, 100% 0, 100% 70%, 85% 100%, 0 100%);
-          transition: 0.3s;
-        }
-
-        .cta-button:hover {
-          background: var(--halide-accent);
-          transform: translateY(-4px);
-        }
-
-        .cta-button-secondary {
-          background: color-mix(in oklab, var(--halide-bg) 68%, var(--halide-silver));
           color: var(--halide-silver);
         }
 
-        .cta-button-secondary:hover {
-          background: color-mix(in oklab, var(--halide-bg) 52%, var(--halide-accent));
+        .hero-actions {
+          margin-top: 12px;
+          pointer-events: auto;
         }
 
-        .hero-support {
-          grid-column: 1 / -1;
-          margin-top: 1rem;
-          display: flex;
-          flex-wrap: wrap;
-          align-items: flex-start;
-          justify-content: space-between;
-          gap: 1rem 1.6rem;
+        .hero-primary-cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--halide-accent);
+          color: color-mix(in oklab, var(--halide-bg) 92%, black);
+          text-decoration: none;
+          padding: 12px 20px;
+          font-size: 15px;
+          font-weight: 500;
+          border-radius: 8px;
+          border: 1px solid color-mix(in oklab, var(--halide-accent) 72%, white);
+          box-shadow: 0 12px 28px -16px color-mix(in oklab, var(--halide-bg) 72%, black);
+          transition: transform 180ms ease, filter 180ms ease;
         }
 
-        .hero-bullets {
-          font-size: 0.8rem;
-          color: color-mix(in oklab, var(--halide-silver) 72%, transparent);
-          line-height: 1.45;
+        .hero-primary-cta:hover {
+          transform: translateY(-2px);
+          filter: brightness(1.03);
         }
 
-        .hero-bullets p + p {
-          margin-top: 0.3rem;
+        .hero-secondary-link {
+          pointer-events: auto;
+          font-size: 14px;
+          color: color-mix(in oklab, var(--halide-silver) 84%, transparent);
+          text-decoration: none;
+          border-bottom: 1px solid color-mix(in oklab, var(--halide-silver) 52%, transparent);
         }
 
-        .hero-action-row {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: flex-start;
-          gap: 0.75rem;
+        .hero-secondary-link:hover {
+          color: var(--halide-silver);
+          border-bottom-color: color-mix(in oklab, var(--halide-silver) 80%, transparent);
         }
 
-        .scroll-hint {
-          position: absolute;
-          bottom: 1.6rem;
-          left: 50%;
-          width: 1px;
-          height: 60px;
-          background: linear-gradient(to bottom, var(--halide-silver), transparent);
-          animation: flow 2s infinite ease-in-out;
-        }
-
-        @keyframes flow {
-          0%,
-          100% {
-            transform: scaleY(0);
-            transform-origin: top;
+        @keyframes heroFade {
+          from {
+            opacity: 0;
+            transform: translateY(8px);
           }
-          50% {
-            transform: scaleY(1);
-            transform-origin: top;
-          }
-          51% {
-            transform: scaleY(1);
-            transform-origin: bottom;
+          to {
+            opacity: 1;
+            transform: translateY(0);
           }
         }
 
         @media (max-width: 960px) {
-          .hero-title {
-            max-width: 100%;
-            font-size: clamp(1.8rem, 9.8vw, 3.1rem);
+          .entry-shell {
+            padding: clamp(1rem, 6vw, 2.5rem);
           }
 
           .canvas-3d {
-            width: min(94vw, 640px);
+            width: min(96vw, 640px);
           }
 
-          .interface-grid {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto auto 1fr auto;
-          }
-
-          .hero-support {
-            margin-top: 0.8rem;
-          }
-
-          .hero-action-row {
-            width: 100%;
+          .hero-content {
+            gap: 18px;
           }
         }
 
         @media (prefers-reduced-motion: reduce) {
           .canvas-3d,
           .layer,
-          .cta-button,
-          .scroll-hint {
+          .hero-content,
+          .hero-primary-cta {
             transition: none !important;
             animation: none !important;
             transform: none !important;

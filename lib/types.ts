@@ -99,14 +99,16 @@ export type HalideHeroLayer = {
 };
 
 export type HalideHeroContent = {
-  kicker: string;
+  kicker?: string;
   title: string;
   subtitle: string;
-  archiveLabel: string;
-  telemetryLines: string[];
+  archiveLabel?: string;
+  telemetryLines?: string[];
   ctaLabel: string;
   ctaHref: string;
-  bottomLeftLines: string[];
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
+  bottomLeftLines?: string[];
 };
 
 export type PlausibilityDefinition = {

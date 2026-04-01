@@ -8,7 +8,7 @@ import type {
 export const APP_NAME = "Affordable Housing Library";
 
 export const NAV_ITEMS = [
-  { href: "/explore", label: "Explore options" },
+  { href: "/start", label: "Explore options" },
   { href: "/compare", label: "Compare" },
   { href: "/basics", label: "Learn the basics" },
   { href: "/next-steps", label: "Next steps" },
