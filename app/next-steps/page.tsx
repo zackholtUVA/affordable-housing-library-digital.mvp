@@ -27,13 +27,14 @@ function resolveOptions(ids: string[]) {
 
 export default function NextStepsPage() {
   const { selectedIds } = useCompareStore();
-  const { buildSnapshot } = useSessionContext();
+  const { buildSnapshot, clearSessionHistory } = useSessionContext();
   const { addToast } = useUx();
 
   const snapshot = buildSnapshot(selectedIds);
   const selectedOptions = resolveOptions(snapshot.selectedIds);
   const recentExploredOptions = resolveOptions(snapshot.recentIds);
   const contextualized = selectedOptions.length > 0 || recentExploredOptions.length > 0;
+  const canExportChecklist = selectedOptions.length > 0;
 
   return (
     <PageShell className="space-y-[var(--space-section)]">
@@ -53,7 +54,8 @@ export default function NextStepsPage() {
         {contextualized ? (
           <>
             <p className="text-sm leading-relaxed text-[var(--muted)]">
-              You can use this checklist with the options you selected or recently viewed, then adjust details with local experts.
+              These prompts are based on the options you selected or recently viewed in this browser session.
+              Clear the session history if you want to reset this context.
             </p>
             <div className="space-y-3">
               <p className="text-xs uppercase tracking-[0.12em] text-[var(--muted)]">Selected for comparison</p>
@@ -89,6 +91,24 @@ export default function NextStepsPage() {
                 </div>
               </div>
             ) : null}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  clearSessionHistory();
+                  addToast({
+                    tone: "info",
+                    message: "Session history cleared.",
+                  });
+                }}
+              >
+                Clear session history
+              </Button>
+              <p className="text-xs text-[var(--muted)]">
+                This removes your recently explored context from this browser session.
+              </p>
+            </div>
           </>
         ) : (
           <p className="text-sm leading-relaxed text-[var(--muted)]">
@@ -98,12 +118,20 @@ export default function NextStepsPage() {
       </Card>
 
       <div className="flex flex-wrap gap-3">
-        <Button variant="secondary" size="sm" onClick={() => window.print()}>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => window.print()}
+          disabled={!canExportChecklist}
+          title={canExportChecklist ? "Print checklist" : "Add an option to comparison to print or copy the checklist."}
+        >
           Print checklist
         </Button>
         <Button
           variant="ghost"
           size="sm"
+          disabled={!canExportChecklist}
+          title={canExportChecklist ? "Copy checklist" : "Add an option to comparison to print or copy the checklist."}
           onClick={async () => {
             const listText = [...questionPrompts, ...documentPrompts, ...checklistPrompts]
               .map((item) => `- ${item}`)
@@ -120,6 +148,11 @@ export default function NextStepsPage() {
           Copy checklist
         </Button>
       </div>
+      {!canExportChecklist ? (
+        <p className="text-sm text-[var(--muted)]">
+          Add at least one option to comparison to enable print and copy actions.
+        </p>
+      ) : null}
 
       <div className="mt-[var(--space-stack)] grid gap-[var(--space-stack)] lg:grid-cols-3">
         <Card as="section" className="space-y-[var(--space-stack)]">

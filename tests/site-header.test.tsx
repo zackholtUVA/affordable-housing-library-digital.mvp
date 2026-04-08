@@ -6,6 +6,11 @@ describe("SiteHeader", () => {
   it("renders primary navigation and help controls in chrome", () => {
     render(<SiteHeader />);
 
+    expect(screen.getByRole("link", { name: "Affordable Housing Library" })).toHaveAttribute(
+      "href",
+      "/",
+    );
+
     const primaryNav = screen.getByRole("navigation", { name: "Primary" });
     expect(primaryNav).toBeInTheDocument();
     expect(within(primaryNav).getByRole("link", { name: "Get started" })).toHaveAttribute(
@@ -14,7 +19,7 @@ describe("SiteHeader", () => {
     );
     expect(within(primaryNav).getByRole("link", { name: "Browse ADUs" })).toHaveAttribute(
       "href",
-      "/start",
+      "/explore",
     );
     expect(within(primaryNav).getByRole("link", { name: "Compare" })).toHaveAttribute(
       "href",

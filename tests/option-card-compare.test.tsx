@@ -1,22 +1,19 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+import { Providers } from "@/components/layout/providers";
 import { OptionCard } from "@/components/explore/option-card";
-import { CompareProvider } from "@/lib/compare-store";
-import { SessionContextProvider } from "@/lib/session-context";
 import { housingOptions } from "@/data/housing-options";
 
 function renderGrid() {
   return render(
-    <CompareProvider>
-      <SessionContextProvider>
-        <div>
-          {housingOptions.slice(0, 4).map((option) => (
-            <OptionCard key={option.id} option={option} />
-          ))}
-        </div>
-      </SessionContextProvider>
-    </CompareProvider>,
+    <Providers>
+      <div>
+        {housingOptions.slice(0, 4).map((option) => (
+          <OptionCard key={option.id} option={option} />
+        ))}
+      </div>
+    </Providers>,
   );
 }
 
@@ -43,6 +40,33 @@ describe("OptionCard compare behavior", () => {
       screen.getByText(
         "You already selected 3 options. Remove one to add this option.",
       ),
+    ).toBeInTheDocument();
+  });
+
+  it("shows an undo action when removing a selected option", async () => {
+    const user = userEvent.setup();
+    renderGrid();
+
+    const addButton = screen.getByRole("button", {
+      name: new RegExp(`add ${housingOptions[0].title} from compare`, "i"),
+    });
+
+    await user.click(addButton);
+
+    const removeButton = screen.getByRole("button", {
+      name: new RegExp(`remove ${housingOptions[0].title} from compare`, "i"),
+    });
+    await user.click(removeButton);
+
+    const undoButton = await screen.findByRole("button", { name: /undo/i });
+    expect(screen.getByText(/removed from comparison/i)).toBeInTheDocument();
+
+    await user.click(undoButton);
+
+    expect(
+      screen.getByRole("button", {
+        name: new RegExp(`remove ${housingOptions[0].title} from compare`, "i"),
+      }),
     ).toBeInTheDocument();
   });
 });

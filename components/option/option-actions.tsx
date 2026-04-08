@@ -1,16 +1,20 @@
 "use client";
 
+import type { HTMLAttributes } from "react";
+
 import { COMPARE_MAX } from "@/lib/constants";
 import { useCompareStore } from "@/lib/compare-store";
 import { useSessionContext } from "@/lib/session-context";
 import { useUx } from "@/lib/ux";
 import { Button } from "@/components/shared/button";
+import { cn } from "@/lib/utils";
 
 type OptionActionsProps = {
   optionId: string;
+  className?: HTMLAttributes<HTMLDivElement>["className"];
 };
 
-export function OptionActions({ optionId }: OptionActionsProps) {
+export function OptionActions({ optionId, className }: OptionActionsProps) {
   const { isSelected, toggle, isFull } = useCompareStore();
   const { markOptionViewed } = useSessionContext();
   const { addToast } = useUx();
@@ -36,8 +40,8 @@ export function OptionActions({ optionId }: OptionActionsProps) {
   };
 
   return (
-    <div className="min-w-0 space-y-4">
-      <Button variant={selected ? "secondary" : "primary"} onClick={handleToggle}>
+    <div className={cn("min-w-0 space-y-3", className)}>
+      <Button size="sm" variant={selected ? "secondary" : "primary"} onClick={handleToggle}>
         {selected ? "Remove from compare" : "Add to compare"}
       </Button>
       {limitReached ? (

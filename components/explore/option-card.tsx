@@ -18,7 +18,7 @@ type OptionCardProps = {
 };
 
 export function OptionCard({ option }: OptionCardProps) {
-  const { toggle, isSelected, isFull } = useCompareStore();
+  const { add, toggle, isSelected, isFull } = useCompareStore();
   const { markOptionViewed } = useSessionContext();
   const { addToast } = useUx();
   const selected = isSelected(option.id);
@@ -38,8 +38,17 @@ export function OptionCard({ option }: OptionCardProps) {
     addToast({
       tone: selected ? "info" : "success",
       message: selected
-        ? "Removed from comparison."
+        ? `${option.title} removed from comparison.`
         : "Added to comparison.",
+      action: selected
+        ? {
+            label: "Undo",
+            onClick: () => {
+              add(option.id);
+              markOptionViewed(option.id);
+            },
+          }
+        : undefined,
     });
   };
 

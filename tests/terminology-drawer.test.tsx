@@ -15,6 +15,8 @@ describe("TerminologyDrawer", () => {
       name: new RegExp(term.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
     });
     expect(toggle).toHaveAttribute("aria-expanded", "false");
+    expect(toggle.querySelector("svg")).toBeInTheDocument();
+    expect(screen.queryByText(/show|hide/i)).not.toBeInTheDocument();
     expect(screen.getByText(term.plainLanguageDefinition)).toBeInTheDocument();
 
     await user.click(toggle);

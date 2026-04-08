@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 import { CompareEmptyState } from "@/components/compare/compare-empty-state";
 import { CompareTable } from "@/components/compare/compare-table";
@@ -15,13 +16,100 @@ import { useUx } from "@/lib/ux";
 
 const optionById = new Map(Array.from(housingOptionsBySlug.values()).map((option) => [option.id, option]));
 
+function parseCompareIds(search: string) {
+  const params = new URLSearchParams(search);
+  const raw = params.get("compare");
+  if (!raw) {
+    return [];
+  }
+
+  const seen = new Set<string>();
+  const validIds: string[] = [];
+  for (const part of raw.split(",")) {
+    let id = part.trim();
+    try {
+      id = decodeURIComponent(id);
+    } catch {
+      // Ignore malformed segments and keep parsing the rest.
+    }
+    id = id.trim();
+    if (!id || seen.has(id) || !optionById.has(id)) {
+      continue;
+    }
+    seen.add(id);
+    validIds.push(id);
+    if (validIds.length >= COMPARE_MAX) {
+      break;
+    }
+  }
+
+  return validIds;
+}
+
+async function copyShareLink(url: string) {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(url);
+      return true;
+    } catch {
+      // Fall back to the legacy copy path below.
+    }
+  }
+
+  if (typeof document === "undefined") {
+    return false;
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = url;
+  textarea.setAttribute("readonly", "true");
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  try {
+    return document.execCommand("copy");
+  } catch {
+    return false;
+  } finally {
+    document.body.removeChild(textarea);
+  }
+}
+
 export default function ComparePage() {
-  const { selectedIds, remove, clear, replace } = useCompareStore();
+  const { selectedIds, remove, clear, replace, add } = useCompareStore();
   const { markOptionViewed } = useSessionContext();
   const { addToast } = useUx();
+  const hasHydratedFromQueryRef = useRef(false);
+
+  useEffect(() => {
+    if (hasHydratedFromQueryRef.current) {
+      return;
+    }
+
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const nextIds = parseCompareIds(window.location.search);
+    if (nextIds.length === 0) {
+      return;
+    }
+
+    hasHydratedFromQueryRef.current = true;
+    replace(nextIds);
+    nextIds.forEach((id) => markOptionViewed(id));
+  }, [markOptionViewed, replace]);
+
   const selectedOptions = selectedIds
     .map((id) => optionById.get(id))
     .filter((option): option is NonNullable<typeof option> => Boolean(option));
+  const isFull = selectedOptions.length >= COMPARE_MAX;
+  const buildShareLink = (ids: string[]) => {
+    const encodedIds = ids.map((id) => encodeURIComponent(id)).join(",");
+    return `${window.location.origin}/compare?compare=${encodedIds}`;
+  };
 
   return (
     <PageShell className="space-y-[var(--space-section)]">
@@ -33,29 +121,6 @@ export default function ComparePage() {
           Review tradeoffs side by side, then move forward with a clearer plan for next conversations.
         </p>
       </header>
-
-      <div className="mb-[var(--space-stack-tight)] flex min-w-0 flex-wrap items-center gap-[var(--space-stack-tight)]">
-        <Button
-          variant="ghost"
-          size="sm"
-          className="shrink-0"
-          onClick={() => {
-            clear();
-            addToast({
-              tone: "info",
-              message: "Comparison list cleared.",
-            });
-          }}
-        >
-          Clear compared options
-        </Button>
-        <Link href="/explore" className="text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]">
-          Add more options
-        </Link>
-        <span className="shrink-0 text-xs uppercase tracking-[0.12em] text-[var(--muted)]">
-          {selectedOptions.length}/{COMPARE_MAX}
-        </span>
-      </div>
 
       {selectedOptions.length === 0 ? (
         <CompareEmptyState
@@ -70,6 +135,89 @@ export default function ComparePage() {
         />
       ) : (
         <>
+          <div className="print:hidden mb-[var(--space-stack-tight)] flex min-w-0 flex-wrap items-center justify-between gap-[var(--space-stack-tight)] rounded-[var(--shape-radius-base)] border border-[var(--border)] bg-[color-mix(in_oklab,var(--surface)_92%,transparent)] px-[max(1rem,var(--space-stack-tight))] py-[max(0.9rem,var(--space-stack-tight))]">
+            <div className="space-y-1">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+                Comparison set
+              </p>
+              <p className="text-sm font-medium text-[var(--text)]">
+                {selectedOptions.length} of {COMPARE_MAX} selected
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              {selectedIds.length > 0 ? (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  elevation="flat"
+                  onClick={async () => {
+                    const didCopy = await copyShareLink(buildShareLink(selectedIds));
+                    addToast({
+                      tone: didCopy ? "success" : "warning",
+                      message: didCopy
+                        ? "Share link copied to clipboard."
+                        : "Copy blocked. You can share this page link manually.",
+                    });
+                  }}
+                >
+                  Copy share link
+                </Button>
+              ) : null}
+              <Button
+                variant="secondary"
+                size="sm"
+                elevation="flat"
+                onClick={() => window.print()}
+              >
+                Print
+              </Button>
+              {isFull ? (
+                <>
+                  <Button variant="ghost" size="sm" elevation="flat" disabled title="Maximum of 3 options selected">
+                    Add more options
+                  </Button>
+                  <Link href="/explore" className="text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]">
+                    Swap an option
+                  </Link>
+                </>
+              ) : (
+                <Link href="/explore">
+                  <Button variant="secondary" size="sm" elevation="flat">
+                    Add more options
+                  </Button>
+                </Link>
+              )}
+              <Button
+                variant="ghost"
+                size="sm"
+                elevation="flat"
+                onClick={() => {
+                  clear();
+                  addToast({
+                    tone: "info",
+                    message: "Comparison list cleared.",
+                  });
+                }}
+              >
+                Clear compared options
+              </Button>
+            </div>
+          </div>
+
+          <div className="hidden print:block">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+              Printable comparison
+            </p>
+            <h2 className="mt-2 text-xl font-semibold">{selectedOptions.length} selected options</h2>
+            <ul className="mt-3 flex flex-wrap gap-2 text-sm text-[var(--muted)]">
+              {selectedOptions.map((option) => (
+                <li key={`print-${option.id}`} className="shape-angular-sm border border-[var(--border)] px-3 py-1.5">
+                  {option.title}
+                </li>
+              ))}
+            </ul>
+          </div>
+
           <InfoCallout title="Current comparison set">
             You selected {selectedOptions.length} option
             {selectedOptions.length === 1 ? "" : "s"}. Compare rows highlight where one pathway is faster, lower effort, or more flexible than another.
@@ -94,7 +242,14 @@ export default function ComparePage() {
                     remove(option.id);
                     addToast({
                       tone: "info",
-                      message: "Removed from comparison.",
+                      message: `${option.title} removed from comparison.`,
+                      action: {
+                        label: "Undo",
+                        onClick: () => {
+                          add(option.id);
+                          markOptionViewed(option.id);
+                        },
+                      },
                     });
                   }}
                 >

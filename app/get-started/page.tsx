@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Star } from "lucide-react";
 
 import { PageShell } from "@/components/layout/page-shell";
 import { Card } from "@/components/shared/card";
@@ -49,10 +50,16 @@ export default function GetStartedPage() {
 
   return (
     <PageShell className="space-y-[var(--space-section)]">
-      <header className="fade-in space-y-3 text-center">
+      <header className="fade-in mx-auto max-w-3xl space-y-4 text-center">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--muted)]">
+          Get started
+        </p>
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
           What brings you here?
         </h1>
+        <p className="mx-auto max-w-2xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
+          Pick the path that matches your goal, and we&apos;ll guide you to the right next step.
+        </p>
       </header>
 
       <section className="fade-in space-y-[var(--space-stack-loose)]">
@@ -64,7 +71,8 @@ export default function GetStartedPage() {
           >
             <div className="space-y-[var(--space-stack-tight)]">
               <div className="flex items-center gap-3">
-                <span className="rounded-full bg-[var(--accent)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--accent-foreground)]">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--surface-2)] px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--muted)]">
+                  <Star size={10} aria-hidden="true" />
                   Most popular
                 </span>
               </div>

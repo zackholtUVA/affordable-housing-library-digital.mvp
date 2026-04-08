@@ -82,6 +82,10 @@ export function SessionContextProvider({ children }: { children: ReactNode }) {
       clearSessionHistory: () => {
         setExploredIds([]);
         setRecentIds([]);
+        if (typeof window !== "undefined") {
+          window.sessionStorage.removeItem(EXPLORED_KEY);
+          window.sessionStorage.removeItem(RECENT_KEY);
+        }
       },
       buildSnapshot: (selectedIds: string[]) => ({
         selectedIds,

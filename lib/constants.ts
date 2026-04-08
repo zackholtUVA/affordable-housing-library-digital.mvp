@@ -9,9 +9,17 @@ export const APP_NAME = "Affordable Housing Library";
 
 export const NAV_ITEMS = [
   { href: "/get-started", label: "Get started" },
-  { href: "/start", label: "Browse ADUs" },
+  { href: "/explore", label: "Browse ADUs" },
   { href: "/compare", label: "Compare" },
   { href: "/basics", label: "Learn the basics" },
+] as const;
+
+export const JOURNEY_STEPS = [
+  { href: "/", label: "Home" },
+  { href: "/get-started", label: "Get started" },
+  { href: "/explore", label: "Explore" },
+  { href: "/compare", label: "Compare" },
+  { href: "/next-steps", label: "Next steps" },
 ] as const;
 
 export const UTILITY_LINKS = [
@@ -83,6 +91,55 @@ export const COMPARE_DEMO_PRESET: CompareDemoPreset = {
     "A starter set showing a lower-complexity path, a mid-complexity path, and a higher-review path.",
   optionIds: ["option-1", "option-4", "option-7"],
 };
+
+export const ROUTE_TITLES: Record<string, string> = {
+  "/": "Home",
+  "/get-started": "Get started",
+  "/start": "Choose your goal",
+  "/explore": "Browse ADU options",
+  "/compare": "Compare housing options",
+  "/basics": "Housing basics",
+  "/next-steps": "Next steps",
+  "/about": "About this tool",
+  "/limitations": "Limitations",
+  "/sources": "Sources",
+  "/contact": "Contact and partners",
+  "/for-designers": "For designers",
+  "/for-contractors": "For contractors",
+  "/affordable-housing": "Affordable housing resources",
+};
+
+export function getRouteTitle(pathname: string) {
+  if (pathname.startsWith("/options/")) {
+    return "Option details";
+  }
+
+  return ROUTE_TITLES[pathname] ?? APP_NAME;
+}
+
+export function getActiveNavHref(pathname: string) {
+  if (pathname === "/start") {
+    return "/get-started";
+  }
+
+  if (pathname.startsWith("/options/")) {
+    return "/explore";
+  }
+
+  return NAV_ITEMS.find((item) => pathname === item.href)?.href ?? null;
+}
+
+export function getJourneyStepIndex(pathname: string) {
+  if (pathname === "/start") {
+    return 1;
+  }
+
+  if (pathname.startsWith("/options/")) {
+    return 2;
+  }
+
+  return JOURNEY_STEPS.findIndex((step) => step.href === pathname);
+}
 
 export const UTILITY_PAGE_CONTENT: Record<string, UtilityPageContent> = {
   about: {

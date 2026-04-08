@@ -41,18 +41,39 @@ export default async function OptionDetailPage({
       <Breadcrumb
         items={[
           { href: "/", label: "Home" },
-          { href: "/explore", label: "Explore options" },
+          { href: "/explore", label: "Browse ADUs" },
           { label: option.title },
         ]}
       />
 
       <OptionHero option={option} />
-      <div className="flex min-w-0 flex-wrap items-center justify-between gap-4">
-        <OptionActions optionId={option.id} />
-        <Link href="/compare" className="text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]">
-          View compare
-        </Link>
-      </div>
+      <section className="shape-angular-lg surface-3d border border-[var(--border)] bg-[var(--surface)] p-[max(1rem,var(--space-card-pad))]">
+        <div className="flex min-w-0 flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className="min-w-0 space-y-1">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+              Compare and browse
+            </p>
+            <p className="max-w-2xl text-sm leading-relaxed text-[var(--muted)]">
+              Add this ADU to compare or step back to Browse ADUs for another option.
+            </p>
+          </div>
+          <div className="flex min-w-0 flex-wrap items-start gap-3">
+            <OptionActions optionId={option.id} className="max-w-xs" />
+            <Link
+              href="/explore"
+              className="inline-flex min-h-[var(--control-min-h-sm)] items-center justify-center rounded-[var(--shape-radius-base)] border border-[var(--border)] bg-[var(--surface-2)] px-3.5 py-2 text-sm font-semibold text-[var(--text)] hover:bg-[var(--surface-3)]"
+            >
+              Browse ADUs
+            </Link>
+            <Link
+              href="/compare"
+              className="inline-flex min-h-[var(--control-min-h-sm)] items-center text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]"
+            >
+              View compare
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <div className="grid gap-[var(--space-stack)] lg:grid-cols-2">
         <OptionSummary option={option} />

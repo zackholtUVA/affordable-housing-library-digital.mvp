@@ -37,17 +37,24 @@ export default function BasicsPage() {
         </p>
       </header>
 
-      <label className="block min-w-0">
-        <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-          Search glossary
-        </span>
-        <input
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          className="shape-angular-md surface-3d min-h-[var(--control-min-h-md)] w-full min-w-0 border border-[var(--border)] bg-[var(--surface)] px-4 py-2.5 text-sm leading-snug focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-strong)]"
-          placeholder="Search by term or definition"
-        />
-      </label>
+      <section className="space-y-3">
+        <div className="space-y-1">
+          <h2 className="text-lg font-semibold">Search glossary</h2>
+          <p className="text-sm text-[var(--muted)]">
+            Search by term, plain-language definition, or why the term matters.
+          </p>
+        </div>
+        <label htmlFor="glossary-search" className="block min-w-0">
+          <span className="mb-2 block text-sm font-medium text-[var(--text)]">Glossary search</span>
+          <input
+            id="glossary-search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            className="shape-angular-md surface-3d min-h-[var(--control-min-h-md)] w-full min-w-0 border border-[var(--border)] bg-[var(--surface)] px-4 py-2.5 text-sm leading-snug focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-strong)]"
+            placeholder="Search by term or definition"
+          />
+        </label>
+      </section>
 
       <section className="space-y-[var(--space-stack)]">
         <div className="space-y-2">

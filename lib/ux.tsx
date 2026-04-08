@@ -12,6 +12,7 @@ import {
   type ReactNode,
 } from "react";
 
+import { Button } from "@/components/shared/button";
 import { MOTION_PRESET, type MotionPreset } from "@/lib/motion";
 import { useCompareStore } from "@/lib/compare-store";
 import { useTheme } from "@/lib/theme";
@@ -85,6 +86,10 @@ export function UxProvider({ children }: { children: ReactNode }) {
     window.setTimeout(() => {
       setToasts((current) => current.filter((item) => item.id !== nextToast.id));
     }, nextToast.durationMs);
+  }, []);
+
+  const removeToast = useCallback((id: string) => {
+    setToasts((current) => current.filter((item) => item.id !== id));
   }, []);
 
   const closeOverlays = useCallback(() => {
@@ -441,7 +446,23 @@ export function UxProvider({ children }: { children: ReactNode }) {
                   : "border-[var(--border)] bg-[var(--surface)]"
             }`}
           >
-            {toast.message}
+            <div className="flex min-w-0 items-center gap-3">
+              <p className="min-w-0 flex-1 break-words">{toast.message}</p>
+              {toast.action ? (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  elevation="flat"
+                  className="shrink-0 px-3 py-1.5 text-xs font-semibold"
+                  onClick={() => {
+                    toast.action?.onClick();
+                    removeToast(toast.id);
+                  }}
+                >
+                  {toast.action.label}
+                </Button>
+              ) : null}
+            </div>
           </div>
         ))}
       </div>

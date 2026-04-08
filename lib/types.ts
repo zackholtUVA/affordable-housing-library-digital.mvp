@@ -102,6 +102,10 @@ export type UxToast = {
   tone: "info" | "success" | "warning";
   message: string;
   durationMs?: number;
+  action?: {
+    label: string;
+    onClick: () => void;
+  };
 };
 
 export type HalideHeroLayer = {

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Building2, DoorOpen, House, HousePlus, Sparkles } from "lucide-react";
 
 import { Card } from "@/components/shared/card";
 import { Button } from "@/components/shared/button";
@@ -7,18 +8,22 @@ const aduTypes = [
   {
     title: "Backyard Cottage",
     description: "Standalone small home in your backyard.",
+    icon: House,
   },
   {
     title: "Garage Conversion",
     description: "Transform existing garage—often most affordable.",
+    icon: DoorOpen,
   },
   {
     title: "Basement Suite",
     description: "Convert basement with separate entrance.",
+    icon: Building2,
   },
   {
     title: "Attached Addition",
     description: "New unit connected to your home.",
+    icon: HousePlus,
   },
 ];
 
@@ -26,12 +31,13 @@ export function AduDefinitionSection() {
   return (
     <section
       id="what-is-adu"
-      className="border-t border-[var(--border)] bg-[var(--surface)] px-[var(--space-page-x)] py-[var(--space-section)]"
+      className="mt-[var(--space-section)] border-t border-[var(--border)] bg-[var(--surface)] px-[var(--space-page-x)] py-[var(--space-section)]"
     >
       <div className="mx-auto max-w-6xl space-y-[var(--space-section)]">
         {/* Main Definition */}
         <div className="space-y-4 text-center">
-          <span className="text-sm font-medium uppercase tracking-wider text-[var(--accent)]">
+          <span className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-[var(--accent)]">
+            <Sparkles size={14} aria-hidden="true" />
             Understanding ADUs
           </span>
           <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
@@ -53,8 +59,11 @@ export function AduDefinitionSection() {
                 key={type.title}
                 as="article"
                 interactive={false}
-                className="text-center"
+                className="flex h-full flex-col gap-3 text-left"
               >
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-2)] text-[var(--accent)]">
+                  <type.icon size={20} aria-hidden="true" />
+                </div>
                 <h4 className="text-sm font-semibold">{type.title}</h4>
                 <p className="mt-2 text-xs leading-relaxed text-[var(--muted)]">{type.description}</p>
               </Card>

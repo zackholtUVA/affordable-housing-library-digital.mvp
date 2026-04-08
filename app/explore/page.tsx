@@ -106,7 +106,7 @@ export default function ExplorePage() {
             </button>
           </div>
 
-          <PlausibilityLegend compact />
+          <PlausibilityLegend compact collapsible />
 
           <div ref={resultsRegionRef} className="min-w-0">
             {filtered.length > 0 ? (

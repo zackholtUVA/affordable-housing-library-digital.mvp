@@ -146,7 +146,7 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
               </Link>
             </div>
             {content.secondaryCtaLabel && content.secondaryCtaHref ? (
-              <Link href={content.secondaryCtaHref} className="hero-secondary-link">
+              <Link href={content.secondaryCtaHref} className="hero-secondary-cta">
                 {content.secondaryCtaLabel}
               </Link>
             ) : null}
@@ -315,17 +315,31 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
           filter: brightness(1.03);
         }
 
-        .hero-secondary-link {
+        .hero-secondary-cta {
           pointer-events: auto;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.55rem;
+          padding: 0.8rem 1rem;
           font-size: 14px;
-          color: color-mix(in oklab, var(--halide-silver) 84%, transparent);
+          font-weight: 500;
+          color: var(--halide-silver);
           text-decoration: none;
-          border-bottom: 1px solid color-mix(in oklab, var(--halide-silver) 52%, transparent);
+          background: color-mix(in oklab, var(--halide-bg) 50%, transparent);
+          border: 1px solid color-mix(in oklab, var(--halide-silver) 18%, transparent);
+          border-radius: 10px;
+          box-shadow: 0 10px 24px -18px color-mix(in oklab, var(--halide-bg) 72%, black);
+          transition:
+            transform 180ms ease,
+            background-color 180ms ease,
+            border-color 180ms ease;
         }
 
-        .hero-secondary-link:hover {
-          color: var(--halide-silver);
-          border-bottom-color: color-mix(in oklab, var(--halide-silver) 80%, transparent);
+        .hero-secondary-cta:hover {
+          transform: translateY(-1px);
+          background: color-mix(in oklab, var(--halide-bg) 42%, var(--surface-2));
+          border-color: color-mix(in oklab, var(--halide-silver) 28%, transparent);
         }
 
         @keyframes heroFade {

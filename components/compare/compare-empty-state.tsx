@@ -15,15 +15,13 @@ export function CompareEmptyState({ onLoadSample }: CompareEmptyStateProps) {
         This page helps you evaluate tradeoffs across up to three pathways. You are seeing this empty state because no options are selected yet.
       </p>
       <p className="mx-auto max-w-3xl text-sm leading-relaxed text-[var(--muted)]">
-        Start from Explore, or load a sample set to preview how comparison works before you commit.
+        Load a sample set to preview how comparison works, or browse Explore to build your own comparison.
       </p>
       <div className="flex flex-wrap items-center justify-center gap-[var(--space-stack-tight)] pt-2">
+        <Button onClick={onLoadSample}>Load sample comparison</Button>
         <Link href="/explore">
-          <Button>Explore options</Button>
+          <Button variant="secondary">Explore options</Button>
         </Link>
-        <Button variant="secondary" onClick={onLoadSample}>
-          Load sample comparison
-        </Button>
       </div>
     </Card>
   );
