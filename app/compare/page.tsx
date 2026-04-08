@@ -34,10 +34,11 @@ export default function ComparePage() {
         </p>
       </header>
 
-      <div className="flex min-w-0 flex-wrap items-center gap-3">
+      <div className="mb-[var(--space-stack-tight)] flex min-w-0 flex-wrap items-center gap-[var(--space-stack-tight)]">
         <Button
           variant="ghost"
           size="sm"
+          className="shrink-0"
           onClick={() => {
             clear();
             addToast({
@@ -51,7 +52,7 @@ export default function ComparePage() {
         <Link href="/explore" className="text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]">
           Add more options
         </Link>
-        <span className="text-xs uppercase tracking-[0.12em] text-[var(--muted)]">
+        <span className="shrink-0 text-xs uppercase tracking-[0.12em] text-[var(--muted)]">
           {selectedOptions.length}/{COMPARE_MAX}
         </span>
       </div>

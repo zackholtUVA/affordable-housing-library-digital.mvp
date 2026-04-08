@@ -21,7 +21,7 @@ export default function StartPage() {
         <HowItWorks id="how-it-works" />
       </div>
 
-      <section className="fade-in shape-angular-md surface-3d border border-[var(--border)] bg-[var(--surface)] p-[var(--space-card-pad)] text-center">
+      <section className="fade-in mt-[var(--space-stack-loose)] shape-angular-md surface-3d border border-[var(--border)] bg-[var(--surface)] p-[var(--space-card-pad)] text-center">
         <h2 className="text-2xl font-semibold">Browse all ADU options</h2>
         <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-[var(--muted)]">
           Use filters to narrow by goals, type, and pre-approval status.

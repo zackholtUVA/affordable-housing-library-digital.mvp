@@ -68,7 +68,7 @@ export default function GetStartedPage() {
                   Most popular
                 </span>
               </div>
-              <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+              <h2 className="min-w-0 break-words text-2xl font-semibold tracking-tight md:text-3xl">
                 {primaryCard.title}
               </h2>
               <p className="max-w-2xl text-[var(--muted)]">
@@ -93,7 +93,7 @@ export default function GetStartedPage() {
                 className="group flex h-full flex-col justify-between p-6 transition-all hover:border-[var(--accent)] hover:shadow-md"
               >
                 <div className="space-y-3">
-                  <h3 className="text-lg font-semibold">{card.title}</h3>
+                  <h3 className="min-w-0 break-words text-lg font-semibold">{card.title}</h3>
                   <p className="text-sm leading-relaxed text-[var(--muted)]">
                     {card.description}
                   </p>

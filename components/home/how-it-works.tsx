@@ -16,7 +16,7 @@ export function HowItWorks({ id }: HowItWorksProps) {
       />
       <div className="grid gap-[var(--space-stack)] md:grid-cols-3">
         {HOW_IT_WORKS_STEPS.map((step, index) => (
-          <Card key={step} className="relative overflow-hidden">
+          <Card key={step} interactive={false} className="relative">
             <span className="shape-square surface-3d mb-2 inline-flex h-7 w-7 items-center justify-center bg-[var(--surface-3)] text-xs font-semibold">
               {index + 1}
             </span>
