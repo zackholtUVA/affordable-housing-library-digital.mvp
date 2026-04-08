@@ -11,7 +11,6 @@ const housingResources = [
     title: "ADU Rental Listings",
     description:
       "Browse available ADU rentals—often more affordable than traditional apartments.",
-    icon: "🏡",
     href: "/explore",
     ctaLabel: "Browse rentals",
     available: true,
@@ -21,7 +20,6 @@ const housingResources = [
     title: "Housing Assistance Programs",
     description:
       "Local, state, and federal programs including vouchers and subsidies.",
-    icon: "📋",
     href: "#",
     ctaLabel: "View programs",
     available: false,
@@ -31,7 +29,6 @@ const housingResources = [
     title: "Affordability Calculator",
     description:
       "Estimate what you can afford and compare ADUs to other options.",
-    icon: "🧮",
     href: "#",
     ctaLabel: "Calculate",
     available: false,
@@ -41,7 +38,6 @@ const housingResources = [
     title: "Waitlist Notifications",
     description:
       "Get notified when new affordable ADU rentals become available.",
-    icon: "📬",
     href: "#",
     ctaLabel: "Join waitlist",
     available: false,
@@ -77,16 +73,13 @@ export default function AffordableHousingPage() {
             >
               <div className="space-y-4">
                 <div className="flex items-start justify-between gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--surface-2)] text-2xl">
-                    {resource.icon}
-                  </div>
+                  <h3 className="text-lg font-semibold">{resource.title}</h3>
                   {!resource.available && (
                     <span className="rounded-full bg-[var(--surface-2)] px-2 py-1 text-xs font-medium text-[var(--muted)]">
                       Coming soon
                     </span>
                   )}
                 </div>
-                <h3 className="text-lg font-semibold">{resource.title}</h3>
                 <p className="text-sm leading-relaxed text-[var(--muted)]">
                   {resource.description}
                 </p>

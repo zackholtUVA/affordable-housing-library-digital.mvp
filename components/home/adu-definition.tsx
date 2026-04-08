@@ -7,22 +7,18 @@ const aduTypes = [
   {
     title: "Backyard Cottage",
     description: "Standalone small home in your backyard.",
-    icon: "🏡",
   },
   {
     title: "Garage Conversion",
     description: "Transform existing garage—often most affordable.",
-    icon: "🚗",
   },
   {
     title: "Basement Suite",
     description: "Convert basement with separate entrance.",
-    icon: "🏠",
   },
   {
     title: "Attached Addition",
     description: "New unit connected to your home.",
-    icon: "🔗",
   },
 ];
 
@@ -59,9 +55,8 @@ export function AduDefinitionSection() {
                 interactive={false}
                 className="text-center"
               >
-                <div className="mb-3 text-3xl">{type.icon}</div>
                 <h4 className="text-sm font-semibold">{type.title}</h4>
-                <p className="mt-1.5 text-xs leading-relaxed text-[var(--muted)]">{type.description}</p>
+                <p className="mt-2 text-xs leading-relaxed text-[var(--muted)]">{type.description}</p>
               </Card>
             ))}
           </div>

@@ -68,8 +68,8 @@ const depthVariantStyles: Record<ButtonVariant, ButtonStyleVars> = {
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "h-10 px-4 text-sm",
-  md: "h-12 px-5 text-sm",
+  sm: "h-9 px-3.5 text-sm",
+  md: "h-10 px-4 text-sm",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(

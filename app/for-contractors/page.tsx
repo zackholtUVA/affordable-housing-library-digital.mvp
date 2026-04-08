@@ -11,7 +11,6 @@ const contractorResources = [
     title: "ADU Project Listings",
     description:
       "Find homeowners seeking contractors for ADU projects.",
-    icon: "📋",
     href: "#",
     ctaLabel: "View projects",
     available: false,
@@ -21,7 +20,6 @@ const contractorResources = [
     title: "Construction Specifications",
     description:
       "Detailed specs for various ADU types and construction requirements.",
-    icon: "📐",
     href: "#",
     ctaLabel: "View specs",
     available: false,
@@ -31,7 +29,6 @@ const contractorResources = [
     title: "Permit Process Guides",
     description:
       "Jurisdiction-specific guides and checklists for ADU construction.",
-    icon: "📝",
     href: "#",
     ctaLabel: "View guides",
     available: false,
@@ -41,7 +38,6 @@ const contractorResources = [
     title: "Prefab ADU Partnerships",
     description:
       "Connect with prefab manufacturers for installation partnerships.",
-    icon: "🏗️",
     href: "#",
     ctaLabel: "View partners",
     available: false,
@@ -107,14 +103,11 @@ export default function ForContractorsPage() {
             >
               <div className="space-y-4">
                 <div className="flex items-start justify-between gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--surface-2)] text-2xl">
-                    {resource.icon}
-                  </div>
+                  <h3 className="text-lg font-semibold">{resource.title}</h3>
                   <span className="rounded-full bg-[var(--surface-2)] px-2 py-1 text-xs font-medium text-[var(--muted)]">
                     Coming soon
                   </span>
                 </div>
-                <h3 className="text-lg font-semibold">{resource.title}</h3>
                 <p className="text-sm leading-relaxed text-[var(--muted)]">
                   {resource.description}
                 </p>

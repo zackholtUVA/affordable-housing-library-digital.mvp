@@ -11,7 +11,6 @@ const designerResources = [
     title: "Pre-Approved Plan Catalog",
     description:
       "Browse pre-approved ADU designs from various jurisdictions.",
-    icon: "📚",
     href: "/explore",
     ctaLabel: "View catalog",
     available: true,
@@ -21,7 +20,6 @@ const designerResources = [
     title: "Design Guidelines Library",
     description:
       "Access design guidelines, setback requirements, and code references.",
-    icon: "📏",
     href: "#",
     ctaLabel: "View guidelines",
     available: false,
@@ -31,7 +29,6 @@ const designerResources = [
     title: "Project Opportunities",
     description:
       "Connect with homeowners seeking design services for ADU projects.",
-    icon: "🤝",
     href: "#",
     ctaLabel: "Find projects",
     available: false,
@@ -41,7 +38,6 @@ const designerResources = [
     title: "Design Submission Portal",
     description:
       "Submit your ADU designs to be featured in our catalog.",
-    icon: "📤",
     href: "#",
     ctaLabel: "Submit designs",
     available: false,
@@ -99,16 +95,13 @@ export default function ForDesignersPage() {
             >
               <div className="space-y-4">
                 <div className="flex items-start justify-between gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--surface-2)] text-2xl">
-                    {resource.icon}
-                  </div>
+                  <h3 className="text-lg font-semibold">{resource.title}</h3>
                   {!resource.available && (
                     <span className="rounded-full bg-[var(--surface-2)] px-2 py-1 text-xs font-medium text-[var(--muted)]">
                       Coming soon
                     </span>
                   )}
                 </div>
-                <h3 className="text-lg font-semibold">{resource.title}</h3>
                 <p className="text-sm leading-relaxed text-[var(--muted)]">
                   {resource.description}
                 </p>
