@@ -1,5 +1,31 @@
 import type { HousingOption } from "@/lib/types";
 
+const placeholderImages = [
+  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop",
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop",
+  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop",
+  "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=300&fit=crop",
+  "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=400&h=300&fit=crop",
+  "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&h=300&fit=crop",
+  "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&h=300&fit=crop",
+  "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=400&h=300&fit=crop",
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop",
+  "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=400&h=300&fit=crop",
+];
+
+const priceRanges = [
+  "$150,000 – $250,000",
+  "$45,000 – $85,000",
+  "$65,000 – $120,000",
+  "$35,000 – $75,000",
+  "$180,000 – $350,000",
+  "$120,000 – $200,000",
+  "$175,000 – $280,000",
+  "$300,000 – $500,000",
+  "$85,000 – $150,000",
+  "$200,000 – $400,000",
+];
+
 export const housingOptions: HousingOption[] = [
   {
     id: "option-1",
@@ -38,6 +64,9 @@ export const housingOptions: HousingOption[] = [
     },
     relatedOptionIds: ["option-2", "option-7"],
     imageAlt: "Detached backyard cottage behind an existing single-family home",
+    imageUrl: placeholderImages[0],
+    priceRange: priceRanges[0],
+    preApproved: true,
   },
   {
     id: "option-2",
@@ -76,6 +105,9 @@ export const housingOptions: HousingOption[] = [
     },
     relatedOptionIds: ["option-1", "option-3"],
     imageAlt: "Converted garage studio with separate entry",
+    imageUrl: placeholderImages[1],
+    priceRange: priceRanges[1],
+    preApproved: false,
   },
   {
     id: "option-3",
@@ -114,6 +146,9 @@ export const housingOptions: HousingOption[] = [
     },
     relatedOptionIds: ["option-2", "option-4"],
     imageAlt: "Basement apartment entry with light well",
+    imageUrl: placeholderImages[2],
+    priceRange: priceRanges[2],
+    preApproved: false,
   },
   {
     id: "option-4",
@@ -152,6 +187,9 @@ export const housingOptions: HousingOption[] = [
     },
     relatedOptionIds: ["option-3", "option-5"],
     imageAlt: "Small internal suite layout within existing house",
+    imageUrl: placeholderImages[3],
+    priceRange: priceRanges[3],
+    preApproved: true,
   },
   {
     id: "option-5",
@@ -190,6 +228,9 @@ export const housingOptions: HousingOption[] = [
     },
     relatedOptionIds: ["option-6", "option-10"],
     imageAlt: "House conversion concept with two separate unit entries",
+    imageUrl: placeholderImages[4],
+    priceRange: priceRanges[4],
+    preApproved: false,
   },
   {
     id: "option-6",
@@ -228,6 +269,9 @@ export const housingOptions: HousingOption[] = [
     },
     relatedOptionIds: ["option-1", "option-5"],
     imageAlt: "Attached side-yard ADU concept connected to existing house",
+    imageUrl: placeholderImages[5],
+    priceRange: priceRanges[5],
+    preApproved: true,
   },
   {
     id: "option-7",
@@ -266,6 +310,9 @@ export const housingOptions: HousingOption[] = [
     },
     relatedOptionIds: ["option-1", "option-8"],
     imageAlt: "Prefab ADU being placed on a prepared backyard foundation",
+    imageUrl: placeholderImages[6],
+    priceRange: priceRanges[6],
+    preApproved: true,
   },
   {
     id: "option-8",
@@ -304,6 +351,9 @@ export const housingOptions: HousingOption[] = [
     },
     relatedOptionIds: ["option-7", "option-10"],
     imageAlt: "Concept drawing of small cottage homes around a shared courtyard",
+    imageUrl: placeholderImages[7],
+    priceRange: priceRanges[7],
+    preApproved: false,
   },
   {
     id: "option-9",
@@ -342,6 +392,9 @@ export const housingOptions: HousingOption[] = [
     },
     relatedOptionIds: ["option-1", "option-6"],
     imageAlt: "New carriage-style accessory dwelling replacing an older outbuilding",
+    imageUrl: placeholderImages[8],
+    priceRange: priceRanges[8],
+    preApproved: false,
   },
   {
     id: "option-10",
@@ -380,6 +433,9 @@ export const housingOptions: HousingOption[] = [
     },
     relatedOptionIds: ["option-5", "option-8"],
     imageAlt: "Concept map showing one lot split into two buildable parcels",
+    imageUrl: placeholderImages[9],
+    priceRange: priceRanges[9],
+    preApproved: false,
   },
 ];
 

@@ -8,7 +8,11 @@ describe("SiteHeader", () => {
 
     const primaryNav = screen.getByRole("navigation", { name: "Primary" });
     expect(primaryNav).toBeInTheDocument();
-    expect(within(primaryNav).getByRole("link", { name: "Explore options" })).toHaveAttribute(
+    expect(within(primaryNav).getByRole("link", { name: "Get started" })).toHaveAttribute(
+      "href",
+      "/get-started",
+    );
+    expect(within(primaryNav).getByRole("link", { name: "Browse ADUs" })).toHaveAttribute(
       "href",
       "/start",
     );
@@ -19,10 +23,6 @@ describe("SiteHeader", () => {
     expect(within(primaryNav).getByRole("link", { name: "Learn the basics" })).toHaveAttribute(
       "href",
       "/basics",
-    );
-    expect(within(primaryNav).getByRole("link", { name: "Next steps" })).toHaveAttribute(
-      "href",
-      "/next-steps",
     );
 
     expect(screen.getAllByRole("button", { name: /open keyboard shortcuts help/i })).toHaveLength(2);

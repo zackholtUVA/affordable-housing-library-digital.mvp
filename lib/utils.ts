@@ -15,6 +15,7 @@ export const EMPTY_FILTER_STATE: ExploreFilterState = {
   goal: [],
   housingType: [],
   complexity: [],
+  preApproved: [],
 };
 
 export function cn(...inputs: ClassValue[]): string {
@@ -56,8 +57,11 @@ export function filterHousingOptions(
     const matchesComplexity =
       filters.complexity.length === 0 ||
       filters.complexity.includes(option.comparisonAttributes.complexity);
+    const matchesPreApproved =
+      filters.preApproved.length === 0 ||
+      (filters.preApproved.includes("Pre-Approved Plans") && option.preApproved === true);
 
-    return matchesQuery && matchesGoal && matchesType && matchesComplexity;
+    return matchesQuery && matchesGoal && matchesType && matchesComplexity && matchesPreApproved;
   });
 }
 

@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 type CardProps = {
   children: ReactNode;
   className?: string;
-  as?: "div" | "article" | "section";
+  as?: "div" | "article" | "section" | "aside";
   interactive?: boolean;
 };
 

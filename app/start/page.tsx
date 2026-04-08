@@ -32,17 +32,17 @@ export default function StartPage() {
       </div>
 
       <section className="fade-in shape-angular-md surface-3d border border-[var(--border)] bg-[var(--surface)] p-[var(--space-card-pad)] text-center">
-        <h2 className="text-2xl font-semibold">Ready to browse in detail?</h2>
+        <h2 className="text-2xl font-semibold">Ready to browse all options?</h2>
         <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-[var(--muted)]">
-          Move into the advanced explore workspace to filter by goals, pathway type, and complexity.
+          Use our filtering tools to narrow down options by goals, pathway type, complexity, and pre-approval status.
         </p>
         <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
           <Link href="/explore">
             <Button size="sm" className="h-11 rounded-lg px-5 text-[15px] font-medium">
-              Open advanced explore
+              Browse with filters
             </Button>
           </Link>
-          <Link href="/compare" className="text-sm font-medium text-[var(--accent)]">
+          <Link href="/compare" className="text-sm font-medium text-[var(--muted)] hover:text-[var(--accent)]">
             Go directly to Compare
           </Link>
         </div>

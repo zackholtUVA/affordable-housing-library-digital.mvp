@@ -32,6 +32,21 @@ export type HousingOption = {
   comparisonAttributes: ComparisonAttributes;
   relatedOptionIds: string[];
   imageAlt: PlaceholderText;
+  imageUrl?: string;
+  priceRange?: string;
+  preApproved?: boolean;
+};
+
+export type UserPathwayType = "primary" | "secondary";
+
+export type PathwayCard = {
+  id: string;
+  type: UserPathwayType;
+  title: string;
+  description: string;
+  icon: string;
+  href: string;
+  ctaLabel: string;
 };
 
 export type UserPathway = {
@@ -57,7 +72,7 @@ export type NextStepResource = {
   href?: string;
 };
 
-export type FilterKey = "goal" | "housingType" | "complexity";
+export type FilterKey = "goal" | "housingType" | "complexity" | "preApproved";
 
 export type FilterGroup = {
   key: FilterKey;
