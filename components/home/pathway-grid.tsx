@@ -28,7 +28,7 @@ export function PathwayGrid({ pathways }: PathwayGridProps) {
             <div className="mt-8">
               <Link
                 href={`/options/${pathway.linkedOptionIds[0]}`}
-                className="text-sm font-medium text-[var(--accent)]"
+                className="text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]"
               >
                 View options
               </Link>

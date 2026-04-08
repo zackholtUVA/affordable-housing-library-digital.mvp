@@ -28,11 +28,11 @@ export default function StartPage() {
         </p>
         <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
           <Link href="/explore">
-            <Button size="sm" className="h-11 rounded-lg px-5 text-[15px] font-medium">
+            <Button size="sm" className="rounded-lg px-5 text-[15px] font-medium">
               Browse all
             </Button>
           </Link>
-          <Link href="/compare" className="text-sm font-medium text-[var(--muted)] hover:text-[var(--accent)]">
+          <Link href="/compare" className="text-sm font-medium text-[var(--muted)] hover:text-[var(--link-hover)]">
             Compare
           </Link>
         </div>

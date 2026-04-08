@@ -17,7 +17,7 @@ export function CompareTable({ options }: CompareTableProps) {
             {options.map((option) => (
               <th
                 key={option.id}
-                className="min-w-60 px-6 py-5 text-sm font-semibold text-[var(--text)]"
+                className="min-w-60 break-words px-6 py-5 text-sm font-semibold text-[var(--text)]"
               >
                 {option.title}
               </th>

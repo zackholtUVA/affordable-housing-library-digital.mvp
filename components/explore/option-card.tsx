@@ -72,9 +72,9 @@ export function OptionCard({ option }: OptionCardProps) {
           </div>
         )}
         
-        <div className="mb-4 flex items-start justify-between gap-3">
+        <div className="mb-4 flex min-w-0 flex-wrap items-start justify-between gap-3">
           <h3 className="min-w-0 break-words text-lg font-semibold">{option.title}</h3>
-          <Badge>{option.policyConfidenceLabel}</Badge>
+          <Badge className="shrink-0">{option.policyConfidenceLabel}</Badge>
         </div>
         
         {/* Price Range */}
@@ -89,11 +89,11 @@ export function OptionCard({ option }: OptionCardProps) {
         </p>
       </div>
 
-      <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
+      <div className="mt-[var(--space-stack-loose)] flex min-w-0 flex-wrap items-center justify-between gap-3">
         <Link
           href={`/options/${option.slug}`}
           onClick={() => markOptionViewed(option.id)}
-          className="text-sm font-medium text-[var(--accent)]"
+          className="text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]"
         >
           View details
         </Link>

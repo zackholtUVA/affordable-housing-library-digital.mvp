@@ -12,7 +12,7 @@ export function ReviewSection({ option }: ReviewSectionProps) {
       <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
         Validate these items early to avoid redesigns, permit delays, or avoidable cost surprises.
       </p>
-      <ul className="mt-6 space-y-4 text-sm text-[var(--muted)]">
+      <ul className="mt-[var(--space-stack-loose)] space-y-[var(--space-stack-tight)] text-sm text-[var(--muted)]">
         {option.majorConsiderations.map((item) => (
           <li
             key={item}

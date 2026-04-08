@@ -11,7 +11,7 @@ export function PageShell({ children, className }: PageShellProps) {
   return (
     <div
       className={cn(
-        "mx-auto w-full max-w-[92rem] px-[var(--space-page-x)] pb-[var(--space-page-bottom)] pt-[var(--space-page-y)]",
+        "mx-auto w-full max-w-[92rem] px-[var(--space-page-x)] pb-[max(var(--space-page-bottom),var(--floating-ui-clearance))] pt-[var(--space-page-y)]",
         className,
       )}
     >

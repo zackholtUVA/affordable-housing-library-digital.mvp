@@ -49,7 +49,7 @@ export default async function OptionDetailPage({
       <OptionHero option={option} />
       <div className="flex min-w-0 flex-wrap items-center justify-between gap-4">
         <OptionActions optionId={option.id} />
-        <Link href="/compare" className="text-sm font-medium text-[var(--accent)]">
+        <Link href="/compare" className="text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]">
           View compare
         </Link>
       </div>

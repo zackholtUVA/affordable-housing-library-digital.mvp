@@ -12,7 +12,7 @@ export default function NotFound() {
         <p className="mt-3 text-sm text-[var(--muted)]">
           The page you requested could not be found. You can continue browsing options from the explore page.
         </p>
-        <div className="mt-6">
+        <div className="mt-[var(--space-stack-loose)]">
           <Link href="/explore">
             <Button>Explore options</Button>
           </Link>

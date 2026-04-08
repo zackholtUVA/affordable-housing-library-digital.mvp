@@ -26,9 +26,9 @@ export function AduDefinitionSection() {
   return (
     <section
       id="what-is-adu"
-      className="border-t border-[var(--border)] bg-[var(--surface)] px-[var(--space-page-x)] py-16 md:py-20"
+      className="border-t border-[var(--border)] bg-[var(--surface)] px-[var(--space-page-x)] py-[var(--space-section)]"
     >
-      <div className="mx-auto max-w-6xl space-y-12">
+      <div className="mx-auto max-w-6xl space-y-[var(--space-section)]">
         {/* Main Definition */}
         <div className="space-y-4 text-center">
           <span className="text-sm font-medium uppercase tracking-wider text-[var(--accent)]">
@@ -45,7 +45,7 @@ export function AduDefinitionSection() {
         </div>
 
         {/* ADU Types */}
-        <div className="space-y-6">
+        <div className="space-y-[var(--space-stack)]">
           <h3 className="text-center text-lg font-semibold">Common Types</h3>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {aduTypes.map((type) => (

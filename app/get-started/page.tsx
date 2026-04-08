@@ -55,14 +55,14 @@ export default function GetStartedPage() {
         </h1>
       </header>
 
-      <section className="fade-in space-y-8">
+      <section className="fade-in space-y-[var(--space-stack-loose)]">
         {/* Primary Card - ADU Builder */}
         <Link href={primaryCard.href} className="block">
           <Card
             as="article"
-            className="group relative overflow-hidden border-2 border-[var(--accent)] bg-gradient-to-br from-[var(--surface)] to-[var(--surface-2)] p-8 transition-all hover:border-[var(--accent-strong)] hover:shadow-lg md:p-10"
+            className="group relative overflow-hidden border-2 border-[var(--accent)] bg-gradient-to-br from-[var(--surface)] to-[var(--surface-2)] p-[max(1.5rem,var(--space-card-pad))] transition-all hover:border-[var(--accent-strong)] hover:shadow-lg md:p-[max(1.8rem,var(--space-card-pad))]"
           >
-            <div className="space-y-4">
+            <div className="space-y-[var(--space-stack-tight)]">
               <div className="flex items-center gap-3">
                 <span className="rounded-full bg-[var(--accent)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--accent-foreground)]">
                   Most popular
@@ -85,7 +85,7 @@ export default function GetStartedPage() {
         </Link>
 
         {/* Secondary Cards - 3 side-by-side */}
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-[var(--space-stack)] md:grid-cols-3">
           {secondaryCards.map((card) => (
             <Link key={card.id} href={card.href} className="block h-full">
               <Card
@@ -98,8 +98,8 @@ export default function GetStartedPage() {
                     {card.description}
                   </p>
                 </div>
-                <div className="mt-6">
-                  <span className="inline-flex items-center text-sm font-medium text-[var(--accent)] transition-colors group-hover:text-[var(--accent-strong)]">
+                <div className="mt-[var(--space-stack-loose)]">
+                  <span className="inline-flex items-center text-sm font-medium text-[var(--link)] transition-colors group-hover:text-[var(--link-hover)]">
                     {card.ctaLabel}
                     <span className="ml-1 transition-transform group-hover:translate-x-1">→</span>
                   </span>

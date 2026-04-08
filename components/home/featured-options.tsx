@@ -38,9 +38,9 @@ export function FeaturedOptions({ options }: FeaturedOptionsProps) {
                 )}
               </div>
             )}
-            <div className="flex min-w-0 items-start justify-between gap-3">
+            <div className="flex min-w-0 flex-wrap items-start justify-between gap-3">
               <h3 className="min-w-0 break-words text-lg font-semibold">{option.title}</h3>
-              <Badge>{option.policyConfidenceLabel}</Badge>
+              <Badge className="shrink-0">{option.policyConfidenceLabel}</Badge>
             </div>
             {/* Price Range */}
             {option.priceRange && (
@@ -54,11 +54,11 @@ export function FeaturedOptions({ options }: FeaturedOptionsProps) {
             <p className="mt-4 text-xs font-medium uppercase tracking-[0.1em] text-[var(--muted)]">
               Best for: {option.bestFor[0]}
             </p>
-            <div className="mt-6 flex flex-wrap gap-4">
-              <Link href={`/options/${option.slug}`} className="text-sm font-medium text-[var(--accent)]">
+            <div className="mt-[var(--space-stack-loose)] flex flex-wrap gap-[var(--space-stack-tight)]">
+              <Link href={`/options/${option.slug}`} className="text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]">
                 Learn more
               </Link>
-              <Link href="/compare" className="text-sm font-medium text-[var(--accent)]">
+              <Link href="/compare" className="text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]">
                 Compare options
               </Link>
             </div>

@@ -17,6 +17,8 @@ describe("Button", () => {
     expect(button).toHaveAttribute("data-elevation", "3d");
     expect(button).toHaveAttribute("data-shape", "angular");
     expect(button).toHaveClass("btn-3d");
+    expect(button).toHaveClass("min-h-[var(--control-min-h-md)]");
+    expect(button).not.toHaveClass("overflow-hidden");
   });
 
   it("supports flat elevation override", () => {
@@ -43,5 +45,18 @@ describe("Button", () => {
     expect(button).toHaveAttribute("data-shape", "square");
     expect(button).toHaveClass("shape-square");
     expect(button).not.toHaveClass("shape-angular-md");
+  });
+
+  it("uses resilient sizing and wrapping for long labels", () => {
+    render(
+      <Button size="sm" data-testid="small-button">
+        This is a long label to verify wrapping does not clip.
+      </Button>,
+    );
+
+    const button = screen.getByTestId("small-button");
+    expect(button).toHaveClass("min-h-[var(--control-min-h-sm)]");
+    expect(button).toHaveClass("whitespace-normal");
+    expect(button).toHaveClass("flex-wrap");
   });
 });

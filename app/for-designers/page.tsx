@@ -63,7 +63,7 @@ export default function ForDesignersPage() {
   return (
     <PageShell className="space-y-[var(--space-section)]">
       <header className="fade-in space-y-3">
-        <span className="text-sm font-medium uppercase tracking-wider text-[var(--accent)]">
+        <span className="text-sm font-medium uppercase tracking-wider text-[var(--link)]">
           For Professionals
         </span>
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
@@ -86,18 +86,18 @@ export default function ForDesignersPage() {
 
       <section className="fade-in space-y-[var(--space-stack)]">
         <h2 className="text-2xl font-semibold">Tools & Resources</h2>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-[var(--space-stack)] md:grid-cols-2">
           {designerResources.map((resource) => (
             <Card
               key={resource.id}
               as="article"
               className={`flex flex-col justify-between ${!resource.available ? "opacity-70" : ""}`}
             >
-              <div className="space-y-4">
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-lg font-semibold">{resource.title}</h3>
+              <div className="space-y-[var(--space-stack-tight)]">
+                <div className="flex min-w-0 items-start justify-between gap-4">
+                  <h3 className="min-w-0 break-words text-lg font-semibold">{resource.title}</h3>
                   {!resource.available && (
-                    <span className="rounded-full bg-[var(--surface-2)] px-2 py-1 text-xs font-medium text-[var(--muted)]">
+                    <span className="shrink-0 rounded-full bg-[var(--surface-2)] px-2 py-1 text-xs font-medium text-[var(--muted)]">
                       Coming soon
                     </span>
                   )}
@@ -106,7 +106,7 @@ export default function ForDesignersPage() {
                   {resource.description}
                 </p>
               </div>
-              <div className="mt-6">
+              <div className="mt-[var(--space-stack-loose)]">
                 {resource.available ? (
                   <Link href={resource.href}>
                     <Button size="sm" variant="secondary">
@@ -139,9 +139,9 @@ export default function ForDesignersPage() {
       </section>
 
       <section className="fade-in">
-        <Card as="aside" className="bg-[var(--surface-2)] p-8 text-center">
+        <Card as="aside" className="bg-[var(--surface-2)] p-[max(1.4rem,var(--space-card-pad))] text-center">
           <h2 className="text-xl font-semibold">Ready to get started?</h2>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-[var(--space-stack-loose)] flex flex-wrap items-center justify-center gap-[var(--space-stack-tight)]">
             <Link href="/explore">
               <Button size="md">Browse design catalog</Button>
             </Link>

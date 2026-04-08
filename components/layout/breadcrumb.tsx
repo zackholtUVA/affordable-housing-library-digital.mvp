@@ -17,7 +17,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
           <li key={`${item.label}-${index}`} className="inline-flex min-w-0 items-center gap-3">
             {index > 0 ? <span aria-hidden="true">/</span> : null}
             {item.href ? (
-              <Link href={item.href} className="hover:text-[var(--text)]">
+              <Link href={item.href} className="hover:text-[var(--link-hover)]">
                 {item.label}
               </Link>
             ) : (

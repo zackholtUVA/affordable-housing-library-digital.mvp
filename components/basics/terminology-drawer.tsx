@@ -19,7 +19,7 @@ export function TerminologyDrawer({ term }: TerminologyDrawerProps) {
         className="flex w-full min-w-0 items-center justify-between gap-3 px-5 py-4 text-left"
       >
         <span className="min-w-0 break-words text-sm font-semibold">{term.term}</span>
-        <span className="text-xs text-[var(--muted)]">{open ? "Hide" : "Show"}</span>
+        <span className="shrink-0 text-xs text-[var(--muted)]">{open ? "Hide" : "Show"}</span>
       </button>
       <div
         className={`grid transition-[grid-template-rows] duration-300 ease-[var(--motion-easing-standard)] ${
