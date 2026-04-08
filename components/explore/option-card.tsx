@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { Badge } from "@/components/shared/badge";
 import { Button } from "@/components/shared/button";
@@ -53,10 +54,36 @@ export function OptionCard({ option }: OptionCardProps) {
       )}
     >
       <div className="min-w-0">
+        {/* Placeholder Image */}
+        {option.imageUrl && (
+          <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-lg bg-[var(--surface-2)]">
+            <Image
+              src={option.imageUrl}
+              alt={option.imageAlt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+            {option.preApproved && (
+              <span className="absolute left-2 top-2 rounded-full bg-[var(--accent)] px-2 py-1 text-xs font-semibold text-[var(--accent-foreground)]">
+                Pre-Approved
+              </span>
+            )}
+          </div>
+        )}
+        
         <div className="mb-4 flex items-start justify-between gap-3">
           <h3 className="min-w-0 break-words text-lg font-semibold">{option.title}</h3>
           <Badge>{option.policyConfidenceLabel}</Badge>
         </div>
+        
+        {/* Price Range */}
+        {option.priceRange && (
+          <p className="mb-3 text-sm font-semibold text-[var(--accent)]">
+            {option.priceRange}
+          </p>
+        )}
+        
         <p className="min-w-0 break-words text-sm leading-relaxed text-[var(--muted)]">
           {option.shortSummary}
         </p>

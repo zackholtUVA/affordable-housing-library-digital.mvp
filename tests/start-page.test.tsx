@@ -12,7 +12,7 @@ describe("StartPage", () => {
     expect(screen.getByText("How it works")).toBeInTheDocument();
     expect(screen.getByText("Trust and limitations")).toBeInTheDocument();
 
-    expect(screen.getByRole("link", { name: "Open advanced explore" })).toHaveAttribute("href", "/explore");
+    expect(screen.getByRole("link", { name: "Browse with filters" })).toHaveAttribute("href", "/explore");
     expect(screen.getByRole("link", { name: "Go directly to Compare" })).toHaveAttribute("href", "/compare");
 
     expect(container.querySelector("#how-it-works")).toBeInTheDocument();

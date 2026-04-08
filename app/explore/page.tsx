@@ -22,6 +22,7 @@ function cloneEmptyFilters(): ExploreFilterState {
     goal: [],
     housingType: [],
     complexity: [],
+    preApproved: [],
   };
 }
 
@@ -75,10 +76,10 @@ export default function ExplorePage() {
     <PageShell className="space-y-[var(--space-section)]">
       <header className="space-y-4">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-          Explore housing pathways
+          Browse ADU Options
         </h1>
         <p className="max-w-3xl text-[var(--muted)]">
-          Browse options in plain language, then add a few to compare side by side before deciding what to pursue next.
+          Filter and compare housing options to find the right fit for your property and goals. Use the pre-approved filter to see designs that have already passed review in many jurisdictions.
         </p>
       </header>
 

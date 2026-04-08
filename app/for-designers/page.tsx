@@ -1,0 +1,177 @@
+import Link from "next/link";
+
+import { PageShell } from "@/components/layout/page-shell";
+import { Card } from "@/components/shared/card";
+import { SectionHeading } from "@/components/shared/section-heading";
+import { Button } from "@/components/shared/button";
+import { InfoCallout } from "@/components/shared/info-callout";
+
+const designerResources = [
+  {
+    id: "pre-approved-catalog",
+    title: "Pre-Approved Plan Catalog",
+    description:
+      "Browse and contribute to catalogs of pre-approved ADU designs that have already passed local review in various jurisdictions.",
+    icon: "📚",
+    href: "/explore",
+    ctaLabel: "View catalog",
+    available: true,
+  },
+  {
+    id: "design-guidelines",
+    title: "Design Guidelines Library",
+    description:
+      "Access comprehensive design guidelines, setback requirements, and code references for ADU design across different municipalities.",
+    icon: "📏",
+    href: "#",
+    ctaLabel: "View guidelines",
+    available: false,
+  },
+  {
+    id: "project-leads",
+    title: "Project Opportunities",
+    description:
+      "Connect with homeowners actively seeking design services for their ADU projects. Get matched based on location and expertise.",
+    icon: "🤝",
+    href: "#",
+    ctaLabel: "Find projects",
+    available: false,
+  },
+  {
+    id: "submission-portal",
+    title: "Design Submission Portal",
+    description:
+      "Submit your ADU designs to be featured in our pre-approved catalog. Help homeowners access quality, vetted designs.",
+    icon: "📤",
+    href: "#",
+    ctaLabel: "Submit designs",
+    available: false,
+  },
+];
+
+const benefits = [
+  {
+    title: "Reach More Clients",
+    description: "Connect with homeowners actively researching ADU options in your service area.",
+  },
+  {
+    title: "Showcase Your Work",
+    description: "Feature your pre-approved designs in our catalog to demonstrate expertise.",
+  },
+  {
+    title: "Streamlined Process",
+    description: "Help clients understand feasibility before engaging, reducing project friction.",
+  },
+];
+
+export default function ForDesignersPage() {
+  return (
+    <PageShell className="space-y-[var(--space-section)]">
+      <header className="fade-in space-y-4">
+        <span className="text-sm font-medium uppercase tracking-wider text-[var(--accent)]">
+          For Professionals
+        </span>
+        <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
+          Architect & Designer Resources
+        </h1>
+        <p className="max-w-3xl text-[var(--muted)]">
+          Access tools, resources, and project opportunities to grow your ADU design practice. Connect with homeowners ready to build and contribute to the growing library of pre-approved plans.
+        </p>
+      </header>
+
+      <section className="fade-in">
+        <InfoCallout title="Partner with us" tone="info">
+          We&apos;re building a network of qualified architects and designers to help homeowners navigate ADU projects. Interested in being featured?{" "}
+          <Link href="/contact" className="font-medium underline">
+            Contact us to learn more
+          </Link>
+          .
+        </InfoCallout>
+      </section>
+
+      <section className="fade-in space-y-[var(--space-stack)]">
+        <SectionHeading
+          eyebrow="Tools & resources"
+          title="Everything you need to design ADUs"
+          description="Access our growing library of resources to streamline your ADU design workflow."
+        />
+        <div className="grid gap-6 md:grid-cols-2">
+          {designerResources.map((resource) => (
+            <Card
+              key={resource.id}
+              as="article"
+              className={`flex flex-col justify-between ${!resource.available ? "opacity-70" : ""}`}
+            >
+              <div className="space-y-4">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--surface-2)] text-2xl">
+                    {resource.icon}
+                  </div>
+                  {!resource.available && (
+                    <span className="rounded-full bg-[var(--surface-2)] px-2 py-1 text-xs font-medium text-[var(--muted)]">
+                      Coming soon
+                    </span>
+                  )}
+                </div>
+                <h3 className="text-lg font-semibold">{resource.title}</h3>
+                <p className="text-sm leading-relaxed text-[var(--muted)]">
+                  {resource.description}
+                </p>
+              </div>
+              <div className="mt-6">
+                {resource.available ? (
+                  <Link href={resource.href}>
+                    <Button size="sm" variant="secondary">
+                      {resource.ctaLabel}
+                    </Button>
+                  </Link>
+                ) : (
+                  <Button size="sm" variant="ghost" disabled>
+                    {resource.ctaLabel}
+                  </Button>
+                )}
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="fade-in space-y-[var(--space-stack)]">
+        <SectionHeading
+          eyebrow="Why partner with us"
+          title="Grow your ADU practice"
+          description="Join our network of design professionals and access new opportunities."
+        />
+        <div className="grid gap-6 md:grid-cols-3">
+          {benefits.map((benefit, index) => (
+            <Card key={index} as="article" interactive={false} className="text-center">
+              <h3 className="font-semibold">{benefit.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+                {benefit.description}
+              </p>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="fade-in">
+        <Card as="aside" className="bg-[var(--surface-2)] p-8 text-center">
+          <h2 className="text-xl font-semibold">Ready to get started?</h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm text-[var(--muted)]">
+            Browse our existing catalog to see how designs are presented, or contact us to discuss partnership opportunities.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+            <Link href="/explore">
+              <Button size="md">Browse design catalog</Button>
+            </Link>
+            <Link href="/contact">
+              <Button size="md" variant="secondary">
+                Contact us
+              </Button>
+            </Link>
+          </div>
+        </Card>
+      </section>
+    </PageShell>
+  );
+}

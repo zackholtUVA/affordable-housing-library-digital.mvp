@@ -8,10 +8,10 @@ import type {
 export const APP_NAME = "Affordable Housing Library";
 
 export const NAV_ITEMS = [
-  { href: "/start", label: "Explore options" },
+  { href: "/get-started", label: "Get started" },
+  { href: "/start", label: "Browse ADUs" },
   { href: "/compare", label: "Compare" },
   { href: "/basics", label: "Learn the basics" },
-  { href: "/next-steps", label: "Next steps" },
 ] as const;
 
 export const UTILITY_LINKS = [
