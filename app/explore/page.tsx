@@ -79,7 +79,7 @@ export default function ExplorePage() {
           Browse ADU Options
         </h1>
         <p className="max-w-3xl text-[var(--muted)]">
-          Filter and compare housing options to find the right fit for your property and goals. Use the pre-approved filter to see designs that have already passed review in many jurisdictions.
+          Filter and compare ADU options to find the right fit for your property and goals.
         </p>
       </header>
 
@@ -91,9 +91,6 @@ export default function ExplorePage() {
             inputRef={searchInputRef}
             onArrowDown={focusFirstResultAction}
           />
-          <p className="text-xs leading-relaxed text-[var(--muted)]">
-            Tip: start broad, compare two or three options, then narrow by feasibility and timing.
-          </p>
           <FilterPanel groups={filterGroups} filters={filters} onToggle={toggleFilter} />
         </div>
 
@@ -105,11 +102,8 @@ export default function ExplorePage() {
               onClick={resetFilters}
               className="shape-angular-sm surface-3d surface-3d-interactive border border-[var(--border)] px-3 py-1.5 text-xs font-medium text-[var(--muted)] hover:bg-[var(--surface-2)]"
             >
-              Clear all + reset search
+              Clear all
             </button>
-            <span className="ml-auto min-w-0 break-words text-[10px] uppercase tracking-[0.14em] text-[var(--muted)] max-md:w-full md:text-right">
-              Use badges to judge feasibility level
-            </span>
           </div>
 
           <PlausibilityLegend compact />

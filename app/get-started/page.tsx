@@ -10,17 +10,17 @@ const pathwayCards = [
     type: "primary" as const,
     title: "I Want to Build an ADU",
     description:
-      "Explore your options for adding a backyard cottage, garage conversion, or other accessory dwelling unit to your property. Compare designs, understand costs, and find pre-approved plans.",
+      "Compare designs, understand costs, and find pre-approved plans for your property.",
     icon: "🏠",
     href: "/start",
-    ctaLabel: "Explore ADU options",
+    ctaLabel: "Explore options",
   },
   {
     id: "affordable-housing",
     type: "secondary" as const,
     title: "I Need Affordable Housing",
     description:
-      "Find resources for affordable rental housing, including ADU rentals and housing assistance programs.",
+      "Browse ADU rentals and housing assistance programs.",
     icon: "🔑",
     href: "/affordable-housing",
     ctaLabel: "Find housing",
@@ -30,20 +30,20 @@ const pathwayCards = [
     type: "secondary" as const,
     title: "I'm an Architect / Designer",
     description:
-      "Access design resources, pre-approved plan catalogs, and connect with homeowners seeking ADU projects.",
+      "Access plan catalogs and connect with homeowners.",
     icon: "📐",
     href: "/for-designers",
-    ctaLabel: "Designer resources",
+    ctaLabel: "View resources",
   },
   {
     id: "contractor",
     type: "secondary" as const,
     title: "I'm a Contractor",
     description:
-      "Find ADU projects, access construction specifications, and connect with homeowners ready to build.",
+      "Find projects and access construction specifications.",
     icon: "🔨",
     href: "/for-contractors",
-    ctaLabel: "Contractor resources",
+    ctaLabel: "View resources",
   },
 ];
 
@@ -53,13 +53,10 @@ export default function GetStartedPage() {
 
   return (
     <PageShell className="space-y-[var(--space-section)]">
-      <header className="fade-in space-y-4 text-center">
+      <header className="fade-in space-y-3 text-center">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
           What brings you here?
         </h1>
-        <p className="mx-auto max-w-2xl text-[var(--muted)]">
-          Choose the path that best matches your situation. We&apos;ll guide you to the right resources and next steps.
-        </p>
       </header>
 
       <section className="fade-in space-y-8">
@@ -105,7 +102,7 @@ export default function GetStartedPage() {
                 className="group flex h-full flex-col justify-between p-6 transition-all hover:border-[var(--accent)] hover:shadow-md"
               >
                 <div className="space-y-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--surface-2)] text-2xl">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--surface-2)] text-xl">
                     {card.icon}
                   </div>
                   <h3 className="text-lg font-semibold">{card.title}</h3>
@@ -123,22 +120,6 @@ export default function GetStartedPage() {
             </Link>
           ))}
         </div>
-      </section>
-
-      <section className="fade-in">
-        <Card as="aside" interactive={false} className="bg-[var(--surface-2)] p-6 text-center">
-          <p className="text-sm text-[var(--muted)]">
-            Not sure which path is right for you?{" "}
-            <Link href="/basics" className="font-medium text-[var(--accent)] hover:underline">
-              Learn the basics about ADUs
-            </Link>{" "}
-            or{" "}
-            <Link href="/contact" className="font-medium text-[var(--accent)] hover:underline">
-              contact us for guidance
-            </Link>
-            .
-          </p>
-        </Card>
       </section>
     </PageShell>
   );

@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { PageShell } from "@/components/layout/page-shell";
 import { Card } from "@/components/shared/card";
-import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/shared/button";
 import { InfoCallout } from "@/components/shared/info-callout";
 
@@ -11,17 +10,17 @@ const housingResources = [
     id: "adu-rentals",
     title: "ADU Rental Listings",
     description:
-      "Browse available accessory dwelling units for rent in your area. ADUs often offer more affordable options than traditional apartments.",
+      "Browse available ADU rentals—often more affordable than traditional apartments.",
     icon: "🏡",
     href: "/explore",
-    ctaLabel: "Browse ADU rentals",
+    ctaLabel: "Browse rentals",
     available: true,
   },
   {
     id: "housing-programs",
     title: "Housing Assistance Programs",
     description:
-      "Learn about local, state, and federal programs that can help make housing more affordable, including vouchers and subsidies.",
+      "Local, state, and federal programs including vouchers and subsidies.",
     icon: "📋",
     href: "#",
     ctaLabel: "View programs",
@@ -31,17 +30,17 @@ const housingResources = [
     id: "affordability-calculator",
     title: "Affordability Calculator",
     description:
-      "Estimate what you can afford based on your income and expenses. Understand how ADU rentals compare to other options.",
+      "Estimate what you can afford and compare ADUs to other options.",
     icon: "🧮",
     href: "#",
-    ctaLabel: "Calculate affordability",
+    ctaLabel: "Calculate",
     available: false,
   },
   {
     id: "waitlist-info",
-    title: "Waitlist Information",
+    title: "Waitlist Notifications",
     description:
-      "Get notified when new affordable ADU rentals become available in your preferred neighborhoods.",
+      "Get notified when new affordable ADU rentals become available.",
     icon: "📬",
     href: "#",
     ctaLabel: "Join waitlist",
@@ -49,48 +48,26 @@ const housingResources = [
   },
 ];
 
-const faqs = [
-  {
-    question: "What is an ADU and why might it be more affordable?",
-    answer:
-      "An ADU (Accessory Dwelling Unit) is a smaller secondary home on the same lot as a primary residence. ADUs are often more affordable because they're smaller, have lower utility costs, and homeowners may offer competitive rents to find quality tenants.",
-  },
-  {
-    question: "How do I search for ADU rentals?",
-    answer:
-      "Use our browse tool to filter housing options. Look for garage conversions, backyard cottages, basement apartments, and junior suites. Many homeowners list these separately from traditional apartment listings.",
-  },
-  {
-    question: "What should I consider when renting an ADU?",
-    answer:
-      "Consider privacy (shared vs. separate entrance), parking availability, utility arrangements (separate or shared meters), and the relationship with the property owner. ADUs offer a unique living situation that some renters find preferable to large apartment complexes.",
-  },
-];
-
 export default function AffordableHousingPage() {
   return (
     <PageShell className="space-y-[var(--space-section)]">
-      <header className="fade-in space-y-4">
+      <header className="fade-in space-y-3">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
           Finding Affordable Housing
         </h1>
         <p className="max-w-3xl text-[var(--muted)]">
-          Discover housing options that fit your budget. ADUs and accessory dwellings often provide more affordable alternatives to traditional rentals while offering unique benefits like neighborhood integration and smaller environmental footprints.
+          Discover housing options that fit your budget. ADUs often provide more affordable alternatives to traditional rentals.
         </p>
       </header>
 
       <section className="fade-in">
-        <InfoCallout title="ADUs and Affordable Housing" tone="info">
-          Accessory Dwelling Units (ADUs) are increasingly recognized as a key part of the affordable housing solution. They add housing supply in existing neighborhoods, often at lower price points than new apartment construction, while helping homeowners offset their mortgage costs.
+        <InfoCallout tone="info">
+          ADUs are increasingly recognized as a key part of the affordable housing solution—adding supply in existing neighborhoods at lower price points.
         </InfoCallout>
       </section>
 
       <section className="fade-in space-y-[var(--space-stack)]">
-        <SectionHeading
-          eyebrow="Housing resources"
-          title="Find your next home"
-          description="Explore available resources to help you find affordable housing options in your area."
-        />
+        <h2 className="text-2xl font-semibold">Find your next home</h2>
         <div className="grid gap-6 md:grid-cols-2">
           {housingResources.map((resource) => (
             <Card
@@ -133,27 +110,47 @@ export default function AffordableHousingPage() {
       </section>
 
       <section className="fade-in space-y-[var(--space-stack)]">
-        <SectionHeading
-          eyebrow="Common questions"
-          title="Understanding ADU rentals"
-          description="Get answers to frequently asked questions about renting accessory dwelling units."
-        />
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <Card key={index} as="article" interactive={false} className="space-y-3">
-              <h3 className="font-semibold">{faq.question}</h3>
-              <p className="text-sm leading-relaxed text-[var(--muted)]">{faq.answer}</p>
-            </Card>
-          ))}
-        </div>
+        <h2 className="text-2xl font-semibold">FAQs</h2>
+        <details className="shape-angular-md surface-3d group border border-[var(--border)] bg-[var(--surface)]">
+          <summary className="cursor-pointer list-none p-6 font-semibold hover:bg-[var(--surface-2)]">
+            <div className="flex items-center justify-between">
+              <span>What is an ADU and why might it be more affordable?</span>
+              <span className="transition-transform group-open:rotate-180">▼</span>
+            </div>
+          </summary>
+          <div className="border-t border-[var(--border)] p-6 text-sm leading-relaxed text-[var(--muted)]">
+            An ADU (Accessory Dwelling Unit) is a smaller secondary home on the same lot as a primary residence. ADUs are often more affordable because they&apos;re smaller, have lower utility costs, and homeowners may offer competitive rents.
+          </div>
+        </details>
+
+        <details className="shape-angular-md surface-3d group border border-[var(--border)] bg-[var(--surface)]">
+          <summary className="cursor-pointer list-none p-6 font-semibold hover:bg-[var(--surface-2)]">
+            <div className="flex items-center justify-between">
+              <span>How do I search for ADU rentals?</span>
+              <span className="transition-transform group-open:rotate-180">▼</span>
+            </div>
+          </summary>
+          <div className="border-t border-[var(--border)] p-6 text-sm leading-relaxed text-[var(--muted)]">
+            Use our browse tool to filter housing options. Look for garage conversions, backyard cottages, basement apartments, and junior suites.
+          </div>
+        </details>
+
+        <details className="shape-angular-md surface-3d group border border-[var(--border)] bg-[var(--surface)]">
+          <summary className="cursor-pointer list-none p-6 font-semibold hover:bg-[var(--surface-2)]">
+            <div className="flex items-center justify-between">
+              <span>What should I consider when renting an ADU?</span>
+              <span className="transition-transform group-open:rotate-180">▼</span>
+            </div>
+          </summary>
+          <div className="border-t border-[var(--border)] p-6 text-sm leading-relaxed text-[var(--muted)]">
+            Consider privacy (shared vs. separate entrance), parking availability, utility arrangements (separate or shared meters), and the relationship with the property owner.
+          </div>
+        </details>
       </section>
 
       <section className="fade-in">
         <Card as="aside" className="bg-[var(--surface-2)] p-8 text-center">
           <h2 className="text-xl font-semibold">Ready to explore ADU options?</h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-[var(--muted)]">
-            Browse available housing options and filter by type, price range, and features to find the right fit for your needs.
-          </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
             <Link href="/explore">
               <Button size="md">Browse all options</Button>
