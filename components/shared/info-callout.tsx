@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 type InfoCalloutProps = {
-  title: ReactNode;
+  title?: ReactNode;
   children: ReactNode;
   tone?: "neutral" | "warning" | "info";
 };
@@ -24,7 +24,7 @@ export function InfoCallout({
             : "border-[var(--border)] bg-[var(--surface-2)]",
       )}
     >
-      <h3 className="mb-2.5 text-sm font-semibold tracking-wide">{title}</h3>
+      {title && <h3 className="mb-2.5 text-sm font-semibold tracking-wide">{title}</h3>}
       <p className="text-sm leading-relaxed text-[var(--muted)]">{children}</p>
     </aside>
   );

@@ -23,11 +23,11 @@ export function EmptyState({
   onAction,
 }: EmptyStateProps) {
   return (
-    <Card className="space-y-3 text-center">
+    <Card className="space-y-[var(--space-stack-tight)] text-center">
       <h3 className="text-xl font-semibold">{title}</h3>
       <p className="mx-auto mt-2 max-w-xl text-sm text-[var(--muted)]">{description}</p>
       {actionLabel || secondaryActionLabel ? (
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-[var(--space-stack)] flex flex-wrap items-center justify-center gap-[var(--space-stack-tight)]">
           {actionHref ? (
             <Link href={actionHref}>
               <Button>{actionLabel}</Button>

@@ -6,8 +6,8 @@ import { Card } from "@/components/shared/card";
 
 export function HeroSection() {
   return (
-    <section className="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-end">
-      <Card className="p-8 md:p-10">
+    <section className="grid gap-[var(--space-stack)] lg:grid-cols-[1.4fr_1fr] lg:items-end">
+      <Card className="p-[max(1.4rem,var(--space-card-pad))] md:p-[max(1.8rem,var(--space-card-pad))]">
         <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
           Affordable Housing Library MVP
         </p>

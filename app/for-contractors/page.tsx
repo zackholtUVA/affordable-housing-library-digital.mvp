@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { PageShell } from "@/components/layout/page-shell";
 import { Card } from "@/components/shared/card";
-import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/shared/button";
 import { InfoCallout } from "@/components/shared/info-callout";
 
@@ -11,8 +10,7 @@ const contractorResources = [
     id: "project-listings",
     title: "ADU Project Listings",
     description:
-      "Find homeowners actively seeking contractors for their ADU projects. Filter by project type, location, and timeline.",
-    icon: "📋",
+      "Find homeowners seeking contractors for ADU projects.",
     href: "#",
     ctaLabel: "View projects",
     available: false,
@@ -21,18 +19,16 @@ const contractorResources = [
     id: "specs-library",
     title: "Construction Specifications",
     description:
-      "Access detailed construction specifications for various ADU types, including foundation requirements, utility connections, and finishing details.",
-    icon: "📐",
+      "Detailed specs for various ADU types and construction requirements.",
     href: "#",
-    ctaLabel: "View specifications",
+    ctaLabel: "View specs",
     available: false,
   },
   {
     id: "permit-guides",
     title: "Permit Process Guides",
     description:
-      "Navigate local permitting requirements with jurisdiction-specific guides and checklists for ADU construction.",
-    icon: "📝",
+      "Jurisdiction-specific guides and checklists for ADU construction.",
     href: "#",
     ctaLabel: "View guides",
     available: false,
@@ -41,10 +37,9 @@ const contractorResources = [
     id: "prefab-partners",
     title: "Prefab ADU Partnerships",
     description:
-      "Connect with prefab ADU manufacturers looking for installation partners. Get certified to install popular prefab models.",
-    icon: "🏗️",
+      "Connect with prefab manufacturers for installation partnerships.",
     href: "#",
-    ctaLabel: "View partnerships",
+    ctaLabel: "View partners",
     available: false,
   },
 ];
@@ -75,21 +70,21 @@ const projectTypes = [
 export default function ForContractorsPage() {
   return (
     <PageShell className="space-y-[var(--space-section)]">
-      <header className="fade-in space-y-4">
-        <span className="text-sm font-medium uppercase tracking-wider text-[var(--accent)]">
+      <header className="fade-in space-y-3">
+        <span className="text-sm font-medium uppercase tracking-wider text-[var(--link)]">
           For Professionals
         </span>
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
           Contractor Resources
         </h1>
         <p className="max-w-3xl text-[var(--muted)]">
-          Connect with ADU projects in your area and access the resources you need to deliver quality work. From project leads to construction specifications, we&apos;re building tools to help you grow your ADU business.
+          Connect with ADU projects and access resources to grow your construction business.
         </p>
       </header>
 
       <section className="fade-in">
-        <InfoCallout title="Join our contractor network" tone="info">
-          We&apos;re building a vetted network of contractors experienced in ADU construction. Interested in receiving project referrals?{" "}
+        <InfoCallout tone="info">
+          We&apos;re building a vetted contractor network.{" "}
           <Link href="/contact" className="font-medium underline">
             Contact us to apply
           </Link>
@@ -98,33 +93,26 @@ export default function ForContractorsPage() {
       </section>
 
       <section className="fade-in space-y-[var(--space-stack)]">
-        <SectionHeading
-          eyebrow="Tools & resources"
-          title="Build your ADU business"
-          description="Access resources designed specifically for contractors working on accessory dwelling units."
-        />
-        <div className="grid gap-6 md:grid-cols-2">
+        <h2 className="text-2xl font-semibold">Tools & Resources</h2>
+        <div className="grid gap-[var(--space-stack)] md:grid-cols-2">
           {contractorResources.map((resource) => (
             <Card
               key={resource.id}
               as="article"
               className={`flex flex-col justify-between ${!resource.available ? "opacity-70" : ""}`}
             >
-              <div className="space-y-4">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--surface-2)] text-2xl">
-                    {resource.icon}
-                  </div>
-                  <span className="rounded-full bg-[var(--surface-2)] px-2 py-1 text-xs font-medium text-[var(--muted)]">
+              <div className="space-y-[var(--space-stack-tight)]">
+                <div className="flex min-w-0 items-start justify-between gap-4">
+                  <h3 className="min-w-0 break-words text-lg font-semibold">{resource.title}</h3>
+                  <span className="shrink-0 rounded-full bg-[var(--surface-2)] px-2 py-1 text-xs font-medium text-[var(--muted)]">
                     Coming soon
                   </span>
                 </div>
-                <h3 className="text-lg font-semibold">{resource.title}</h3>
                 <p className="text-sm leading-relaxed text-[var(--muted)]">
                   {resource.description}
                 </p>
               </div>
-              <div className="mt-6">
+              <div className="mt-[var(--space-stack-loose)]">
                 <Button size="sm" variant="ghost" disabled>
                   {resource.ctaLabel}
                 </Button>
@@ -135,18 +123,14 @@ export default function ForContractorsPage() {
       </section>
 
       <section className="fade-in space-y-[var(--space-stack)]">
-        <SectionHeading
-          eyebrow="Market opportunity"
-          title="ADU project types in demand"
-          description="Understand the most common ADU project types homeowners are pursuing."
-        />
-        <div className="grid gap-4 md:grid-cols-2">
+        <h2 className="text-2xl font-semibold">Market Opportunity</h2>
+        <div className="grid gap-[var(--space-stack-tight)] md:grid-cols-2">
           {projectTypes.map((project, index) => (
             <Card key={index} as="article" interactive={false}>
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="font-semibold">{project.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-[var(--muted)]">
+              <div className="flex min-w-0 items-start justify-between gap-4">
+                <div className="min-w-0">
+                  <h3 className="text-sm font-semibold">{project.title}</h3>
+                  <p className="mt-1 text-xs leading-relaxed text-[var(--muted)]">
                     {project.description}
                   </p>
                 </div>
@@ -160,12 +144,9 @@ export default function ForContractorsPage() {
       </section>
 
       <section className="fade-in">
-        <Card as="aside" className="bg-[var(--surface-2)] p-8 text-center">
-          <h2 className="text-xl font-semibold">Want to be notified when we launch?</h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-[var(--muted)]">
-            We&apos;re actively building contractor tools and project matching features. Contact us to get early access and help shape what we build.
-          </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+        <Card as="aside" className="bg-[var(--surface-2)] p-[max(1.4rem,var(--space-card-pad))] text-center">
+          <h2 className="text-xl font-semibold">Get notified when we launch</h2>
+          <div className="mt-[var(--space-stack-loose)] flex flex-wrap items-center justify-center gap-[var(--space-stack-tight)]">
             <Link href="/contact">
               <Button size="md">Contact us</Button>
             </Link>

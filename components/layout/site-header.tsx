@@ -75,7 +75,7 @@ export function SiteHeader() {
           {APP_NAME}
         </Link>
 
-        <nav className="hidden items-center gap-3 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-2 lg:flex xl:gap-3" aria-label="Primary">
           {NAV_ITEMS.map((item) => {
             const active = pathname === item.href;
             return (
@@ -83,16 +83,16 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "shape-angular-sm surface-3d relative px-4 py-2.5 text-sm transition-colors",
+                  "shape-angular-sm surface-3d relative min-w-0 px-3.5 py-2.5 text-sm transition-colors xl:px-4",
                   active
-                    ? "bg-[var(--surface-2)] text-[var(--text)]"
-                    : "text-[var(--muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]",
+                    ? "bg-[var(--accent-soft)] text-[var(--text)]"
+                    : "text-[var(--muted)] hover:bg-[var(--surface-2)] hover:text-[var(--link-hover)]",
                 )}
               >
-                {item.label}
+                <span className="block min-w-0 break-words">{item.label}</span>
                 <span
                   className={cn(
-                    "absolute inset-x-2 -bottom-[1px] h-[2px] bg-[var(--accent)] transition-transform duration-200",
+                    "absolute inset-x-2 -bottom-[1px] h-[2px] bg-[var(--link)] transition-transform duration-200",
                     active ? "scale-x-100" : "scale-x-0",
                   )}
                 />
@@ -101,19 +101,19 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <Button
             variant="ghost"
             size="sm"
             onClick={openShortcutHelp}
-            className="h-9 px-3 text-xs"
+            className="px-3 text-xs"
             aria-label="Open keyboard shortcuts help"
           >
             Help
           </Button>
         </div>
 
-        <div className="flex items-center gap-3 md:hidden">
+        <div className="flex items-center gap-3 lg:hidden">
           <Button
             variant="ghost"
             size="sm"
@@ -121,7 +121,7 @@ export function SiteHeader() {
               setIsMenuOpen(false);
               openShortcutHelp();
             }}
-            className="h-9 px-3 text-xs"
+            className="px-3 text-xs"
             aria-label="Open keyboard shortcuts help"
           >
             Help
@@ -143,7 +143,7 @@ export function SiteHeader() {
         <div
           id="mobile-nav"
           ref={menuRef}
-          className="surface-3d overflow-hidden border-t border-[var(--border)] transition-[max-height,opacity] duration-300 ease-[var(--motion-easing-standard)] md:hidden"
+          className="surface-3d overflow-hidden border-t border-[var(--border)] transition-[max-height,opacity] duration-300 ease-[var(--motion-easing-standard)] lg:hidden"
         >
           <nav className="mx-auto flex max-w-[92rem] flex-col gap-3 px-[var(--space-page-x)] py-5" aria-label="Mobile">
             {NAV_ITEMS.map((item) => (
@@ -152,13 +152,13 @@ export function SiteHeader() {
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
                 className={cn(
-                  "shape-angular-sm surface-3d px-4 py-2.5 text-sm transition-colors",
+                  "shape-angular-sm surface-3d min-w-0 px-4 py-2.5 text-sm transition-colors",
                   pathname === item.href
-                    ? "bg-[var(--surface-2)] text-[var(--text)]"
-                    : "text-[var(--muted)] hover:bg-[var(--surface-2)]",
+                    ? "bg-[var(--accent-soft)] text-[var(--text)]"
+                    : "text-[var(--muted)] hover:bg-[var(--surface-2)] hover:text-[var(--link-hover)]",
                 )}
               >
-                {item.label}
+                <span className="block min-w-0 break-words">{item.label}</span>
               </Link>
             ))}
           </nav>

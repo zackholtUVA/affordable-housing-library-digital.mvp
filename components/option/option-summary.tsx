@@ -12,7 +12,7 @@ export function OptionSummary({ option }: OptionSummaryProps) {
       <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
         This pathway is typically used when households want to add housing while balancing speed, cost, and long-term flexibility.
       </p>
-      <ul className="mt-6 space-y-4 text-sm text-[var(--muted)]">
+      <ul className="mt-[var(--space-stack-loose)] space-y-[var(--space-stack-tight)] text-sm text-[var(--muted)]">
         {option.primaryUseCases.map((item) => (
           <li
             key={item}

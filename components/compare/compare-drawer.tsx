@@ -18,6 +18,7 @@ export function CompareDrawer() {
   const { selectedIds, remove, clear } = useCompareStore();
   const { addToast } = useUx();
   const [expanded, setExpanded] = useState(false);
+  const trayVisible = selectedIds.length > 0 && pathname !== "/compare";
 
   useEffect(() => {
     const handleEscape = () => setExpanded(false);
@@ -25,14 +26,27 @@ export function CompareDrawer() {
     return () => window.removeEventListener("ux:escape", handleEscape);
   }, []);
 
-  if (selectedIds.length === 0 || pathname === "/compare") {
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      "--floating-ui-clearance",
+      trayVisible ? "clamp(5.9rem, 13vw, 8rem)" : "clamp(2.25rem, 4vw, 3rem)",
+    );
+    return () => {
+      document.documentElement.style.setProperty(
+        "--floating-ui-clearance",
+        "clamp(2.25rem, 4vw, 3rem)",
+      );
+    };
+  }, [trayVisible]);
+
+  if (!trayVisible) {
     return null;
   }
 
   return (
-    <aside className="surface-3d fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_90%,transparent)] p-[max(0.9rem,var(--space-stack))] backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-[92rem] flex-col gap-[max(0.8rem,var(--space-stack))] md:flex-row md:items-center md:justify-between">
-        <div className="flex min-w-0 flex-wrap items-center gap-3">
+    <aside className="surface-3d fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[color-mix(in_oklab,var(--background)_90%,transparent)] p-[max(0.9rem,var(--space-stack-tight))] pb-[calc(max(0.9rem,var(--space-stack-tight))+env(safe-area-inset-bottom))] backdrop-blur-xl">
+      <div className="mx-auto flex w-full max-w-[92rem] flex-col gap-[max(0.8rem,var(--space-stack-tight))] md:flex-row md:items-center md:justify-between">
+        <div className="flex min-w-0 flex-wrap items-center gap-2.5">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
             Compare tray ({selectedIds.length} of {COMPARE_MAX} selected)
           </p>
@@ -61,7 +75,7 @@ export function CompareDrawer() {
           ))}
         </div>
 
-        <div className="flex min-w-0 items-center gap-3">
+        <div className="flex min-w-0 flex-wrap items-center gap-2.5 md:justify-end">
           <Button
             variant="ghost"
             size="sm"
@@ -76,7 +90,9 @@ export function CompareDrawer() {
             Clear
           </Button>
           <Link href="/compare">
-            <Button size="sm">Open compare page</Button>
+            <Button size="sm" className="min-w-[10.5rem]">
+              Open compare page
+            </Button>
           </Link>
         </div>
       </div>
@@ -86,7 +102,7 @@ export function CompareDrawer() {
           expanded ? "max-h-[70vh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="shape-angular-lg surface-3d grid gap-4 border border-[var(--border)] bg-[var(--surface)] p-4 md:grid-cols-3">
+        <div className="shape-angular-lg surface-3d grid gap-[var(--space-stack-tight)] border border-[var(--border)] bg-[var(--surface)] p-[var(--space-stack-tight)] md:grid-cols-3">
           {selectedIds.map((id) => {
             const option = optionById.get(id);
             if (!option) {

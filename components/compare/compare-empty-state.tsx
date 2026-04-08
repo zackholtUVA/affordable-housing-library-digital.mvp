@@ -9,7 +9,7 @@ type CompareEmptyStateProps = {
 
 export function CompareEmptyState({ onLoadSample }: CompareEmptyStateProps) {
   return (
-    <Card className="space-y-5 text-center">
+    <Card className="mx-auto w-full max-w-[74rem] space-y-[var(--space-stack)] text-center">
       <h2 className="text-2xl font-semibold">Compare options side by side</h2>
       <p className="mx-auto max-w-3xl text-sm leading-relaxed text-[var(--muted)]">
         This page helps you evaluate tradeoffs across up to three pathways. You are seeing this empty state because no options are selected yet.
@@ -17,7 +17,7 @@ export function CompareEmptyState({ onLoadSample }: CompareEmptyStateProps) {
       <p className="mx-auto max-w-3xl text-sm leading-relaxed text-[var(--muted)]">
         Start from Explore, or load a sample set to preview how comparison works before you commit.
       </p>
-      <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+      <div className="flex flex-wrap items-center justify-center gap-[var(--space-stack-tight)] pt-2">
         <Link href="/explore">
           <Button>Explore options</Button>
         </Link>

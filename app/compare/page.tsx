@@ -24,7 +24,7 @@ export default function ComparePage() {
     .filter((option): option is NonNullable<typeof option> => Boolean(option));
 
   return (
-    <PageShell className="space-y-[var(--space-section)] pb-[max(0.5rem,var(--space-footer-top))]">
+    <PageShell className="space-y-[var(--space-section)]">
       <header className="space-y-[var(--space-stack)]">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
           Compare housing options
@@ -34,10 +34,11 @@ export default function ComparePage() {
         </p>
       </header>
 
-      <div className="flex min-w-0 flex-wrap items-center gap-3">
+      <div className="mb-[var(--space-stack-tight)] flex min-w-0 flex-wrap items-center gap-[var(--space-stack-tight)]">
         <Button
           variant="ghost"
           size="sm"
+          className="shrink-0"
           onClick={() => {
             clear();
             addToast({
@@ -48,10 +49,10 @@ export default function ComparePage() {
         >
           Clear compared options
         </Button>
-        <Link href="/explore" className="text-sm font-medium text-[var(--accent)]">
+        <Link href="/explore" className="text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]">
           Add more options
         </Link>
-        <span className="text-xs uppercase tracking-[0.12em] text-[var(--muted)]">
+        <span className="shrink-0 text-xs uppercase tracking-[0.12em] text-[var(--muted)]">
           {selectedOptions.length}/{COMPARE_MAX}
         </span>
       </div>
@@ -83,7 +84,7 @@ export default function ComparePage() {
             {selectedOptions.map((option) => (
               <div
                 key={`${option.id}-actions`}
-                className="shape-angular-md surface-3d flex min-w-0 items-center justify-between gap-3 border border-[var(--border)] bg-[var(--surface)] px-4 py-3"
+                className="shape-angular-md surface-3d flex min-w-0 flex-col items-start justify-between gap-3 border border-[var(--border)] bg-[var(--surface)] px-4 py-3 sm:flex-row sm:items-center"
               >
                 <p className="min-w-0 break-words text-sm">{option.title}</p>
                 <Button
@@ -106,7 +107,7 @@ export default function ComparePage() {
             <Link href="/next-steps">
               <Button>Continue to next steps</Button>
             </Link>
-            <Link href="/explore" className="text-sm font-medium text-[var(--accent)]">
+            <Link href="/explore" className="text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]">
               Return to explore
             </Link>
           </div>

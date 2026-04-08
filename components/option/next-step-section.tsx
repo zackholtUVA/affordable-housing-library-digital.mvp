@@ -10,19 +10,19 @@ type NextStepSectionProps = {
 
 export function NextStepSection({ option }: NextStepSectionProps) {
   return (
-    <Card as="section" className="space-y-6">
+    <Card as="section" className="space-y-[var(--space-stack)]">
       <h2 className="text-xl font-semibold">Next steps</h2>
       <p className="text-sm leading-relaxed text-[var(--muted)]">
         Use these prompts to move from idea to a grounded feasibility conversation.
       </p>
-      <ul className="space-y-4 text-sm text-[var(--muted)]">
+      <ul className="space-y-[var(--space-stack-tight)] text-sm text-[var(--muted)]">
         {option.nextSteps.map((step) => (
           <li key={step} className="shape-angular-sm surface-3d min-w-0 break-words bg-[var(--surface-2)] px-4 py-3">
             {step}
           </li>
         ))}
       </ul>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-[var(--space-stack-tight)]">
         <Link href="/compare">
           <Button variant="secondary" size="sm">
             Compare options

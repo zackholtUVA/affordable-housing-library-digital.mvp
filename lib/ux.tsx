@@ -357,7 +357,7 @@ export function UxProvider({ children }: { children: ReactNode }) {
                   }
                 }}
                 placeholder="Search actions, pages, and shortcuts"
-                className="shape-angular-md surface-3d h-11 w-full border border-[var(--border)] bg-[var(--surface-2)] px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
+                className="shape-angular-md surface-3d min-h-[var(--control-min-h-md)] w-full border border-[var(--border)] bg-[var(--surface-2)] px-3 py-2.5 text-sm leading-snug focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-strong)]"
               />
             </div>
             <div className="max-h-96 overflow-y-auto p-3">
@@ -374,12 +374,12 @@ export function UxProvider({ children }: { children: ReactNode }) {
                 >
                   <span>
                     {command.title}
-                    <span className="ml-2 text-[10px] uppercase tracking-[0.12em] text-[var(--muted)]">
+                    <span className="ml-2 text-xs uppercase tracking-[0.1em] text-[var(--muted)]">
                       {command.section}
                     </span>
                   </span>
                   {command.shortcut ? (
-                    <span className="text-[10px] uppercase tracking-[0.12em] text-[var(--muted)]">
+                    <span className="text-xs uppercase tracking-[0.1em] text-[var(--muted)]">
                       {command.shortcut}
                     </span>
                   ) : null}

@@ -11,11 +11,11 @@ export function Badge({ children, className }: BadgeProps) {
   return (
     <span
       className={cn(
-        "shape-angular-sm surface-3d inline-flex min-w-0 items-center border border-[var(--border)] bg-[var(--surface-2)] px-2.5 py-1 text-xs font-medium text-[var(--muted)]",
+        "shape-angular-sm surface-3d inline-flex min-w-0 items-center border border-[var(--border)] bg-[var(--surface-2)] px-2.5 py-1.5 text-xs font-medium leading-snug text-[var(--muted)]",
         className,
       )}
     >
-      {children}
+      <span className="min-w-0 break-words">{children}</span>
     </span>
   );
 }

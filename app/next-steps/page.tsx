@@ -122,14 +122,14 @@ export default function NextStepsPage() {
       </div>
 
       <div className="mt-[var(--space-stack)] grid gap-[var(--space-stack)] lg:grid-cols-3">
-        <Card as="section" className="space-y-6">
+        <Card as="section" className="space-y-[var(--space-stack)]">
           <div className="space-y-2">
             <h2 className="text-lg font-semibold">Questions to answer</h2>
             <p className="text-xs uppercase tracking-[0.12em] text-[var(--muted)]">
               {contextualized ? "Session-related" : "General guidance"}
             </p>
           </div>
-          <ul className="space-y-4 text-sm text-[var(--muted)]">
+          <ul className="space-y-[var(--space-stack-tight)] text-sm text-[var(--muted)]">
             {questionPrompts.map((item) => (
               <li key={item} className="shape-angular-sm surface-3d min-w-0 break-words bg-[var(--surface-2)] px-4 py-3">
                 {item}
@@ -138,12 +138,12 @@ export default function NextStepsPage() {
           </ul>
         </Card>
 
-        <Card as="section" className="space-y-6">
+        <Card as="section" className="space-y-[var(--space-stack)]">
           <div className="space-y-2">
             <h2 className="text-lg font-semibold">Information to gather</h2>
             <p className="text-xs uppercase tracking-[0.12em] text-[var(--muted)]">General guidance</p>
           </div>
-          <ul className="space-y-4 text-sm text-[var(--muted)]">
+          <ul className="space-y-[var(--space-stack-tight)] text-sm text-[var(--muted)]">
             {documentPrompts.map((item) => (
               <li key={item} className="shape-angular-sm surface-3d min-w-0 break-words bg-[var(--surface-2)] px-4 py-3">
                 {item}
@@ -152,14 +152,14 @@ export default function NextStepsPage() {
           </ul>
         </Card>
 
-        <Card as="section" className="space-y-6">
+        <Card as="section" className="space-y-[var(--space-stack)]">
           <div className="space-y-2">
             <h2 className="text-lg font-semibold">Actions to consider next</h2>
             <p className="text-xs uppercase tracking-[0.12em] text-[var(--muted)]">
               {contextualized ? "Session-related" : "General guidance"}
             </p>
           </div>
-          <ul className="space-y-4 text-sm text-[var(--muted)]">
+          <ul className="space-y-[var(--space-stack-tight)] text-sm text-[var(--muted)]">
             {checklistPrompts.map((item) => (
               <li key={item} className="shape-angular-sm surface-3d min-w-0 break-words bg-[var(--surface-2)] px-4 py-3">
                 {item}
@@ -171,13 +171,13 @@ export default function NextStepsPage() {
 
       <section className="grid gap-[var(--space-stack)] md:grid-cols-2 lg:grid-cols-3">
         {nextStepResources.map((resource) => (
-          <Card key={resource.id} as="article" className="space-y-5">
+          <Card key={resource.id} as="article" className="space-y-[var(--space-stack-tight)]">
             <p className="text-xs uppercase tracking-[0.14em] text-[var(--muted)]">
               {resource.actionType}
             </p>
             <h3 className="text-base font-semibold">{resource.title}</h3>
             <p className="text-sm text-[var(--muted)]">{resource.description}</p>
-            <a href={resource.href} className="text-sm font-medium text-[var(--accent)]">
+            <a href={resource.href} className="text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]">
               {resource.linkLabel}
             </a>
           </Card>
@@ -188,7 +188,7 @@ export default function NextStepsPage() {
         <Link href="/explore">
           <Button>Back to Explore</Button>
         </Link>
-        <Link href="/compare" className="text-sm font-medium text-[var(--accent)]">
+        <Link href="/compare" className="text-sm font-medium text-[var(--link)] hover:text-[var(--link-hover)]">
           Review compared options
         </Link>
       </div>

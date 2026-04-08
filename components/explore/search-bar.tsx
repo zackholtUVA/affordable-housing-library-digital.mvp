@@ -26,7 +26,7 @@ export function SearchBar({ value, onChange, inputRef, onArrowDown }: SearchBarP
           }
         }}
         placeholder={'Try "garage conversion" or "family flexibility"'}
-        className="shape-angular-md surface-3d h-12 w-full min-w-0 border border-[var(--border)] bg-[var(--surface)] px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
+        className="shape-angular-md surface-3d min-h-[var(--control-min-h-md)] w-full min-w-0 border border-[var(--border)] bg-[var(--surface)] px-4 py-2.5 text-sm leading-snug focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-strong)]"
       />
     </label>
   );
