@@ -104,11 +104,11 @@
 
 :root[data-theme="light"] {
   color-scheme: light;
-  --background: #dfe8f3;
-  --surface: #eff4fb;
-  --surface-2: #c7d6e8;
-  --surface-3: #a8bdd6;
-  --border: #637f9f;
+  --background: #cfdced;
+  --surface: #dce7f4;
+  --surface-2: #b3c7df;
+  --surface-3: #8faacc;
+  --border: #486b92;
   --text: #061a32;
   --muted: #183554;
   --accent: #005ea2;
@@ -121,38 +121,38 @@
   --link-hover: #1a4480;
   --danger: #b50909;
   --danger-foreground: #fff3f2;
-  --shadow-card: 0 18px 32px -20px rgb(8 31 60 / 28%);
+  --shadow-card: 0 18px 32px -20px rgb(8 31 60 / 32%);
   --foreground: #061a32;
-  --card: #e1ebf7;
+  --card: #cedced;
   --card-foreground: #061a32;
-  --popover: #edf3fb;
+  --popover: #dae6f4;
   --popover-foreground: #061a32;
   --primary: #005ea2;
   --primary-foreground: #f4f9ff;
-  --secondary: #b9cce2;
+  --secondary: #9db6d3;
   --secondary-foreground: #0d2a47;
   --muted-foreground: #23415f;
   --destructive: #b50909;
-  --input: #7d97b8;
+  --input: #6487af;
   --ring: #2491ff;
   --chart-1: #005ea2;
   --chart-2: #0069b4;
   --chart-3: #3c79bd;
   --chart-4: #5e8fc7;
   --chart-5: #8cb0d7;
-  --sidebar: #d1deee;
+  --sidebar: #c0d1e5;
   --sidebar-foreground: #061a32;
   --sidebar-primary: #005ea2;
   --sidebar-primary-foreground: #f4f9ff;
-  --sidebar-accent: #b7c9df;
+  --sidebar-accent: #9fb8d5;
   --sidebar-accent-foreground: #0d2a47;
-  --sidebar-border: #6d88a9;
+  --sidebar-border: #4f739a;
   --sidebar-ring: #2491ff;
-  --surface-depth-rest: 0 14px 24px -16px rgb(16 39 68 / 22%);
-  --surface-depth-hover: 0 20px 34px -16px rgb(16 39 68 / 28%);
-  --surface-depth-press: 0 10px 16px -12px rgb(16 39 68 / 22%);
-  --surface-highlight: color-mix(in oklab, var(--surface-3) 38%, white);
-  --surface-edge: color-mix(in oklab, var(--border) 84%, #5a7494);
+  --surface-depth-rest: 0 14px 24px -16px rgb(16 39 68 / 26%);
+  --surface-depth-hover: 0 20px 34px -16px rgb(16 39 68 / 34%);
+  --surface-depth-press: 0 10px 16px -12px rgb(16 39 68 / 24%);
+  --surface-highlight: color-mix(in oklab, var(--surface-3) 46%, white);
+  --surface-edge: color-mix(in oklab, var(--border) 88%, #33567d);
 }
 
 @theme inline {
@@ -226,8 +226,8 @@ body {
 
 :root[data-theme="light"] body {
   background-image:
-    radial-gradient(circle at 0% 0%, color-mix(in oklab, var(--accent) 15%, transparent), transparent 54%),
-    radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--surface-3) 22%, transparent), transparent 58%);
+    radial-gradient(circle at 0% 0%, color-mix(in oklab, var(--accent) 26%, transparent), transparent 58%),
+    radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--surface-3) 34%, transparent), transparent 62%);
 }
 
 .sticky-offset-ui {
@@ -493,9 +493,14 @@ body {
 
 :root[data-theme="light"] .surface-3d {
   border-color: color-mix(in oklab, var(--surface-edge) 74%, var(--border));
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--surface) 88%, white) 0%,
+    color-mix(in oklab, var(--surface-2) 62%, var(--surface)) 100%
+  );
   box-shadow:
     var(--surface-depth-rest),
-    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 36%, white),
+    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 34%, white),
     inset 0 -1px 0 color-mix(in oklab, var(--surface-edge) 26%, #334f70);
 }
 
@@ -524,6 +529,12 @@ body {
 
 :root[data-theme="light"] .btn-3d {
   border: 1px solid color-mix(in oklab, var(--btn-edge) 70%, var(--border));
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--btn-highlight) 34%, white) 0%,
+    color-mix(in oklab, var(--btn-face) 80%, #8eabd0) 48%,
+    color-mix(in oklab, var(--btn-face) 62%, var(--btn-edge)) 100%
+  );
   box-shadow:
     var(--btn-shadow-rest),
     inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 44%, white),
