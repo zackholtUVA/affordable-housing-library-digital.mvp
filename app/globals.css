@@ -104,55 +104,55 @@
 
 :root[data-theme="light"] {
   color-scheme: light;
-  --background: #f5f8fc;
-  --surface: #ffffff;
-  --surface-2: #edf3fb;
-  --surface-3: #dbe7f6;
-  --border: #c5d4e8;
-  --text: #1a2842;
-  --muted: #3f5678;
-  --accent: #1b4fb8;
-  --accent-strong: #1a469f;
-  --accent-soft: color-mix(in oklab, var(--accent) 18%, transparent);
-  --accent-foreground: #f3f7ff;
-  --focus: #2d66da;
-  --focus-strong: #1d58cb;
-  --link: #1e56bf;
-  --link-hover: #17479f;
-  --danger: #d24141;
-  --danger-foreground: #fff4f4;
-  --shadow-card: 0 14px 34px -20px rgb(23 36 64 / 18%);
-  --foreground: #13213b;
-  --card: #e7eef9;
-  --card-foreground: #13213b;
-  --popover: #e7eef9;
-  --popover-foreground: #13213b;
-  --primary: #1b4fb8;
-  --primary-foreground: #f3f7ff;
-  --secondary: #c6d5ed;
-  --secondary-foreground: #1b2d4b;
-  --muted-foreground: #4f6484;
-  --destructive: #d24141;
-  --input: #b5c7e1;
-  --ring: #2d66da;
-  --chart-1: #285ecb;
-  --chart-2: #3d71d3;
-  --chart-3: #5687dc;
-  --chart-4: #78a3e7;
-  --chart-5: #a4c2f2;
-  --sidebar: #e7eef9;
-  --sidebar-foreground: #13213b;
-  --sidebar-primary: #1b4fb8;
-  --sidebar-primary-foreground: #f3f7ff;
-  --sidebar-accent: #cfdbef;
-  --sidebar-accent-foreground: #1b2d4b;
-  --sidebar-border: #9fb4d3;
-  --sidebar-ring: #2d66da;
-  --surface-depth-rest: 0 14px 24px -16px rgb(22 50 95 / 24%);
-  --surface-depth-hover: 0 20px 30px -16px rgb(22 50 95 / 30%);
-  --surface-depth-press: 0 10px 16px -12px rgb(22 50 95 / 22%);
-  --surface-highlight: color-mix(in oklab, var(--surface-3) 26%, white);
-  --surface-edge: color-mix(in oklab, var(--border) 72%, #bbc9df);
+  --background: #eaf0f6;
+  --surface: #fdfefe;
+  --surface-2: #dce5f1;
+  --surface-3: #c4d2e3;
+  --border: #7f95b1;
+  --text: #102744;
+  --muted: #284260;
+  --accent: #005ea2;
+  --accent-strong: #004b82;
+  --accent-soft: color-mix(in oklab, var(--accent) 24%, transparent);
+  --accent-foreground: #f4f9ff;
+  --focus: #2491ff;
+  --focus-strong: #0050d8;
+  --link: #005ea2;
+  --link-hover: #1a4480;
+  --danger: #b50909;
+  --danger-foreground: #fff3f2;
+  --shadow-card: 0 18px 32px -20px rgb(8 31 60 / 24%);
+  --foreground: #102744;
+  --card: #f3f7fc;
+  --card-foreground: #102744;
+  --popover: #fdfefe;
+  --popover-foreground: #102744;
+  --primary: #005ea2;
+  --primary-foreground: #f4f9ff;
+  --secondary: #d0dcec;
+  --secondary-foreground: #123150;
+  --muted-foreground: #35516f;
+  --destructive: #b50909;
+  --input: #93a9c4;
+  --ring: #2491ff;
+  --chart-1: #005ea2;
+  --chart-2: #0069b4;
+  --chart-3: #3c79bd;
+  --chart-4: #5e8fc7;
+  --chart-5: #8cb0d7;
+  --sidebar: #e1e9f3;
+  --sidebar-foreground: #102744;
+  --sidebar-primary: #005ea2;
+  --sidebar-primary-foreground: #f4f9ff;
+  --sidebar-accent: #cad7e8;
+  --sidebar-accent-foreground: #123150;
+  --sidebar-border: #8298b3;
+  --sidebar-ring: #2491ff;
+  --surface-depth-rest: 0 14px 24px -16px rgb(16 39 68 / 22%);
+  --surface-depth-hover: 0 20px 34px -16px rgb(16 39 68 / 28%);
+  --surface-depth-press: 0 10px 16px -12px rgb(16 39 68 / 22%);
+  --surface-highlight: color-mix(in oklab, var(--surface-3) 38%, white);
+  --surface-edge: color-mix(in oklab, var(--border) 84%, #5a7494);
 }
 
 @theme inline {
@@ -222,6 +222,12 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+:root[data-theme="light"] body {
+  background-image:
+    radial-gradient(circle at 0% 0%, color-mix(in oklab, var(--accent) 15%, transparent), transparent 54%),
+    radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--surface-3) 22%, transparent), transparent 58%);
 }
 
 .sticky-offset-ui {
@@ -479,6 +485,66 @@ body {
 .interactive-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 26px 48px -28px rgb(0 0 0 / 68%);
+}
+
+:root[data-theme="light"] .interactive-card:hover {
+  box-shadow: 0 20px 32px -22px rgb(16 39 68 / 30%);
+}
+
+:root[data-theme="light"] .surface-3d {
+  border-color: color-mix(in oklab, var(--surface-edge) 74%, var(--border));
+  box-shadow:
+    var(--surface-depth-rest),
+    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 36%, white),
+    inset 0 -1px 0 color-mix(in oklab, var(--surface-edge) 26%, #334f70);
+}
+
+:root[data-theme="light"] .surface-3d::before {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--surface-highlight) 26%, white) 0%,
+    transparent 42%,
+    color-mix(in oklab, var(--surface) 12%, #3b5676) 100%
+  );
+}
+
+:root[data-theme="light"] .surface-3d-interactive:hover {
+  box-shadow:
+    var(--surface-depth-hover),
+    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 42%, white),
+    inset 0 -1px 0 color-mix(in oklab, var(--surface-edge) 30%, #334f70);
+}
+
+:root[data-theme="light"] .surface-3d-interactive:active {
+  box-shadow:
+    var(--surface-depth-press),
+    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 32%, white),
+    inset 0 -1px 0 color-mix(in oklab, var(--surface-edge) 30%, #334f70);
+}
+
+:root[data-theme="light"] .btn-3d {
+  border: 1px solid color-mix(in oklab, var(--btn-edge) 70%, var(--border));
+  box-shadow:
+    var(--btn-shadow-rest),
+    inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 44%, white),
+    inset 0 calc(-1 * var(--btn-depth-rest)) 0
+      color-mix(in oklab, var(--btn-edge) 46%, #334f70);
+}
+
+:root[data-theme="light"] .btn-3d:hover {
+  box-shadow:
+    var(--btn-shadow-hover),
+    inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 50%, white),
+    inset 0 calc(-1 * var(--btn-depth-rest)) 0
+      color-mix(in oklab, var(--btn-edge) 48%, #334f70);
+}
+
+:root[data-theme="light"] .btn-3d:active {
+  box-shadow:
+    var(--btn-shadow-press),
+    inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 36%, white),
+    inset 0 calc(-1 * var(--btn-depth-press)) 0
+      color-mix(in oklab, var(--btn-edge) 48%, #334f70);
 }
 
 .interactive-card:hover::after {
