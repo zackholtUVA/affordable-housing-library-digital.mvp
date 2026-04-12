@@ -515,9 +515,17 @@ body {
   --surface-edge: color-mix(in oklab, var(--light-block-border) 86%, #061c35);
   --surface-highlight: color-mix(in oklab, #5f8ebf 56%, #1a4c82);
   --text: var(--light-block-text);
+  --foreground: var(--light-block-text);
   --muted: var(--light-block-muted);
+  --muted-foreground: var(--light-block-muted);
   --link: #e6f1ff;
   --link-hover: #ffffff;
+  --card-foreground: var(--light-block-text);
+  --popover-foreground: var(--light-block-text);
+  --secondary-foreground: #f4f8ff;
+  --accent-foreground: #f4f8ff;
+  --danger-foreground: #fff0ee;
+  color: var(--light-block-text);
   border-color: color-mix(in oklab, var(--surface-edge) 78%, var(--border));
   background: linear-gradient(
     180deg,
@@ -636,6 +644,17 @@ body {
 }
 
 :root[data-theme="light"] .site-chrome-header {
+  --text: var(--light-block-text);
+  --foreground: var(--light-block-text);
+  --muted: var(--light-block-muted);
+  --muted-foreground: var(--light-block-muted);
+  --link: #e6f1ff;
+  --link-hover: #ffffff;
+  --card-foreground: var(--light-block-text);
+  --popover-foreground: var(--light-block-text);
+  --secondary-foreground: #f4f8ff;
+  --accent-foreground: #f4f8ff;
+  color: var(--light-block-text);
   background: linear-gradient(
     180deg,
     #174a82 0%,
@@ -644,6 +663,17 @@ body {
 }
 
 :root[data-theme="light"] .site-chrome-footer {
+  --text: var(--light-block-text);
+  --foreground: var(--light-block-text);
+  --muted: var(--light-block-muted);
+  --muted-foreground: var(--light-block-muted);
+  --link: #e6f1ff;
+  --link-hover: #ffffff;
+  --card-foreground: var(--light-block-text);
+  --popover-foreground: var(--light-block-text);
+  --secondary-foreground: #f4f8ff;
+  --accent-foreground: #f4f8ff;
+  color: var(--light-block-text);
   background: linear-gradient(
     180deg,
     #15487f 0%,
@@ -652,6 +682,17 @@ body {
 }
 
 :root[data-theme="light"] .app-card {
+  --text: var(--light-block-text);
+  --foreground: var(--light-block-text);
+  --muted: var(--light-block-muted);
+  --muted-foreground: var(--light-block-muted);
+  --link: #e6f1ff;
+  --link-hover: #ffffff;
+  --card-foreground: var(--light-block-text);
+  --popover-foreground: var(--light-block-text);
+  --secondary-foreground: #f4f8ff;
+  --accent-foreground: #f4f8ff;
+  color: var(--light-block-text);
   background: linear-gradient(
     160deg,
     #1a4f87 0%,
