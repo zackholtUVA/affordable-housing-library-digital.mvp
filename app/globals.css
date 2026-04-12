@@ -593,6 +593,7 @@ body {
 
 :root[data-theme="light"] .btn-3d[data-variant="primary"] {
   --btn-highlight: color-mix(in oklab, var(--accent) 58%, var(--surface));
+  --btn-text: #f4f8ff;
 }
 
 :root[data-theme="light"] .btn-3d[data-variant="danger"] {
@@ -618,6 +619,10 @@ body {
 :root[data-theme="light"] .btn-flat[data-variant="secondary"] {
   background-color: #0f3d73;
   border-color: #082d55;
+  color: #f4f8ff;
+}
+
+:root[data-theme="light"] .btn-flat[data-variant="primary"] {
   color: #f4f8ff;
 }
 
