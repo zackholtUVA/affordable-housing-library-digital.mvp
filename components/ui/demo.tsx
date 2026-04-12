@@ -175,6 +175,15 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
           justify-content: center;
         }
 
+        :root[data-theme="light"] .halide-body {
+          --halide-silver: color-mix(in oklab, var(--text) 86%, var(--surface));
+          --halide-title: color-mix(in oklab, var(--text) 92%, #102f52);
+          --halide-accent: color-mix(in oklab, var(--accent) 72%, #9dbede);
+          --halide-panel-base: color-mix(in oklab, var(--surface-2) 84%, #6f91b4);
+          --halide-highlight: color-mix(in oklab, var(--accent) 36%, var(--surface));
+          --halide-grain-opacity: 0.08;
+        }
+
         .halide-grain {
           position: absolute;
           inset: 0;
