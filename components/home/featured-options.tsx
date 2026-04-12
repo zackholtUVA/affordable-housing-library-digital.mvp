@@ -44,7 +44,7 @@ export function FeaturedOptions({ options }: FeaturedOptionsProps) {
             </div>
             {/* Price Range */}
             {option.priceRange && (
-              <p className="mt-2 text-sm font-semibold text-[var(--accent)]">
+              <p className="mt-2 text-sm font-semibold text-[var(--accent-foreground)]">
                 {option.priceRange}
               </p>
             )}

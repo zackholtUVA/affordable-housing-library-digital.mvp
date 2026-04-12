@@ -176,8 +176,8 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
         }
 
         :root[data-theme="light"] .halide-body {
-          --halide-silver: color-mix(in oklab, var(--text) 86%, var(--surface));
-          --halide-title: color-mix(in oklab, var(--text) 92%, #102f52);
+          --halide-silver: #e7f1ff;
+          --halide-title: #f4f8ff;
           --halide-accent: color-mix(in oklab, var(--accent) 72%, #9dbede);
           --halide-panel-base: color-mix(in oklab, var(--surface-2) 84%, #6f91b4);
           --halide-highlight: color-mix(in oklab, var(--accent) 36%, var(--surface));
@@ -308,7 +308,7 @@ const HalideLanding = ({ content, layers = defaultLayers, className }: HalideLan
           align-items: center;
           justify-content: center;
           background: var(--halide-accent);
-          color: color-mix(in oklab, var(--halide-bg) 92%, black);
+          color: var(--accent-foreground);
           text-decoration: none;
           padding: 12px 20px;
           font-size: 15px;

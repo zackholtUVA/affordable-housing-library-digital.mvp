@@ -79,7 +79,7 @@ export function OptionCard({ option }: OptionCardProps) {
         
         {/* Price Range */}
         {option.priceRange && (
-          <p className="mb-3 text-sm font-semibold text-[var(--accent)]">
+          <p className="mb-3 text-sm font-semibold text-[var(--accent-foreground)]">
             {option.priceRange}
           </p>
         )}
