@@ -19,7 +19,7 @@ export function Card({
   return (
     <Component
       className={cn(
-        "shape-angular-lg surface-3d min-w-0 break-words border bg-[var(--surface)] p-[var(--space-card-pad)]",
+        "app-card shape-angular-lg surface-3d min-w-0 break-words border bg-[var(--surface)] p-[var(--space-card-pad)]",
         interactive ? "surface-3d-interactive interactive-card" : "",
         className,
       )}

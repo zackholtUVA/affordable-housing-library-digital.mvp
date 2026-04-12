@@ -69,7 +69,7 @@ export function SiteHeader() {
   }, [isMenuOpen]);
 
   return (
-    <header className="surface-3d sticky top-0 z-40 border-b border-[color-mix(in_oklab,var(--border)_84%,transparent)] bg-[color-mix(in_oklab,var(--background)_92%,transparent)] backdrop-blur-xl">
+    <header className="site-chrome-header surface-3d sticky top-0 z-40 border-b border-[color-mix(in_oklab,var(--border)_84%,transparent)] bg-[color-mix(in_oklab,var(--background)_92%,transparent)] backdrop-blur-xl">
       <div className="mx-auto flex h-[var(--header-height-mobile)] w-full max-w-[92rem] items-center justify-between px-[var(--space-page-x)] md:h-[var(--header-height-desktop)]">
         <Link href="/" className="text-sm font-semibold tracking-[0.015em] md:text-base">
           {APP_NAME}

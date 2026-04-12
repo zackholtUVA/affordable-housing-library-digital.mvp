@@ -104,55 +104,55 @@
 
 :root[data-theme="light"] {
   color-scheme: light;
-  --background: #b9cce1;
-  --surface: #c8d8ea;
-  --surface-2: #a3bad3;
-  --surface-3: #7f9fbe;
-  --border: #385d86;
+  --background: #9bb6d3;
+  --surface: #abc2dd;
+  --surface-2: #8eaacc;
+  --surface-3: #6f90bc;
+  --border: #244a78;
   --text: #071f3c;
-  --muted: #1c3f64;
-  --accent: #005ea2;
-  --accent-strong: #004879;
-  --accent-soft: color-mix(in oklab, var(--accent) 24%, transparent);
-  --accent-foreground: #dce8f5;
+  --muted: #1d4065;
+  --accent: #0052a3;
+  --accent-strong: #003d7d;
+  --accent-soft: color-mix(in oklab, var(--accent) 38%, transparent);
+  --accent-foreground: #d6e3f1;
   --focus: #2491ff;
   --focus-strong: #0050d8;
-  --link: #005ea2;
-  --link-hover: #1a4480;
-  --danger: #b50909;
-  --danger-foreground: #f5ddda;
-  --shadow-card: 0 18px 32px -20px rgb(10 34 61 / 36%);
+  --link: #0052a3;
+  --link-hover: #174078;
+  --danger: #a80202;
+  --danger-foreground: #efd8d5;
+  --shadow-card: 0 18px 34px -20px rgb(5 25 50 / 42%);
   --foreground: #071f3c;
-  --card: #bdd0e4;
+  --card: #9eb8d9;
   --card-foreground: #071f3c;
-  --popover: #c4d6e9;
+  --popover: #99b3d4;
   --popover-foreground: #071f3c;
-  --primary: #005ea2;
-  --primary-foreground: #dce8f5;
-  --secondary: #8ea8c6;
-  --secondary-foreground: #0c2b49;
-  --muted-foreground: #204465;
-  --destructive: #b50909;
-  --input: #557ba5;
+  --primary: #0052a3;
+  --primary-foreground: #d6e3f1;
+  --secondary: #7f9cc2;
+  --secondary-foreground: #0a2543;
+  --muted-foreground: #1d3d61;
+  --destructive: #a80202;
+  --input: #3f6391;
   --ring: #2491ff;
-  --chart-1: #005ea2;
-  --chart-2: #0069b4;
-  --chart-3: #3c79bd;
-  --chart-4: #5e8fc7;
-  --chart-5: #8cb0d7;
-  --sidebar: #aec2d9;
+  --chart-1: #0052a3;
+  --chart-2: #0061b3;
+  --chart-3: #3472b6;
+  --chart-4: #5785c0;
+  --chart-5: #7fa3cb;
+  --sidebar: #879fc2;
   --sidebar-foreground: #071f3c;
-  --sidebar-primary: #005ea2;
-  --sidebar-primary-foreground: #dce8f5;
-  --sidebar-accent: #8fa9c8;
-  --sidebar-accent-foreground: #0c2b49;
-  --sidebar-border: #3e648d;
+  --sidebar-primary: #0052a3;
+  --sidebar-primary-foreground: #d6e3f1;
+  --sidebar-accent: #7f9cc2;
+  --sidebar-accent-foreground: #0a2543;
+  --sidebar-border: #335a8a;
   --sidebar-ring: #2491ff;
-  --surface-depth-rest: 0 14px 24px -16px rgb(14 38 66 / 30%);
-  --surface-depth-hover: 0 20px 34px -16px rgb(14 38 66 / 38%);
-  --surface-depth-press: 0 10px 16px -12px rgb(14 38 66 / 28%);
-  --surface-highlight: color-mix(in oklab, var(--surface-3) 58%, #c7d9ec);
-  --surface-edge: color-mix(in oklab, var(--border) 84%, #2f4f73);
+  --surface-depth-rest: 0 16px 28px -18px rgb(5 25 50 / 35%);
+  --surface-depth-hover: 0 22px 36px -18px rgb(5 25 50 / 42%);
+  --surface-depth-press: 0 12px 20px -14px rgb(5 25 50 / 32%);
+  --surface-highlight: color-mix(in oklab, var(--surface-3) 64%, #9eb9db);
+  --surface-edge: color-mix(in oklab, var(--border) 82%, #1f3a5f);
 }
 
 @theme inline {
@@ -226,8 +226,9 @@ body {
 
 :root[data-theme="light"] body {
   background-image:
-    radial-gradient(circle at 0% 0%, color-mix(in oklab, var(--accent) 34%, transparent), transparent 62%),
-    radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--surface-3) 42%, transparent), transparent 68%);
+    radial-gradient(circle at 0% 0%, color-mix(in oklab, var(--accent) 46%, transparent), transparent 60%),
+    radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--surface-3) 56%, transparent), transparent 72%),
+    linear-gradient(180deg, color-mix(in oklab, var(--background) 88%, #7e9fc6) 0%, var(--background) 100%);
 }
 
 .sticky-offset-ui {
@@ -488,72 +489,82 @@ body {
 }
 
 :root[data-theme="light"] .interactive-card:hover {
-  box-shadow: 0 20px 32px -22px rgb(16 39 68 / 30%);
+  box-shadow: 0 22px 36px -22px rgb(7 29 56 / 42%);
+}
+
+:root[data-theme="light"] .interactive-card::after {
+  background: linear-gradient(
+    120deg,
+    transparent 34%,
+    color-mix(in oklab, var(--accent) 34%, transparent) 50%,
+    transparent 66%
+  );
 }
 
 :root[data-theme="light"] .surface-3d {
-  border-color: color-mix(in oklab, var(--surface-edge) 74%, var(--border));
+  border-color: color-mix(in oklab, var(--surface-edge) 78%, var(--border));
   background: linear-gradient(
     180deg,
-    color-mix(in oklab, var(--surface) 86%, var(--background)) 0%,
-    color-mix(in oklab, var(--surface-2) 62%, var(--surface)) 100%
+    color-mix(in oklab, var(--surface) 84%, var(--background)) 0%,
+    color-mix(in oklab, var(--surface-2) 74%, var(--surface-3)) 100%
   );
   box-shadow:
     var(--surface-depth-rest),
-    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 44%, var(--background)),
-    inset 0 -1px 0 color-mix(in oklab, var(--surface-edge) 26%, #334f70);
+    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 50%, var(--surface)),
+    inset 0 -1px 0 color-mix(in oklab, var(--surface-edge) 32%, #29486f);
 }
 
 :root[data-theme="light"] .surface-3d::before {
   background: linear-gradient(
     135deg,
-    color-mix(in oklab, var(--surface-highlight) 34%, var(--surface)) 0%,
+    color-mix(in oklab, var(--surface-highlight) 42%, var(--surface)) 0%,
     transparent 42%,
-    color-mix(in oklab, var(--surface) 12%, #3b5676) 100%
+    color-mix(in oklab, var(--surface-2) 26%, #2b4a73) 100%
   );
+  opacity: 0.52;
 }
 
 :root[data-theme="light"] .surface-3d-interactive:hover {
   box-shadow:
     var(--surface-depth-hover),
-    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 50%, var(--surface)),
-    inset 0 -1px 0 color-mix(in oklab, var(--surface-edge) 30%, #334f70);
+    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 58%, var(--surface)),
+    inset 0 -1px 0 color-mix(in oklab, var(--surface-edge) 34%, #29486f);
 }
 
 :root[data-theme="light"] .surface-3d-interactive:active {
   box-shadow:
     var(--surface-depth-press),
-    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 40%, var(--surface)),
-    inset 0 -1px 0 color-mix(in oklab, var(--surface-edge) 30%, #334f70);
+    inset 0 1px 0 color-mix(in oklab, var(--surface-highlight) 46%, var(--surface)),
+    inset 0 -1px 0 color-mix(in oklab, var(--surface-edge) 34%, #29486f);
 }
 
 :root[data-theme="light"] .btn-3d {
-  border: 1px solid color-mix(in oklab, var(--btn-edge) 70%, var(--border));
+  border: 1px solid color-mix(in oklab, var(--btn-edge) 76%, var(--border));
   background: linear-gradient(
     180deg,
-    color-mix(in oklab, var(--btn-highlight) 42%, var(--surface)) 0%,
-    color-mix(in oklab, var(--btn-face) 80%, #8eabd0) 48%,
-    color-mix(in oklab, var(--btn-face) 62%, var(--btn-edge)) 100%
+    color-mix(in oklab, var(--btn-highlight) 54%, var(--surface)) 0%,
+    color-mix(in oklab, var(--btn-face) 86%, #86a5cf) 48%,
+    color-mix(in oklab, var(--btn-face) 70%, var(--btn-edge)) 100%
   );
   box-shadow:
     var(--btn-shadow-rest),
-    inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 50%, var(--surface)),
+    inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 60%, var(--surface)),
     inset 0 calc(-1 * var(--btn-depth-rest)) 0
-      color-mix(in oklab, var(--btn-edge) 46%, #334f70);
+      color-mix(in oklab, var(--btn-edge) 52%, #29486f);
 }
 
 :root[data-theme="light"] .btn-3d[data-variant="secondary"] {
-  --btn-face: color-mix(in oklab, var(--surface-2) 86%, var(--surface));
-  --btn-highlight: color-mix(in oklab, var(--surface-3) 28%, var(--surface));
+  --btn-face: color-mix(in oklab, var(--surface-2) 76%, var(--surface-3));
+  --btn-highlight: color-mix(in oklab, var(--surface-3) 46%, var(--surface));
 }
 
 :root[data-theme="light"] .btn-3d[data-variant="ghost"] {
-  --btn-face: color-mix(in oklab, var(--surface-2) 58%, transparent);
-  --btn-highlight: color-mix(in oklab, var(--surface) 34%, var(--background));
+  --btn-face: color-mix(in oklab, var(--surface-3) 48%, transparent);
+  --btn-highlight: color-mix(in oklab, var(--surface-2) 44%, var(--background));
 }
 
 :root[data-theme="light"] .btn-3d[data-variant="primary"] {
-  --btn-highlight: color-mix(in oklab, var(--accent) 42%, var(--surface));
+  --btn-highlight: color-mix(in oklab, var(--accent) 58%, var(--surface));
 }
 
 :root[data-theme="light"] .btn-3d[data-variant="danger"] {
@@ -563,17 +574,58 @@ body {
 :root[data-theme="light"] .btn-3d:hover {
   box-shadow:
     var(--btn-shadow-hover),
-    inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 56%, var(--surface)),
+    inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 66%, var(--surface)),
     inset 0 calc(-1 * var(--btn-depth-rest)) 0
-      color-mix(in oklab, var(--btn-edge) 48%, #334f70);
+      color-mix(in oklab, var(--btn-edge) 56%, #29486f);
 }
 
 :root[data-theme="light"] .btn-3d:active {
   box-shadow:
     var(--btn-shadow-press),
-    inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 44%, var(--surface)),
+    inset 0 1px 0 color-mix(in oklab, var(--btn-highlight) 52%, var(--surface)),
     inset 0 calc(-1 * var(--btn-depth-press)) 0
-      color-mix(in oklab, var(--btn-edge) 48%, #334f70);
+      color-mix(in oklab, var(--btn-edge) 56%, #29486f);
+}
+
+:root[data-theme="light"] .btn-flat[data-variant="secondary"] {
+  background-color: color-mix(in oklab, var(--surface-2) 82%, var(--surface-3));
+  border-color: color-mix(in oklab, var(--border) 86%, #315985);
+}
+
+:root[data-theme="light"] .btn-flat[data-variant="secondary"]:hover {
+  background-color: color-mix(in oklab, var(--surface-3) 78%, var(--surface-2));
+}
+
+:root[data-theme="light"] .btn-flat[data-variant="ghost"] {
+  background-color: color-mix(in oklab, var(--surface-3) 34%, transparent);
+}
+
+:root[data-theme="light"] .btn-flat[data-variant="ghost"]:hover {
+  background-color: color-mix(in oklab, var(--surface-3) 54%, var(--surface-2));
+}
+
+:root[data-theme="light"] .site-chrome-header {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--background) 80%, var(--surface-2)) 0%,
+    color-mix(in oklab, var(--surface) 72%, var(--surface-2)) 100%
+  );
+}
+
+:root[data-theme="light"] .site-chrome-footer {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--surface) 76%, var(--surface-2)) 0%,
+    color-mix(in oklab, var(--surface-2) 78%, var(--surface-3)) 100%
+  );
+}
+
+:root[data-theme="light"] .app-card {
+  background: linear-gradient(
+    160deg,
+    color-mix(in oklab, var(--surface) 82%, var(--surface-2)) 0%,
+    color-mix(in oklab, var(--surface-2) 76%, var(--surface-3)) 100%
+  );
 }
 
 .interactive-card:hover::after {
