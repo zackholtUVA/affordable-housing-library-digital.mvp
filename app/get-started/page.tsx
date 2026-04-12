@@ -49,7 +49,7 @@ export default function GetStartedPage() {
 
   return (
     <PageShell className="space-y-[var(--space-section)]">
-      <header className="fade-in space-y-3 text-center">
+      <header className="fade-in -mt-1 space-y-3 text-center">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
           What brings you here?
         </h1>
