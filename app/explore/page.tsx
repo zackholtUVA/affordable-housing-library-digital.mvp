@@ -73,7 +73,7 @@ export default function ExplorePage() {
   };
 
   return (
-    <PageShell className="space-y-[var(--space-section)]">
+    <PageShell className="explore-page-light-white-text space-y-[var(--space-section)]">
       <header className="space-y-4">
         <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
           Browse ADU Options

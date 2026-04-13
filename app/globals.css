@@ -705,6 +705,41 @@ body {
   );
 }
 
+:root[data-theme="light"] .explore-page-light-white-text {
+  --text: #f4f8ff;
+  --foreground: #f4f8ff;
+  --muted: #d6e5f7;
+  --muted-foreground: #d6e5f7;
+  --link: #f4f8ff;
+  --link-hover: #ffffff;
+  --card-foreground: #f4f8ff;
+  --popover-foreground: #f4f8ff;
+  --secondary-foreground: #f4f8ff;
+  --accent-foreground: #f4f8ff;
+  color: #f4f8ff;
+}
+
+:root[data-theme="light"] .explore-page-light-white-text h1,
+:root[data-theme="light"] .explore-page-light-white-text h2,
+:root[data-theme="light"] .explore-page-light-white-text h3,
+:root[data-theme="light"] .explore-page-light-white-text p,
+:root[data-theme="light"] .explore-page-light-white-text span,
+:root[data-theme="light"] .explore-page-light-white-text label,
+:root[data-theme="light"] .explore-page-light-white-text legend,
+:root[data-theme="light"] .explore-page-light-white-text li,
+:root[data-theme="light"] .explore-page-light-white-text a,
+:root[data-theme="light"] .explore-page-light-white-text button,
+:root[data-theme="light"] .explore-page-light-white-text strong,
+:root[data-theme="light"] .explore-page-light-white-text em {
+  color: inherit;
+}
+
+:root[data-theme="light"] .explore-page-light-white-text input,
+:root[data-theme="light"] .explore-page-light-white-text textarea,
+:root[data-theme="light"] .explore-page-light-white-text select {
+  color: #08213f;
+}
+
 .interactive-card:hover::after {
   transform: translateX(130%);
 }
